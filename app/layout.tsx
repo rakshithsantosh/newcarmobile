@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { BookingProvider } from "@/components/BookingProvider";
 
 export const metadata: Metadata = {
-  title: "AstraDrive | Premium Car Rentals",
-  description:
-    "Book premium cars with transparent pricing, verified vehicles, and round-the-clock support.",
-  metadataBase: new URL("https://astradrive.example.com")
+  title: "New Car Mobile | Premium Chauffeur & Fleet Management Bangalore",
+  description: "Bangalore's premium chauffeur and fleet management company. Corporate cabs, employee transportation, self-drive cars, and luxury tourist transport.",
+  keywords: "corporate cabs bangalore, employee transportation, luxury car rental bangalore, chauffeur service, New Car Mobile",
 };
 
 export default function RootLayout({
@@ -15,7 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body style={{ overflowX: 'hidden' }}>
+        <BookingProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </BookingProvider>
+      </body>
     </html>
   );
 }

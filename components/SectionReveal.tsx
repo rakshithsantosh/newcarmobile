@@ -1,26 +1,31 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
-import type { ReactNode } from "react";
 
-export function SectionReveal({
-  children,
-  className = "",
-  delay = 0
-}: {
-  children: ReactNode;
-  className?: string;
+interface Props {
+  children: React.ReactNode;
+  width?: "fit-content" | "100%";
   delay?: number;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-96px" }}
-      transition={{ duration: 0.56, ease: "easeOut", delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
 }
+
+const SectionReveal = ({ children, width = "100%", delay = 0.2 }: Props) => {
+  return (
+    <div style={{ position: "relative", width, overflow: "hidden" }}>
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 50 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+};
+
+export default SectionReveal;

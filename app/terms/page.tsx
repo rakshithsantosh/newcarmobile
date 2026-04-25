@@ -1,6 +1,3 @@
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
-
 const sections = [
   {
     title: "Bookings",
@@ -23,7 +20,6 @@ const sections = [
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-ink text-white">
-      <Navbar />
       <section className="section-shell pb-12 pt-28 sm:pt-36">
         <p className="text-sm font-black uppercase tracking-[0.18em] text-gold">
           Terms
@@ -47,7 +43,6 @@ export default function TermsPage() {
           </article>
         ))}
       </section>
-      <Footer />
     </main>
   );
 }

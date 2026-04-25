@@ -1,0 +1,77 @@
+.sectionHeader {
+  margin-bottom: 50px;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.carCard {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.carCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-5px);
+}
+
+.imageBox {
+  height: 220px;
+  background: #1a1a1a;
+}
+
+.content {
+  padding: 24px;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.specs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.specs span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.desc {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.cardBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.cardBtn:hover {
+  gap: 12px;
+}
