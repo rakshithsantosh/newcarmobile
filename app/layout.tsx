@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { BookingProvider } from "@/components/BookingProvider";
+import FloatingActions from "@/components/FloatingActions";
 
 export const metadata: Metadata = {
   title: "New Car Mobile | Premium Chauffeur & Fleet Management Bangalore",
@@ -20,8 +21,9 @@ export default function RootLayout({
       <body style={{ overflowX: 'hidden' }}>
         <BookingProvider>
           <Navbar />
-          <main>{children}</main>
+          {children}
           <Footer />
+          <FloatingActions />
         </BookingProvider>
       </body>
     </html>

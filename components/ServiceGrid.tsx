@@ -2,41 +2,45 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { SERVICES } from "@/lib/data";
-import styles from "./ServiceGrid.module.css";
-import SectionReveal from "./SectionReveal";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const ServiceGrid = () => {
   return (
-    <section className="section-padding" id="services">
-      <div className="container">
-        <div className={styles.header}>
-          <p className="text-gold">Our Excellence</p>
-          <h2>Tailored Transportation Services</h2>
-        </div>
-        
-        <div className={styles.grid}>
-          {SERVICES.map((service, index) => (
-            <SectionReveal key={service.id} delay={index * 0.1}>
-              <div className={styles.card}>
-                <div className={styles.imageWrap}>
-                   {/* Placeholder for now */}
-                   <div className={styles.imageOverlay} />
-                </div>
-                <div className={styles.cardContent}>
-                  <h3>{service.title}</h3>
-                  <p>{service.tagline}</p>
-                  <Link href={`/services/${service.id}`} className={styles.link}>
-                    Explore Service <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </div>
-            </SectionReveal>
-          ))}
-        </div>
-      </div>
-    </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {SERVICES.map((s, i) => (
+        <motion.div
+          key={s.id}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.1 }}
+          className="group relative h-[450px] overflow-hidden bg-navy"
+        >
+          <img 
+            src={s.image} 
+            alt={s.title}
+            className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent z-10" />
+          
+          <div className="absolute bottom-0 left-0 right-0 p-10 z-20">
+             <span className="text-gold text-[10px] font-black uppercase tracking-[0.3em] mb-4 block italic">Professional</span>
+             <h3 className="text-white text-3xl font-bold mb-4 uppercase">{s.title}</h3>
+             <p className="text-white/70 text-sm mb-8 line-clamp-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+               {s.description}
+             </p>
+             <Link 
+               href={`/services/${s.id}`}
+               className="inline-flex items-center gap-2 text-white font-bold text-xs uppercase tracking-widest border-b border-gold pb-1 hover:text-gold transition-colors"
+             >
+               Explore Service <ArrowRight size={14} />
+             </Link>
+          </div>
+        </motion.div>
+      ))}
+    </div>
   );
 };
 

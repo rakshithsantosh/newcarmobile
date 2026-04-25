@@ -1,108 +1,126 @@
 "use client";
 
-import { motion } from "framer-motion";
-import gsap from "gsap";
-import Image from "next/image";
-import { useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight, ChevronLeft, ArrowDown } from "lucide-react";
 
-export function Hero() {
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const subtextRef = useRef<HTMLParagraphElement>(null);
+const slides = [
+  {
+    image: "/images/hero-1.png",
+    title: "PREMIUM CHAUFFEUR SERVICES",
+    subtitle: "Experience luxury, punctuality, and professionalism in Bangalore's most elite fleet.",
+    cta: "Explore Our Fleet"
+  },
+  {
+    image: "/images/fleet/toyota-crysta.jpg",
+    title: "CORPORATE FLEET MANAGEMENT",
+    subtitle: "Dedicated travel solutions for global businesses and employee transportation.",
+    cta: "Manage My Fleet"
+  },
+  {
+    image: "/images/fleet/mercedes-s.jpg",
+    title: "ELITE TRAVEL REDEFINED",
+    subtitle: "Luxury sedans and premium MPVs for executive missions and airport concierge.",
+    cta: "Book Elite Class"
+  }
+];
+
+const Hero = () => {
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const tl = gsap.timeline();
-    
-    if (headlineRef.current) {
-      tl.fromTo(
-        headlineRef.current.children,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: "power4.out", delay: 0.2 }
-      );
-    }
-
-    if (subtextRef.current) {
-      tl.fromTo(
-        subtextRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-        "-=0.5"
-      );
-    }
-
-    return () => {
-      tl.kill();
-    };
+    const timer = setInterval(() => {
+      setCurrent(prev => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
   }, []);
 
+  const next = () => setCurrent((current + 1) % slides.length);
+  const prev = () => setCurrent((current - 1 + slides.length) % slides.length);
+
   return (
-    <section className="relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-ink">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/hero-bg.png"
-          alt="Cinematic luxury car"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[center_70%] opacity-80"
-          quality={100}
-        />
-        {/* Cinematic Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-ink/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/40 to-transparent" />
+    <section className="relative h-[80vh] md:h-[90vh] w-full overflow-hidden bg-navy">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2 }}
+          className="absolute inset-0"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/40 to-transparent z-10" />
+          <img 
+            src={slides[current].image} 
+            alt={slides[current].title}
+            className="w-full h-full object-cover scale-105"
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Content Container (Contained) */}
+      <div className="relative z-20 h-full ncm-container flex flex-col justify-center">
+        <motion.div
+          key={current + "content"}
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-3xl"
+        >
+          <span className="inline-block py-1.5 px-4 bg-gold text-white text-[10px] font-black uppercase tracking-[0.3em] mb-6 rounded-sm shadow-xl">
+            Established 1994
+          </span>
+          <h1 className="text-white mb-6 uppercase tracking-tight">
+            {slides[current].title}
+          </h1>
+          <p className="text-white/80 max-w-xl mb-10 leading-relaxed">
+            {slides[current].subtitle}
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <button className="btn-gold">
+              {slides[current].cta}
+            </button>
+            <button className="btn-outline !border-white !text-white hover:!bg-white hover:!text-navy">
+              Contact Concierge
+            </button>
+          </div>
+        </motion.div>
       </div>
 
-      <div className="section-shell relative z-10 flex h-full flex-col justify-end pb-24 sm:pb-32 lg:pb-40 text-white">
-        <div className="max-w-3xl">
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-4 inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-[0.2em] text-gold"
-          >
-            <span className="h-[2px] w-8 bg-gold"></span>
-            <span>Premium Fleet</span>
-          </motion.p>
+      {/* Controls */}
+      <div className="absolute bottom-12 right-12 z-30 flex gap-4">
+        <button 
+          onClick={prev}
+          className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold hover:border-gold transition-all"
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <button 
+          onClick={next}
+          className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold hover:border-gold transition-all"
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
 
-          <h1
-            ref={headlineRef}
-            className="text-6xl font-black leading-[1.05] tracking-tight sm:text-7xl lg:text-8xl"
-          >
-            <span className="block overflow-hidden"><span className="inline-block">Drive Luxury.</span></span>
-            <span className="block overflow-hidden"><span className="inline-block text-gold">Instantly.</span></span>
-          </h1>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 text-white/50 animate-bounce">
+        <span className="text-[10px] font-black uppercase tracking-widest">Scroll</span>
+        <ArrowDown size={16} />
+      </div>
 
-          <p
-            ref={subtextRef}
-            className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-white/70 sm:text-xl"
-          >
-            Arrive in style. Our verified luxury fleet is ready for immediate booking, seamless delivery, and unmatched comfort.
-          </p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
-          >
-            <a
-              href="https://wa.me/919876543210?text=Hello%20I%20want%20to%20rent%20a%20luxury%20car"
-              className="focus-ring group relative flex items-center justify-center overflow-hidden rounded-full bg-gold px-8 py-4 font-black tracking-wide text-ink transition-all hover:scale-105 active:scale-95"
-            >
-              <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-150%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(150%)]">
-                <div className="relative h-full w-24 bg-white/30" />
-              </div>
-              Book via WhatsApp
-            </a>
-            <a
-              href="#featured"
-              className="focus-ring rounded-full border border-white/20 bg-white/5 px-8 py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 active:scale-95"
-            >
-              View Fleet
-            </a>
-          </motion.div>
-        </div>
+      {/* Progress Dots */}
+      <div className="absolute left-8 md:left-12 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-4">
+         {slides.map((_, i) => (
+           <div 
+             key={i} 
+             onClick={() => setCurrent(i)}
+             className={`w-1.5 h-12 rounded-full transition-all cursor-pointer ${i === current ? 'bg-gold' : 'bg-white/20 hover:bg-white/40'}`} 
+           />
+         ))}
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

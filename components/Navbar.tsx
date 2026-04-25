@@ -2,133 +2,160 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, MapPin } from "lucide-react";
 import { SITE_CONFIG, SERVICES, FLEET_CATEGORIES } from "@/lib/data";
-import { useBooking } from "./BookingProvider";
-import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const { openBooking } = useBooking();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
-      <div className={`${styles.container} container`}>
-        <div className={styles.navInner}>
-          {/* Logo */}
-          <Link href="/" className={styles.logo}>
-            <span className={styles.ncm}>NCM</span>
-            <div className={styles.logoText}>
-              <span className={styles.brandName}>New Car Mobile</span>
-              <span className={styles.tagline}>Premium Chauffeur & Fleet</span>
+    <>
+      {/* Top Bar - Hidden on mobile */}
+      <div className="hidden lg:block bg-navy text-white/80 py-2 border-b border-white/10 relative z-[100]">
+        <div className="ncm-container flex justify-between items-center text-[11px] font-medium tracking-wider uppercase">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              <MapPin size={12} className="text-gold" />
+              <span>{SITE_CONFIG.address}</span>
             </div>
-          </Link>
-
-          {/* Desktop Nav */}
-          <div className={styles.desktopMenu}>
-            <Link href="/" className={styles.navLink}>Home</Link>
-            <Link href="/about" className={styles.navLink}>About Us</Link>
-            
-            <div 
-              className={styles.dropdown}
-              onMouseEnter={() => setActiveDropdown('services')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className={styles.navLink}>
-                Services <ChevronDown size={16} />
-              </button>
-              {activeDropdown === 'services' && (
-                <div className={`${styles.dropdownContent} glass animate-fade-in`}>
-                  {SERVICES.map(service => (
-                    <Link key={service.id} href={`/services/${service.id}`} className={styles.dropdownLink}>
-                      {service.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div 
-              className={styles.dropdown}
-              onMouseEnter={() => setActiveDropdown('fleet')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className={styles.navLink}>
-                Our Fleet <ChevronDown size={16} />
-              </button>
-              {activeDropdown === 'fleet' && (
-                <div className={`${styles.dropdownContent} glass animate-fade-in`}>
-                  <Link href="/fleet" className={styles.dropdownLink}>All Fleet</Link>
-                  {FLEET_CATEGORIES.map(category => (
-                    <Link key={category.id} href={`/fleet#${category.id}`} className={styles.dropdownLink}>
-                      {category.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <Link href="/contact" className={styles.navLink}>Contact</Link>
           </div>
-
-          {/* CTA */}
-          <div className={styles.navActions}>
-            <a href={`tel:${SITE_CONFIG.phones[0].number}`} className={styles.phoneLink}>
-              <Phone size={18} className="text-gold" />
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              <Phone size={12} className="text-gold" />
               <span>{SITE_CONFIG.phones[0].number}</span>
-            </a>
-            <button onClick={() => openBooking()} className="btn btn-primary btn-sm">Book Now</button>
-
-            {/* Mobile Toggle */}
-            <button className={styles.mobileToggle} onClick={toggleMenu}>
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            </div>
+            <Link href="/book" className="text-gold hover:text-white transition-colors">Broker Login</Link>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className={`${styles.mobileMenu} glass animate-fade-in`}>
-          <Link href="/" onClick={toggleMenu}>Home</Link>
-          <Link href="/about" onClick={toggleMenu}>About Us</Link>
-          <div className={styles.mobileGroup}>
-            <p className={styles.mobileGroupTitle}>Services</p>
-            {SERVICES.map(service => (
-              <Link key={service.id} href={`/services/${service.id}`} onClick={toggleMenu}>
-                {service.title}
-              </Link>
-            ))}
+      {/* Main Bar */}
+      <nav 
+        className={`sticky top-0 w-full z-[90] transition-all duration-300 ${
+          scrolled ? "bg-white shadow-lg py-3" : "bg-white py-5"
+        }`}
+      >
+        <div className="ncm-container flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-navy rounded-md flex items-center justify-center font-bold text-white">
+              NCM
+            </div>
+            <div className="flex flex-col">
+              <span className="text-navy font-extrabold text-lg leading-none tracking-tight">NEW CAR MOBILE</span>
+              <span className="text-[10px] text-muted font-semibold tracking-[0.2em] uppercase mt-0.5">Premium Chauffeur</span>
+            </div>
+          </Link>
+
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center gap-10">
+            <Link href="/" className="text-sm font-bold text-navy hover:text-gold transition-colors">Home</Link>
+            <Link href="/about" className="text-sm font-bold text-navy hover:text-gold transition-colors">About Us</Link>
+            
+            <div className="group relative py-2">
+              <button className="flex items-center gap-1.5 text-sm font-bold text-navy group-hover:text-gold transition-colors">
+                Services <ChevronDown size={14} />
+              </button>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white shadow-2xl border-t-2 border-gold py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {SERVICES.map(s => (
+                  <Link 
+                    key={s.id} 
+                    href={`/services/${s.id}`} 
+                    className="block px-6 py-3 text-xs font-bold text-navy/70 hover:bg-gray-light hover:text-gold"
+                  >
+                    {s.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="group relative py-2">
+              <button className="flex items-center gap-1.5 text-sm font-bold text-navy group-hover:text-gold transition-colors">
+                Our Fleet <ChevronDown size={14} />
+              </button>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white shadow-2xl border-t-2 border-gold py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <Link href="/fleet" className="block px-6 py-3 text-xs font-bold text-navy/70 hover:bg-gray-light hover:text-gold border-b border-gray-lighter">
+                  All Vehicles
+                </Link>
+                {FLEET_CATEGORIES.map(c => (
+                  <Link 
+                    key={c.id} 
+                    href={`/fleet#${c.id}`} 
+                    className="block px-6 py-3 text-xs font-bold text-navy/70 hover:bg-gray-light hover:text-gold"
+                  >
+                    {c.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link href="/contact" className="text-sm font-bold text-navy hover:text-gold transition-colors">Contact</Link>
           </div>
-          <div className={styles.mobileGroup}>
-            <p className={styles.mobileGroupTitle}>Fleet</p>
-            <Link href="/fleet" onClick={toggleMenu}>All Fleet</Link>
-            {FLEET_CATEGORIES.map(cat => (
-              <Link key={cat.id} href={`/fleet#${cat.id}`} onClick={toggleMenu}>
-                {cat.title}
-              </Link>
-            ))}
-          </div>
-          <Link href="/contact" onClick={toggleMenu}>Contact</Link>
-          <div className={styles.mobileCta}>
-             <a href={`tel:${SITE_CONFIG.phones[0].number}`} className="btn btn-outline">{SITE_CONFIG.phones[0].number}</a>
-             <button className="btn btn-primary" onClick={() => { openBooking(); toggleMenu(); }}>Book Your Ride</button>
+
+          {/* Action */}
+          <div className="flex items-center gap-4">
+            <button className="hidden sm:inline-flex btn-gold !py-2.5 !px-6 !text-xs">
+              Book Now
+            </button>
+            <button 
+              className="lg:hidden text-navy p-1"
+              onClick={() => setIsOpen(true)}
+            >
+              <Menu size={28} />
+            </button>
           </div>
         </div>
-      )}
-    </nav>
+      </nav>
+
+      {/* Mobile Slide-in Menu */}
+      <div 
+        className={`fixed inset-0 z-[100] bg-navy/50 backdrop-blur-sm transition-opacity duration-300 ${
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setIsOpen(false)}
+      />
+      <div 
+        className={`fixed top-0 right-0 bottom-0 w-[280px] bg-white z-[110] transition-transform duration-500 ease-out shadow-2xl p-6 ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex justify-between items-center mb-10">
+          <span className="text-navy font-extrabold tracking-tight">NCM TRAVEL</span>
+          <button onClick={() => setIsOpen(false)}><X size={24} /></button>
+        </div>
+
+        <div className="flex flex-col gap-6">
+          <Link href="/" onClick={() => setIsOpen(false)} className="text-lg font-bold text-navy border-b border-gray-light pb-2">Home</Link>
+          <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-bold text-navy border-b border-gray-light pb-2">About Us</Link>
+          
+          <div className="space-y-3">
+            <p className="text-[10px] font-black uppercase tracking-widest text-gold">Services</p>
+            {SERVICES.map(s => (
+              <Link key={s.id} href={`/services/${s.id}`} onClick={() => setIsOpen(false)} className="block font-medium text-navy/70">{s.title}</Link>
+            ))}
+          </div>
+
+          <div className="space-y-3">
+            <p className="text-[10px] font-black uppercase tracking-widest text-gold">Our Fleet</p>
+            <Link href="/fleet" onClick={() => setIsOpen(false)} className="block font-medium text-navy/70">View Showroom</Link>
+          </div>
+          
+          <Link href="/contact" onClick={() => setIsOpen(false)} className="text-lg font-bold text-navy border-b border-gray-light pb-2">Contact</Link>
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-gray-light text-center">
+            <button className="btn-gold w-full">Request A Quote</button>
+            <p className="mt-6 text-xs text-muted font-medium">Quick Assistance: <br/> {SITE_CONFIG.phones[0].number}</p>
+        </div>
+      </div>
+    </>
   );
 };
 

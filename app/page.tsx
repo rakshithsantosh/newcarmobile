@@ -1,85 +1,156 @@
-import HeroSlider from "@/components/HeroSlider";
+"use client";
+
+import React from "react";
+import Hero from "@/components/Hero";
+import FleetGrid from "@/components/FleetGrid";
+import ProcessSection from "@/components/ProcessSection";
 import StatsCounter from "@/components/StatsCounter";
 import ServiceGrid from "@/components/ServiceGrid";
-import FleetTeaser from "@/components/FleetTeaser";
-import HowItWorks from "@/components/HowItWorks";
-import SectionReveal from "@/components/SectionReveal";
+import Testimonials from "@/components/Testimonials";
+import { CheckCircle2, Smartphone, Download, ShieldCheck, Clock, Users } from "lucide-react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { CheckCircle } from "lucide-react";
 
-export default function Home() {
+const HomePage = () => {
   return (
-    <>
-      <HeroSlider />
-      
-      <StatsCounter />
-      
-      <section className="section-padding">
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
-            <SectionReveal>
-              <div>
-                <p className="text-gold">30 Years of Legacy</p>
-                <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '24px' }}>Excellence in Motion Since 1994</h2>
-                <p className="text-muted" style={{ marginBottom: '32px', fontSize: '1.1rem' }}>
-                  New Car Mobile (NCM) has been at the forefront of Bangalore&apos;s transportation industry for three decades. 
-                  Our commitment to safety, punctuality, and premium service has made us the trusted partner for over 300 corporates.
-                </p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '40px' }}>
-                  {['ISO 9001-2015 Certified', '24/7 Premium Support', 'GPS Tracked Fleet', 'Professional Chauffeurs'].map(item => (
-                    <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <CheckCircle size={20} className="text-gold" />
-                      <span style={{ fontWeight: 500 }}>{item}</span>
+    <main className="w-full">
+      <Hero />
+
+      {/* Fleet Teaser */}
+      <section className="section-py bg-white">
+        <div className="ncm-container">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="max-w-2xl">
+              <p className="text-gold font-black uppercase tracking-[0.3em] text-xs mb-4 italic">Our Showcase</p>
+              <h2 className="text-navy uppercase">Experience The Elite Fleet</h2>
+              <p className="text-muted mt-6 max-w-lg">From executive sedans to luxury coaches, explore our meticulously maintained fleet designed for every mission.</p>
+            </div>
+            <Link href="/fleet" className="btn-outline">
+              View All Vehicles
+            </Link>
+          </div>
+          <FleetGrid limit={4} />
+        </div>
+      </section>
+
+      <ProcessSection />
+
+      {/* Why Choose Us */}
+      <section className="section-py bg-white">
+        <div className="ncm-container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="relative">
+               <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
+                  <img src="/images/services/employee.jpg" alt="Why Choose NCM" className="w-full h-full object-cover grayscale brightness-50" />
+               </div>
+               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-navy p-10 hidden md:flex flex-col justify-center border-t-8 border-gold">
+                  <span className="text-gold text-5xl font-black mb-4">30+</span>
+                  <p className="text-white text-xs font-black uppercase tracking-widest leading-relaxed">Years of Unmatched Operational Excellence</p>
+               </div>
+            </div>
+
+            <div>
+              <p className="text-gold font-black uppercase tracking-[0.3em] text-xs mb-4 italic">Core Values</p>
+              <h2 className="text-navy uppercase mb-10">Why Bangalore <br/> Trusts NCM</h2>
+              
+              <div className="space-y-8">
+                {[
+                  { icon: ShieldCheck, title: "Safety First Protocols", desc: "Rigorous background checks for all chauffeurs and Real-time GPS tracking on all trips." },
+                  { icon: Clock, title: "Precision Punctuality", desc: "Our 99.8% on-time performance record makes us the #1 choice for corporate travel." },
+                  { icon: Users, title: "Dedicated Support", desc: "24/7 Command Center based in Bangalore to handle every request and anomaly." }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex gap-6"
+                  >
+                    <div className="w-14 h-14 shrink-0 bg-gray-light border border-gray-medium flex items-center justify-center text-gold">
+                      <item.icon size={28} />
                     </div>
-                  ))}
-                </div>
-                <Link href="/about" className="btn btn-primary">Learn More About Us</Link>
+                    <div>
+                      <h4 className="text-navy font-bold text-lg mb-2 uppercase">{item.title}</h4>
+                      <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            </SectionReveal>
-            <SectionReveal delay={0.4}>
-              <div style={{ background: 'var(--surface)', minHeight: '400px', borderRadius: 'var(--radius-lg)', position: 'relative', overflow: 'hidden', border: '1px solid var(--border)' }}>
-                 {/* Image Placeholder */}
-                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(45deg, var(--primary), var(--secondary))', opacity: 0.2 }} />
-                 <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
-                    <span className="text-gold" style={{ fontSize: '1.5rem', fontWeight: 600 }}>NCM Premium Vehicles</span>
-                 </div>
-              </div>
-            </SectionReveal>
+              
+              <button className="mt-12 btn-gold">Read More About Us</button>
+            </div>
           </div>
         </div>
       </section>
 
-      <ServiceGrid />
-      
-      <HowItWorks />
-      
-      <FleetTeaser />
-      
-      <section className="section-padding" style={{ background: 'var(--surface)' }}>
-        <div className="container text-center">
-           <SectionReveal>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '40px' }}>Trusted by Industry Leaders</h2>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', flexWrap: 'wrap', opacity: 0.6 }}>
-                 {['TCS', 'Infosys', 'Wipro', 'Accenture', 'Amazon'].map(client => (
-                   <span key={client} style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '2px' }}>{client}</span>
-                 ))}
-              </div>
-           </SectionReveal>
+      <StatsCounter />
+
+      {/* Services Overview */}
+      <section className="section-py bg-gray-light">
+        <div className="ncm-container">
+          <div className="text-center mb-16">
+            <p className="text-gold font-black uppercase tracking-[0.3em] text-xs mb-4 italic">Expertise</p>
+            <h2 className="text-navy uppercase">Mobility Solutions</h2>
+          </div>
+          <ServiceGrid />
         </div>
       </section>
 
-      <section className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
-        <div className="container text-center" style={{ position: 'relative', zIndex: 2 }}>
-           <SectionReveal>
-             <h2 style={{ fontSize: '3rem', marginBottom: '24px' }}>Ready to Experience Premium Travel?</h2>
-             <p className="text-muted" style={{ maxWidth: '600px', margin: '0 auto 40px', fontSize: '1.25rem' }}>
-               Book your ride today and discover why we are Bangalore&apos;s most trusted fleet management company.
-             </p>
-             <Link href="/contact" className="btn btn-primary btn-lg">Book Now</Link>
-           </SectionReveal>
+      <Testimonials />
+
+      {/* Clients Logos */}
+      <section className="py-20 bg-white border-y border-gray-medium overflow-hidden">
+        <div className="ncm-container">
+          <p className="text-center text-muted text-[10px] font-black uppercase tracking-[0.4em] mb-12 italic">Recognized By Industry Giants</p>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
+             <div className="text-2xl font-black text-navy tracking-tighter">INFOSYS</div>
+             <div className="text-2xl font-black text-navy tracking-tighter">WIPRO</div>
+             <div className="text-2xl font-black text-navy tracking-tighter">ACCENTURE</div>
+             <div className="text-2xl font-black text-navy tracking-tighter">GOOGLE</div>
+             <div className="text-2xl font-black text-navy tracking-tighter">PHILIPS</div>
+          </div>
         </div>
-        <div style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: '40%', height: '80%', background: 'var(--accent)', filter: 'blur(150px)', opacity: 0.1, zIndex: 1 }} />
       </section>
-    </>
+
+      {/* App Promo */}
+      <section className="section-py bg-navy relative overflow-hidden">
+         {/* Decorative circle */}
+         <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full" />
+         
+         <div className="ncm-container relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+               <div className="order-2 lg:order-1">
+                  <div className="flex items-center gap-3 mb-8">
+                     <div className="w-10 h-10 bg-gold rounded-full flex items-center justify-center text-white">
+                        <Smartphone size={20} />
+                     </div>
+                     <span className="text-gold font-black uppercase tracking-widest text-xs">Drive Modern</span>
+                  </div>
+                  <h2 className="text-white uppercase mb-8">Manage Your Travel <br/> On The Go</h2>
+                  <p className="text-white/70 mb-10 max-w-lg">Download the NCM mobile app to book rides, track your chauffeur in real-time, and manage corporate invoices directly from your smartphone.</p>
+                  
+                  <div className="flex flex-wrap gap-6 items-center">
+                     <button className="flex items-center gap-4 bg-white text-navy px-8 py-4 rounded-md font-bold hover:bg-gold hover:text-white transition-all shadow-xl">
+                        <Download size={20} /> App Store
+                     </button>
+                     <button className="flex items-center gap-4 bg-white/10 text-white px-8 py-4 rounded-md font-bold hover:bg-white hover:text-navy transition-all border border-white/20">
+                        <Download size={20} /> Google Play
+                     </button>
+                  </div>
+               </div>
+               
+               <div className="order-1 lg:order-2 flex justify-center">
+                  <div className="relative w-full max-w-sm">
+                     <div className="absolute inset-x-0 bottom-0 top-1/4 bg-gold/20 blur-3xl rounded-full" />
+                     <img src="/images/hero-1.png" alt="App Preview" className="relative z-10 w-full rounded-3xl shadow-[0_0_80px_rgba(0,0,0,0.5)] border-4 border-white/10" />
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+    </main>
   );
-}
+};
+
+export default HomePage;

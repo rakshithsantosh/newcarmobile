@@ -1,38 +1,58 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MessageCircle, Phone } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { MessageCircle, Phone, ArrowUp } from "lucide-react";
 
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "919876543210";
-const callNumber = process.env.NEXT_PUBLIC_CALL_NUMBER ?? "+919876543210";
+const FloatingActions = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
-export function FloatingActions() {
+  useEffect(() => {
+    const handleScroll = () => setShowScrollTop(window.scrollY > 400);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ type: "spring", stiffness: 200, damping: 20, delay: 1 }}
-      className="fixed inset-x-4 bottom-4 z-50 grid grid-cols-[1fr_auto] gap-3 rounded-2xl border border-white/10 p-3 shadow-glow glass-panel sm:hidden"
-    >
-      <motion.a
-        whileTap={{ scale: 0.95 }}
-        href={`https://wa.me/${whatsappNumber}?text=Hello,%20I'm%20interested%20in%20a%20premium%20rental.`}
-        aria-label="Contact on WhatsApp"
-        className="focus-ring relative flex h-14 items-center justify-center space-x-2 rounded-xl bg-gold px-4 text-sm font-black text-ink shadow-lg overflow-hidden group"
+    <div className="fixed bottom-8 right-8 z-[80] flex flex-col gap-4">
+      {/* Scroll to Top */}
+      <button 
+        onClick={scrollToTop}
+        className={`w-12 h-12 bg-navy text-white flex items-center justify-center rounded-full floating-btn transition-all duration-500 shadow-2xl ${
+          showScrollTop ? "opacity-100 scale-100" : "opacity-0 scale-0 pointer-events-none"
+        }`}
       >
-        <span className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-        <MessageCircle size={20} className="animate-pulse" />
-        <span>Chat on WhatsApp</span>
-      </motion.a>
+        <ArrowUp size={20} />
+      </button>
+
+      {/* Primary WhatsApp */}
+      <a 
+        href="https://wa.me/919845031627" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="w-16 h-16 bg-[#25D366] text-white flex items-center justify-center rounded-full floating-btn group shadow-[0_10px_30px_rgba(37,211,102,0.4)]"
+      >
+        <MessageCircle size={28} className="transition-transform group-hover:scale-110" />
+        <div className="absolute right-full mr-4 bg-white text-navy text-[10px] font-black py-2 px-4 rounded-md uppercase tracking-tight whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl border border-gray-light">
+          Chat with NCM Concierge
+        </div>
+      </a>
       
-      <motion.a
-        whileTap={{ scale: 0.95 }}
-        href={`tel:${callNumber}`}
-        aria-label="Call AstraDrive"
-        className="focus-ring flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white backdrop-blur-md transition-colors hover:bg-white/10"
+      {/* Phone Call */}
+      <a 
+        href="tel:08026577886" 
+        className="w-16 h-16 bg-gold text-white flex items-center justify-center rounded-full floating-btn group shadow-[0_10px_30px_rgba(212,175,119,0.4)]"
       >
-        <Phone size={20} />
-      </motion.a>
-    </motion.div>
+        <Phone size={28} className="transition-transform group-hover:rotate-12" />
+        <div className="absolute right-full mr-4 bg-white text-navy text-[10px] font-black py-2 px-4 rounded-md uppercase tracking-tight whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl border border-gray-light">
+          Call Dispatch Office
+        </div>
+      </a>
+    </div>
   );
-}
+};
+
+export default FloatingActions;

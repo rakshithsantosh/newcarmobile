@@ -11,138 +11,120 @@ export const SITE_CONFIG = {
     { name: "Ramu", number: "+91 99809 18157" }
   ],
   stats: [
-    { label: "Successful Trips", value: "3.6M+" },
-    { label: "Happy Customers", value: "1.8M+" },
-    { label: "Corporate Clients", value: "300+" },
-    { label: "Kilometers Covered", value: "90M+" }
+    { label: "Successful Trips", value: "3.6M+", icon: "Trips" },
+    { label: "Happy Customers", value: "1.8M+", icon: "Users" },
+    { label: "Corporate Clients", value: "300+", icon: "Briefcase" },
+    { label: "Kilometers Covered", value: "90M+", icon: "Map" }
   ]
 };
 
-export const SERVICES = [
-  {
-    id: "corporate-cab",
-    title: "Corporate Cab",
-    tagline: "Premium transportation solutions for your business needs.",
-    description: "Reliable, punctual, and professional corporate cab services in Bangalore. We cater to executive travel, client pick-ups, and airport transfers with a focus on comfort and style.",
-    benefits: ["24/7 Availability", "Professional Chauffeurs", "GPS Tracked Vehicles", "Corporate Billing"],
-    image: "/images/services/corporate.jpg"
-  },
-  {
-    id: "employee-transportation",
-    title: "Employee Transportation",
-    tagline: "Safe and reliable daily commutes for your workforce.",
-    description: "Efficient fleet management for employee pick-up and drop-off. We ensure timely arrivals and departures with high-capacity vehicles optimized for safety.",
-    benefits: ["Real-time Tracking", "Punctual Service", "Panic Button Enabled", "Route Optimization"],
-    image: "/images/services/employee.jpg"
-  },
-  {
-    id: "self-drive-cars",
-    title: "Self-Drive Cars",
-    tagline: "Liberty to drive your way with our premium self-drive fleet.",
-    description: "Range of well-maintained premium cars for self-drive. Perfect for weekend getaways or personal business trips without the need for a chauffeur.",
-    benefits: ["Wide Range of Cars", "Clean & Maintained", "Easy Booking Process", "Flexible Pricing"],
-    image: "/images/services/self-drive.jpg"
-  },
-  {
-    id: "premium-cabs",
-    title: "Premium Cabs",
-    tagline: "Luxury travel experience for your special occasions.",
-    description: "Experience the pinnacle of luxury with our high-end fleet including Mercedes, BMW, and Audi. Ideal for weddings, VIP guests, and high-profile events.",
-    benefits: ["Luxury Brands", "Exemplary Service", "Well-Dressed Chauffeurs", "Complimentary Amenities"],
-    image: "/images/services/premium.jpg"
-  },
-  {
-    id: "tourist-transportation",
-    title: "Tourist Transportation",
-    tagline: "Explore Incredible India with our comfortable tourist fleet.",
-    description: "Explore Bangalore and surrounding tourist destinations with our spacious and comfortable tourist vehicles. Knowledgeable drivers and customizable itineraries.",
-    benefits: ["Custom Itineraries", "Knowledgeable Drivers", "Spacious Vehicles", "Transparent Pricing"],
-    image: "/images/services/tourist.jpg"
-  }
-];
+export type VehicleTier = 'Standard' | 'Premium' | 'Luxury' | 'Elite';
 
 export const FLEET_CATEGORIES = [
-  { id: "premium", title: "Premium Cabs" },
   { id: "corporate", title: "Corporate Cabs" },
-  { id: "employee", title: "Employee Transportation" },
-  { id: "tourist", title: "Tourist Transport" }
+  { id: "tourist", title: "Tourist Transport" },
+  { id: "premium", title: "Premium Fleet" }
 ];
 
 export const FLEET = [
   {
-    id: "mercedes-e-class",
+    id: "mercedes-s-class",
     category: "premium",
-    name: "Mercedes E-Class",
-    specs: { pax: 4, luggage: 3, engine: "2.0L Turbo" },
-    image: "/images/fleet/mercedes-e.jpg",
-    description: "The definition of luxury and comfort for executive travel."
+    tier: "Elite" as VehicleTier,
+    name: "Mercedes S-Class",
+    specs: { pax: 3, luggage: 2, engine: "V6 Biturbo" },
+    priceEstimate: "₹18,000/day",
+    image: "/images/fleet/mercedes-s.jpg",
+    description: "The pinnacle of luxury chauffeur travel.",
+    features: ["Massaging Seats", "Rear Entertainment", "Burmester Sound", "Ambient Lighting"]
   },
   {
-    id: "bmw-5-series",
+    id: "bmw-7-series",
     category: "premium",
-    name: "BMW 5 Series",
-    specs: { pax: 4, luggage: 2, engine: "2.0L TwinPower" },
-    image: "/images/fleet/bmw-5.jpg"
-  },
-  {
-    id: "audi-a6",
-    category: "premium",
-    name: "Audi A6",
-    specs: { pax: 4, luggage: 3, engine: "2.0L TFSI" },
-    image: "/images/fleet/audi-a6.jpg"
+    tier: "Elite" as VehicleTier,
+    name: "BMW 7 Series",
+    specs: { pax: 3, luggage: 2, engine: "TwinPower Turbo" },
+    priceEstimate: "₹17,500/day",
+    image: "/images/fleet/bmw-7.jpg",
+    description: "Forward-thinking luxury and smooth performance."
   },
   {
     id: "toyota-innova-hycross",
     category: "corporate",
+    tier: "Premium" as VehicleTier,
     name: "Toyota Innova Hycross",
-    specs: { pax: 6, luggage: 4, engine: "2.0L Hybrid" },
-    image: "/images/fleet/toyota-hycross.jpg"
+    specs: { pax: 6, luggage: 4, engine: "Hybrid" },
+    priceEstimate: "₹4,500/day",
+    image: "/images/services/corporate.jpg",
+    description: "Modern efficiency meets spacious comfort."
   },
   {
     id: "toyota-innova-crysta",
     category: "corporate",
+    tier: "Standard" as VehicleTier,
     name: "Toyota Innova Crysta",
-    specs: { pax: 7, luggage: 4, engine: "2.4L Diesel" },
+    specs: { pax: 7, luggage: 4, engine: "Diesel" },
+    priceEstimate: "₹3,800/day",
     image: "/images/fleet/toyota-crysta.jpg"
-  },
-  {
-    id: "maruti-suzuki-ertiga",
-    category: "employee",
-    name: "Suzuki Ertiga",
-    specs: { pax: 6, luggage: 2, engine: "1.5L Petrol" },
-    image: "/images/fleet/ertiga.jpg"
   },
   {
     id: "force-urbania",
     category: "tourist",
+    tier: "Premium" as VehicleTier,
     name: "Force Urbania",
-    specs: { pax: 15, luggage: 10, engine: "2.6L FM" },
+    specs: { pax: 15, luggage: 10, engine: "FM 2.6" },
+    priceEstimate: "₹6,500/day",
     image: "/images/fleet/urbania.jpg"
   },
   {
     id: "volvo-bus",
     category: "tourist",
-    name: "Volvo Multi-Axle Bus",
-    specs: { pax: 45, luggage: 50, engine: "11L Volvo" },
+    tier: "Luxury" as VehicleTier,
+    name: "Volvo Multi-Axle",
+    specs: { pax: 45, luggage: 50, engine: "Volvo D11" },
+    priceEstimate: "₹25,000/day",
     image: "/images/fleet/volvo.jpg"
+  }
+];
+
+export const SERVICES = [
+  {
+    id: "corporate-cab",
+    title: "Corporate Cabs",
+    tagline: "The Business Class of Road Travel",
+    description: "Tailored for the modern professional. Punctual, discreet, and reliable.",
+    image: "/images/services/corporate.jpg"
+  },
+  {
+    id: "employee-transportation",
+    title: "Employee Transport",
+    tagline: "Safety First, Every Single Day",
+    description: "Scalable fleet solutions for Bangalore's top tech parks and MNCs.",
+    image: "/images/services/employee.jpg"
+  },
+  {
+    id: "luxury-rentals",
+    title: "Premium Cabs",
+    tagline: "Elegance on Demand",
+    description: "Make an impression with our curated collection of luxury sedans.",
+    image: "/images/fleet/mercedes-e.jpg"
   }
 ];
 
 export const TESTIMONIALS = [
   {
-    name: "Rahul Sharma",
-    company: "TCS",
-    text: "NCM has been our trusted partner for employee transportation for over 5 years. Their punctuality and safety standards are unmatched."
+    name: "Sandeep Rao",
+    role: "Director of Ops, Tech Giant",
+    text: "NCM has consistently delivered elite-level corporate transport for our entire Bangalore division.",
+    avatar: "https://i.pravatar.cc/150?u=sandeep"
   },
   {
-    name: "Ananya Iyer",
-    company: "Freelance",
-    text: "Booked a premium cab for my sister's wedding. The car was immaculate and the chauffeur was extremely professional. Highly recommend!"
+    name: "Elena Gilbert",
+    role: "Travel Vlogger",
+    text: "Their tourist buses are incredibly comfortable. The best way to see South India!",
+    avatar: "https://i.pravatar.cc/150?u=elena"
   }
 ];
 
-export const HOW_IT_WORKS = [
-  { step: 1, title: "Create Route", description: "Plan your trip and decide the route or destinations you want to cover." },
-  { step: 2, title: "Book Ride", description: "Select your preferred vehicle from our fleet and book via app or website." },
-  { step: 3, title: "Enjoy Journey", description: "Relax as our professional chauffeur takes you to your destination safely." }
-];
+export const HOW_IT_WORKS = [{ step: '1', title: 'Book', description: 'Select your service and vehicle.' }, { step: '2', title: 'Confirm', description: 'Receive instant confirmation.' }, { step: '3', title: 'Ride', description: 'Enjoy your professional journey.' }];
+export const WHY_CHOOSE_US = [{ title: 'Safe', description: 'Vetted drivers.' }, { title: 'Reliable', description: '24/7 support.' }];

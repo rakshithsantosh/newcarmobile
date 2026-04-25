@@ -1,94 +1,92 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Download } from "lucide-react";
 import { SITE_CONFIG, SERVICES, FLEET_CATEGORIES } from "@/lib/data";
-import styles from "./Footer.module.css";
+import { Globe, Mail, Smartphone, Shield, Download, MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <div className={`${styles.container} container`}>
-        <div className={styles.grid}>
-          {/* Brand Col */}
-          <div className={styles.brandCol}>
-            <Link href="/" className={styles.logo}>
-               <span className={styles.ncm}>NCM</span>
-               <span className={styles.brandName}>New Car Mobile</span>
+    <footer className="bg-navy text-white pt-24 pb-12 overflow-hidden">
+      <div className="ncm-container">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+          {/* Brand & Address */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="inline-flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 bg-white rounded-md flex items-center justify-center font-bold text-navy text-xl">
+                N
+              </div>
+              <span className="text-white font-extrabold text-xl tracking-tight">NEW CAR MOBILE</span>
             </Link>
-            <p className={styles.desc}>
-              Bangalore&apos;s premier chauffeur and fleet management company. Providing luxury, safety, and reliability for over 30 years.
+            <p className="text-white/60 text-sm mb-8 leading-relaxed max-w-xs">
+              Bangalore&apos;s premier fleet management partner providing high-end mobility solutions for businesses and individuals since 1994.
             </p>
-            <div className={styles.contactList}>
-               <div className={styles.contactItem}>
-                 <MapPin size={18} className="text-gold" />
-                 <span>{SITE_CONFIG.address}</span>
-               </div>
-               <div className={styles.contactItem}>
-                 <Mail size={18} className="text-gold" />
-                 <span>{SITE_CONFIG.email}</span>
-               </div>
+            <div className="flex gap-4">
+               {[Globe, Mail, Smartphone, Shield].map((Icon, i) => (
+                 <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold transition-all">
+                   <Icon size={18} />
+                 </a>
+               ))}
             </div>
           </div>
 
-          {/* Links Grid */}
-          <div className={styles.linksGrid}>
-            <div className={styles.linkCol}>
-              <h4>Quick Links</h4>
-              <ul>
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="/about">About Us</Link></li>
-                <li><Link href="/fleet">Our Fleet</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
-                <li><Link href="/terms">Privacy Policy</Link></li>
-              </ul>
-            </div>
-
-            <div className={styles.linkCol}>
-              <h4>Our Services</h4>
-              <ul>
-                {SERVICES.map(s => (
-                  <li key={s.id}><Link href={`/services/${s.id}`}>{s.title}</Link></li>
-                ))}
-              </ul>
-            </div>
-
-            <div className={styles.linkCol}>
-              <h4>Our Fleet</h4>
-              <ul>
-                {FLEET_CATEGORIES.map(c => (
-                  <li key={c.id}><Link href={`/fleet#${c.id}`}>{c.title}</Link></li>
-                ))}
-              </ul>
-            </div>
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-gold font-black uppercase text-xs tracking-[0.2em] mb-10 italic">Quick Links</h4>
+            <ul className="space-y-4 text-white/70 text-sm font-bold uppercase tracking-widest">
+              <li><Link href="/about" className="hover:text-gold transition-colors">About Us</Link></li>
+              <li><Link href="/services" className="hover:text-gold transition-colors">Safety Protocols</Link></li>
+              <li><Link href="/fleet" className="hover:text-gold transition-colors">Our Showroom</Link></li>
+              <li><Link href="/contact" className="hover:text-gold transition-colors">Get A Quote</Link></li>
+              <li><Link href="/terms" className="hover:text-gold transition-colors">Privacy Policy</Link></li>
+            </ul>
           </div>
 
-          {/* CTA Col */}
-          <div className={styles.ctaCol}>
-            <h4>Brochure</h4>
-            <p>Download our corporate brochure for detailed services and fleet info.</p>
-            <button className="btn btn-outline" style={{width: '100%', marginTop: '12px'}}>
-              <Download size={18} /> Download PDF
-            </button>
-            
-            <div className={styles.phones}>
-              <h4>24/7 Support</h4>
-              {SITE_CONFIG.phones.slice(0, 3).map(p => (
-                <div key={p.number} className={styles.phoneItem}>
-                  <Phone size={16} />
-                  <span>{p.name}: {p.number}</span>
-                </div>
+          {/* Services */}
+          <div>
+            <h4 className="text-gold font-black uppercase text-xs tracking-[0.2em] mb-10 italic">Our Services</h4>
+            <ul className="space-y-4 text-white/70 text-sm font-medium">
+              {SERVICES.map(s => (
+                <li key={s.id}><Link href={`/services/${s.id}`} className="hover:text-gold transition-colors">{s.title}</Link></li>
               ))}
+              {FLEET_CATEGORIES.map(c => (
+                <li key={c.id}><Link href={`/fleet#${c.id}`} className="hover:text-gold transition-colors">{c.title}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-gold font-black uppercase text-xs tracking-[0.2em] mb-10 italic">Contact NCM</h4>
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                 <MapPin size={24} className="text-gold shrink-0" />
+                 <p className="text-white/70 text-sm leading-relaxed">{SITE_CONFIG.address}</p>
+              </div>
+              <div className="flex gap-4">
+                 <Phone size={18} className="text-gold shrink-0" />
+                 <p className="text-white/70 text-sm font-bold tracking-widest">{SITE_CONFIG.phones[0].number}</p>
+              </div>
+              <div className="flex gap-4">
+                 <Mail size={18} className="text-gold shrink-0" />
+                 <p className="text-white/70 text-sm font-bold">{SITE_CONFIG.email}</p>
+              </div>
+              <button className="flex items-center gap-2 bg-white/5 border border-white/10 px-6 py-3 text-xs font-black uppercase tracking-widest hover:bg-white hover:text-navy transition-all w-full justify-center">
+                 <Download size={14} /> Download Brochure
+              </button>
             </div>
           </div>
         </div>
 
-        <div className={styles.bottomBar}>
-          <p>© {new Date().getFullYear()} New Car Mobile. All rights reserved. ISO 9001-2015 Certified.</p>
-          <div className={styles.socials}>
-             <span>Facebook</span>
-             <span>Instagram</span>
-             <span>LinkedIn</span>
-          </div>
+        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
+           <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">
+             © {new Date().getFullYear()} New Car Mobile. All rights reserved. Designed for Excellence.
+           </p>
+           <div className="flex gap-8 text-[10px] font-bold text-white/40 uppercase tracking-widest">
+              <span>Sitemap</span>
+              <span>Terms of Service</span>
+              <span>Cookies</span>
+           </div>
         </div>
       </div>
     </footer>

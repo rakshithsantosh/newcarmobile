@@ -1,40 +1,52 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import InquiryModal from "./InquiryModal";
+import React, { createContext, useContext, useState } from "react";
+import BookingWizard from "./BookingWizard";
+import { AnimatePresence } from "framer-motion";
 
 interface BookingContextType {
+  isOpen: boolean;
   openBooking: (vehicleId?: string) => void;
   closeBooking: () => void;
+  selectedVehicleId?: string;
 }
 
 const BookingContext = createContext<BookingContextType | undefined>(undefined);
 
-export const BookingProvider = ({ children }: { children: ReactNode }) => {
+export const BookingProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedVehicle, setSelectedVehicle] = useState<string | undefined>(undefined);
+  const [selectedVehicleId, setSelectedVehicleId] = useState<string | undefined>();
 
   const openBooking = (vehicleId?: string) => {
-    setSelectedVehicle(vehicleId);
+    setSelectedVehicleId(vehicleId);
     setIsOpen(true);
   };
 
-  const closeBooking = () => setIsOpen(false);
+  const closeBooking = () => {
+    setIsOpen(false);
+    setSelectedVehicleId(undefined);
+  };
 
   return (
-    <BookingContext.Provider value={{ openBooking, closeBooking }}>
+    <BookingContext.Provider value={{ isOpen, openBooking, closeBooking, selectedVehicleId }}>
       {children}
-      <InquiryModal 
-        isOpen={isOpen} 
-        onClose={closeBooking} 
-        selectedVehicle={selectedVehicle} 
-      />
+      <AnimatePresence>
+        {isOpen && (
+          <BookingWizard 
+            isOpen={isOpen} 
+            onClose={closeBooking} 
+            selectedVehicleId={selectedVehicleId} 
+          />
+        )}
+      </AnimatePresence>
     </BookingContext.Provider>
   );
 };
 
 export const useBooking = () => {
   const context = useContext(BookingContext);
-  if (!context) throw new Error("useBooking must be used within a BookingProvider");
+  if (context === undefined) {
+    throw new Error("useBooking must be used within a BookingProvider");
+  }
   return context;
 };
