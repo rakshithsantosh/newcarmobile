@@ -29,17 +29,20 @@ const FloatingActions = () => {
       </button>
 
       {/* Primary WhatsApp */}
-      <a 
-        href="https://wa.me/919845031627" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="w-16 h-16 bg-[#25D366] text-white flex items-center justify-center rounded-full floating-btn group shadow-[0_10px_30px_rgba(37,211,102,0.4)]"
-      >
-        <MessageCircle size={28} className="transition-transform group-hover:scale-110" />
-        <div className="absolute right-full mr-4 bg-white text-navy text-[10px] font-black py-2 px-4 rounded-md uppercase tracking-tight whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl border border-gray-light">
-          Chat with NCM Concierge
-        </div>
-      </a>
+      <div className="relative">
+        <div className="absolute inset-0 rounded-full pulse-ring pointer-events-none"></div>
+        <a 
+          href="https://wa.me/919845031627" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="relative w-16 h-16 bg-[#25D366] text-white flex items-center justify-center rounded-full floating-btn group z-10"
+        >
+          <MessageCircle size={28} className="transition-transform group-hover:scale-110" />
+          <div className="absolute right-full mr-4 bg-white text-navy text-[10px] font-black py-2 px-4 rounded-md uppercase tracking-tight whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl border border-gray-light">
+            Chat with NCM Concierge
+          </div>
+        </a>
+      </div>
       
       {/* Phone Call */}
       <a 

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Phone, MapPin } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { SITE_CONFIG, SERVICES, FLEET_CATEGORIES } from "@/lib/data";
 
 const Navbar = () => {
@@ -17,35 +17,20 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top Bar - Hidden on mobile */}
-      <div className="hidden lg:block bg-navy text-white/80 py-2 border-b border-white/10 relative z-[100]">
-        <div className="ncm-container flex justify-between items-center text-[11px] font-medium tracking-wider uppercase">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <MapPin size={12} className="text-gold" />
-              <span>{SITE_CONFIG.address}</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Phone size={12} className="text-gold" />
-              <span>{SITE_CONFIG.phones[0].number}</span>
-            </div>
-            <Link href="/book" className="text-gold hover:text-white transition-colors">Broker Login</Link>
-          </div>
-        </div>
-      </div>
 
-      {/* Main Bar */}
+
+      {/* Main Bar - Floating Rounded Glossy Pill */}
       <nav 
-        className={`sticky top-0 w-full z-[90] transition-all duration-300 ${
-          scrolled ? "bg-white/95 backdrop-blur-md shadow-lg py-3" : "bg-white py-5"
+        className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-[100] transition-all duration-700 rounded-full border border-white/40 shadow-[0_20px_50px_rgba(10,37,64,0.15)] ${
+          scrolled 
+            ? "top-4 bg-white/70 backdrop-blur-3xl py-2.5" 
+            : "top-8 bg-white/30 backdrop-blur-xl py-4"
         }`}
       >
         <div className="ncm-container flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-navy rounded-md flex items-center justify-center font-bold text-white">
+            <div className="w-10 h-10 bg-navy rounded-full flex items-center justify-center font-bold text-white shadow-lg">
               NCM
             </div>
             <div className="flex flex-col">

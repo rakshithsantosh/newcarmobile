@@ -2,123 +2,138 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, ArrowDown } from "lucide-react";
+import { ArrowRight, Clock, Award, Users, UserCheck, ShieldCheck } from "lucide-react";
 
-const slides = [
-  {
-    image: "https://newcarmobile.in/wp-content/uploads/2024/04/2017-Mercedes-Benz-GLC-Class-2016-Mercedes-Benz-GLC.png",
-    title: "PREMIUM CHAUFFEUR SERVICES",
-    subtitle: "Experience luxury, punctuality, and professionalism in Bangalore's most elite fleet.",
-    cta: "Book Now"
-  },
-  {
-    image: "https://newcarmobile.in/wp-content/uploads/2024/04/Toyota-Fortuner-SUV-Toyota-Fortuner-Toyota-Hilux-Car-Toyota-Corolla-tuning-vehicle-transport-metal.png",
-    title: "CORPORATE FLEET MANAGEMENT",
-    subtitle: "Dedicated travel solutions for global businesses and employee transportation.",
-    cta: "Book Now"
-  },
-  {
-    image: "https://newcarmobile.in/wp-content/uploads/2024/12/9600_15m_sleeper_FR_01a_hires-nbg-e1736088203435.avif",
-    title: "ELITE TRAVEL REDEFINED",
-    subtitle: "Luxury sedans, premium MPVs, and luxury coaches for executive missions.",
-    cta: "Book Now"
-  }
+const images = [
+  "https://newcarmobile.in/wp-content/uploads/2024/04/2017-Mercedes-Benz-GLC-Class-2016-Mercedes-Benz-GLC.png",
+  "https://newcarmobile.in/wp-content/uploads/2024/04/Toyota-Fortuner-SUV-Toyota-Fortuner-Toyota-Hilux-Car-Toyota-Corolla-tuning-vehicle-transport-metal.png",
+  "https://newcarmobile.in/wp-content/uploads/2024/12/9600_15m_sleeper_FR_01a_hires-nbg-e1736088203435.avif"
 ];
 
 const Hero = () => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
+    // 7 seconds per slide
     const timer = setInterval(() => {
-      setCurrent(prev => (prev + 1) % slides.length);
-    }, 6000);
+      setCurrent(prev => (prev + 1) % images.length);
+    }, 7000);
     return () => clearInterval(timer);
   }, []);
 
-  const next = () => setCurrent((current + 1) % slides.length);
-  const prev = () => setCurrent((current - 1 + slides.length) % slides.length);
-
   return (
-    <section className="relative h-[80vh] md:h-[90vh] w-full overflow-hidden bg-navy">
-      <AnimatePresence mode="wait">
+    <section className="relative min-h-[100svh] w-full bg-navy overflow-hidden flex items-center pt-32 pb-48">
+      
+      {/* Background Images Crossfade only */}
+      <AnimatePresence mode="popLayout">
         <motion.div
-          key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2 }}
-          className="absolute inset-0"
+           key={current}
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           exit={{ opacity: 0 }}
+           transition={{ duration: 1.5, ease: "easeInOut" }}
+           className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/40 to-transparent z-10" />
           <img 
-            src={slides[current].image} 
-            alt={slides[current].title}
-            className="w-full h-full object-cover scale-105"
+            src={images[current]} 
+            alt="Luxury Chauffeur"
+            className="w-full h-full object-cover"
           />
         </motion.div>
       </AnimatePresence>
 
-      {/* Content Container (Contained) */}
-      <div className="relative z-20 h-full ncm-container flex flex-col justify-center">
-        <motion.div
-          key={current + "content"}
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-3xl"
+      {/* Dark Cinematic Gradient Overlay */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/90 via-black/50 to-black/10" />
+      <div className="absolute inset-0 z-10 bg-black/30" />
+
+      {/* Content Container (Left-aligned, Vertically Centered) */}
+      <div className="ncm-container relative z-20 h-full flex flex-col justify-center">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="max-w-2xl transform translate-y-8"
         >
-          <span className="inline-block py-1.5 px-4 bg-gold text-white text-[10px] font-black uppercase tracking-[0.3em] mb-6 rounded-sm shadow-xl">
-            Established 1994
-          </span>
-          <h1 className="text-white mb-6 uppercase tracking-tight">
-            {slides[current].title}
+          {/* Headline - Playfair Display (Serif) */}
+          <h1 
+            className="text-white tracking-tight leading-[1.1] drop-shadow-2xl"
+            style={{ fontFamily: "'Playfair Display', serif", fontWeight: 600 }}
+          >
+            Arrive On Time.<br/>
+            In Style.<br/>
+            <span className="text-gold italic font-normal">Every Time.</span>
           </h1>
-          <p className="text-white/80 max-w-xl mb-10 leading-relaxed">
-            {slides[current].subtitle}
+
+          <div className="w-16 h-[2px] bg-gold my-8" />
+
+          {/* Subheading - Inter (Sans-Serif) */}
+          <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-xl font-sans drop-shadow-md">
+            Premium chauffeur experiences engineered for execution. Seamless airport transfers, dedicated corporate travel, and elite event transportation across Bangalore.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <button className="btn-gold">
-              {slides[current].cta}
+
+          {/* Action Area */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-4">
+            <button className="btn-gold group flex items-center gap-3 !px-8 !py-4 text-sm tracking-widest uppercase shadow-[0_0_40px_rgba(212,175,119,0.3)] hover:shadow-[0_0_60px_rgba(212,175,119,0.5)]">
+              Reserve Your Chauffeur
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="btn-outline !border-white !text-white hover:!bg-white hover:!text-navy">
+            
+            <button className="btn-outline !border-white/50 !text-white hover:!bg-white hover:!border-white hover:!text-navy !px-8 !py-4 text-sm tracking-widest uppercase">
               View Fleet
             </button>
           </div>
+          
+          {/* Microcopy under CTAs */}
+          <div className="flex items-center gap-2 mb-16 text-white/50">
+            <Clock size={14} className="text-gold" />
+            <p className="text-[10px] font-black tracking-[0.2em] uppercase mt-0.5">
+              Available 24/7 &bull; Instant Confirmation
+            </p>
+          </div>
+
+          {/* Trust Signals Horizontal Row */}
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-6 pt-8 border-t border-white/10">
+            
+            <div className="flex items-center gap-3">
+              <Award size={24} strokeWidth={1.5} className="text-gold" />
+              <div className="flex flex-col">
+                <span className="text-white/70 text-[10px] uppercase font-bold tracking-widest">Serving Since</span>
+                <span className="text-white text-sm font-semibold tracking-wide">1994</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Users size={24} strokeWidth={1.5} className="text-gold" />
+              <div className="flex flex-col">
+                <span className="text-white/70 text-[10px] uppercase font-bold tracking-widest">Trusted by</span>
+                <span className="text-white text-sm font-semibold tracking-wide">5000+ Clients</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <UserCheck size={24} strokeWidth={1.5} className="text-gold" />
+              <div className="flex flex-col">
+                <span className="text-white/70 text-[10px] uppercase font-bold tracking-widest">Professional</span>
+                <span className="text-white text-sm font-semibold tracking-wide">Chauffeurs</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <ShieldCheck size={24} strokeWidth={1.5} className="text-gold" />
+              <div className="flex flex-col">
+                <span className="text-white/70 text-[10px] uppercase font-bold tracking-widest">On-time</span>
+                <span className="text-white text-sm font-semibold tracking-wide">Guarantee</span>
+              </div>
+            </div>
+
+          </div>
+
         </motion.div>
       </div>
 
-      {/* Controls */}
-      <div className="absolute bottom-12 right-12 z-30 flex gap-4">
-        <button 
-          onClick={prev}
-          className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold hover:border-gold transition-all"
-        >
-          <ChevronLeft size={20} />
-        </button>
-        <button 
-          onClick={next}
-          className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold hover:border-gold transition-all"
-        >
-          <ChevronRight size={20} />
-        </button>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 text-white/50 animate-bounce">
-        <span className="text-[10px] font-black uppercase tracking-widest">Scroll</span>
-        <ArrowDown size={16} />
-      </div>
-
-      {/* Progress Dots */}
-      <div className="absolute left-8 md:left-12 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-4">
-         {slides.map((_, i) => (
-           <div 
-             key={i} 
-             onClick={() => setCurrent(i)}
-             className={`w-1.5 h-12 rounded-full transition-all cursor-pointer ${i === current ? 'bg-gold' : 'bg-white/20 hover:bg-white/40'}`} 
-           />
-         ))}
-      </div>
+      {/* Seamless blend to the white section below - positioned lower to stay off text */}
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white via-white/40 to-transparent z-20 pointer-events-none" />
     </section>
   );
 };

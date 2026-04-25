@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
 
 :root {
   --navy: #0A2540;
@@ -52,24 +52,36 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.01em;
 }
 
 h3 {
+  font-family: 'Outfit', sans-serif;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
 }
 
 h4 {
+  font-family: 'Outfit', sans-serif;
   font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
 }
 
 p {
-  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
   line-height: 1.7;
   word-break: break-word;
   overflow-wrap: break-word;
@@ -100,14 +112,14 @@ p {
   font-weight: 700;
   padding: 1rem 2.5rem;
   border-radius: 9999px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 0 4px 14px 0 rgba(212, 175, 119, 0.39);
 }
 
 .btn-gold:hover {
   background-color: var(--gold-dark);
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(212, 175, 119, 0.23);
+  box-shadow: 0 10px 25px rgba(212, 175, 119, 0.6);
 }
 
 .btn-outline {
@@ -121,26 +133,39 @@ p {
   font-weight: 700;
   padding: 1rem 2.5rem;
   border-radius: 9999px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .btn-outline:hover {
   background-color: var(--gold);
   color: #fff;
   transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(212, 175, 119, 0.4);
 }
 
 /* Glassmorphism & Cards */
 .card-premium {
   background: white;
   border: 1px solid var(--gray-medium);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .card-premium:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(10, 37, 64, 0.08);
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px rgba(212, 175, 119, 0.2);
   border-color: var(--gold);
+  z-index: 10;
+}
+
+/* Pulse Animation for WhatsApp */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 
 /* Image Aspect Ratios */

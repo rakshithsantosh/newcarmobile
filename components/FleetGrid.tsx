@@ -36,7 +36,8 @@ const FleetGrid = ({ limit }: { limit?: number }) => {
           <div className="p-6 flex flex-col flex-1">
              <div className="mb-4">
                 <h3 className="text-navy text-xl font-bold mb-1 group-hover:text-gold transition-colors">{vehicle.name}</h3>
-                <p className="text-gold text-[10px] font-black uppercase tracking-widest italic">{vehicle.category}</p>
+                <p className="text-gold text-[10px] font-black uppercase tracking-widest italic mb-3">{vehicle.category}</p>
+                <p className="text-muted text-xs leading-relaxed line-clamp-2">{vehicle.description}</p>
              </div>
 
              <div className="grid grid-cols-2 gap-4 py-4 border-y border-gray-lighter mb-6">

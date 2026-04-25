@@ -33,7 +33,7 @@ const ServiceGrid = () => {
              </p>
              <Link 
                href={`/services/${s.id}`}
-               className="inline-flex items-center gap-2 text-white font-bold text-xs uppercase tracking-widest border-b border-gold pb-1 hover:text-gold transition-colors"
+               className="btn-gold !py-3 !px-8 !text-[11px] uppercase tracking-widest gap-3"
              >
                Explore Service <ArrowRight size={14} />
              </Link>
