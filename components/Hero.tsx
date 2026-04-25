@@ -6,22 +6,22 @@ import { ChevronRight, ChevronLeft, ArrowDown } from "lucide-react";
 
 const slides = [
   {
-    image: "/images/hero-1.png",
+    image: "https://newcarmobile.in/wp-content/uploads/2024/04/2017-Mercedes-Benz-GLC-Class-2016-Mercedes-Benz-GLC.png",
     title: "PREMIUM CHAUFFEUR SERVICES",
     subtitle: "Experience luxury, punctuality, and professionalism in Bangalore's most elite fleet.",
-    cta: "Explore Our Fleet"
+    cta: "Book Now"
   },
   {
-    image: "/images/fleet/toyota-crysta.jpg",
+    image: "https://newcarmobile.in/wp-content/uploads/2024/04/Toyota-Fortuner-SUV-Toyota-Fortuner-Toyota-Hilux-Car-Toyota-Corolla-tuning-vehicle-transport-metal.png",
     title: "CORPORATE FLEET MANAGEMENT",
     subtitle: "Dedicated travel solutions for global businesses and employee transportation.",
-    cta: "Manage My Fleet"
+    cta: "Book Now"
   },
   {
-    image: "/images/fleet/mercedes-s.jpg",
+    image: "https://newcarmobile.in/wp-content/uploads/2024/12/9600_15m_sleeper_FR_01a_hires-nbg-e1736088203435.avif",
     title: "ELITE TRAVEL REDEFINED",
-    subtitle: "Luxury sedans and premium MPVs for executive missions and airport concierge.",
-    cta: "Book Elite Class"
+    subtitle: "Luxury sedans, premium MPVs, and luxury coaches for executive missions.",
+    cta: "Book Now"
   }
 ];
 
@@ -81,7 +81,7 @@ const Hero = () => {
               {slides[current].cta}
             </button>
             <button className="btn-outline !border-white !text-white hover:!bg-white hover:!text-navy">
-              Contact Concierge
+              View Fleet
             </button>
           </div>
         </motion.div>

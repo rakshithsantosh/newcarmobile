@@ -1,8 +1,43 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { SITE_CONFIG } from "@/lib/data";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+
+const AnimatedNumber = ({ value }: { value: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [displayValue, setDisplayValue] = useState("0");
+
+  useEffect(() => {
+    if (isInView) {
+      const isMillion = value.includes("M");
+      const numStr = value.replace(/[^0-9.]/g, "");
+      const finalNum = parseFloat(numStr);
+      const isFloat = !Number.isInteger(finalNum);
+
+      let start = 0;
+      const duration = 2000;
+      const frames = 60;
+      const increment = finalNum / frames;
+
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= finalNum) {
+          clearInterval(timer);
+          setDisplayValue(value); // final exact string
+        } else {
+          const formatted = isFloat ? start.toFixed(1) : Math.floor(start).toString();
+          setDisplayValue(formatted + (isMillion ? "M+" : "+"));
+        }
+      }, duration / frames);
+      
+      return () => clearInterval(timer);
+    }
+  }, [isInView, value]);
+
+  return <span ref={ref}>{displayValue}</span>;
+};
 
 const StatsCounter = () => {
   return (
@@ -25,8 +60,8 @@ const StatsCounter = () => {
               <div className="mb-4 flex justify-center">
                  <div className="w-12 h-1 bg-gold rounded-full group-hover:w-20 transition-all duration-500" />
               </div>
-              <h3 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tighter">
-                {stat.value}
+              <h3 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tighter w-full block">
+                <AnimatedNumber value={stat.value} />
               </h3>
               <p className="text-gold text-[10px] font-black uppercase tracking-[0.2em] italic">
                 {stat.label}

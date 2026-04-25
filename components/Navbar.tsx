@@ -39,7 +39,7 @@ const Navbar = () => {
       {/* Main Bar */}
       <nav 
         className={`sticky top-0 w-full z-[90] transition-all duration-300 ${
-          scrolled ? "bg-white shadow-lg py-3" : "bg-white py-5"
+          scrolled ? "bg-white/95 backdrop-blur-md shadow-lg py-3" : "bg-white py-5"
         }`}
       >
         <div className="ncm-container flex items-center justify-between">
