@@ -29,13 +29,14 @@ const Navbar = () => {
       >
         <div className="ncm-container flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="group">
-            <div className="flex flex-col">
-              <span className="text-white font-serif italic text-3xl leading-none tracking-tight group-hover:text-accent transition-colors gold-accent-line">New Car Mobile</span>
-              <span className="text-[9px] text-white/40 font-black tracking-[0.6em] uppercase mt-2">Executive Chauffeur Excellence</span>
-            </div>
+          <Link href="/" className="group flex flex-col items-start">
+            <span className="brand-text text-white text-2xl md:text-3xl transition-colors group-hover:text-gold">
+              New Car Mobile
+            </span>
+            <span className="text-[8px] uppercase tracking-[0.7em] text-white/30 mt-1.5 font-black">
+              Executive Chauffeur Excellence
+            </span>
           </Link>
-
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-12">
              <Link href="/fleet" className="text-white/60 hover:text-white font-black text-[11px] uppercase tracking-[0.3em] transition-all relative group">

@@ -59,9 +59,9 @@ const Hero = () => {
       </AnimatePresence>
 
       {/* Advanced Cinematic Gradient Overlay */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy via-navy/95 to-transparent" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-navy/60 via-transparent to-navy/80" />
-      <div className="absolute inset-0 z-10 bg-navy/40" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy via-navy/80 to-transparent" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-navy/40 via-transparent to-navy" />
+      <div className="absolute inset-0 z-10 bg-navy/30" />
 
       {/* Content Container (Left-aligned, Vertically Centered) */}
       <div className="ncm-container relative z-20 h-full flex flex-col justify-center">
@@ -75,11 +75,11 @@ const Hero = () => {
           {/* Headline - Playfair Display (Serif) */}
           <motion.h1 
             variants={itemVariants}
-            className="text-white tracking-tight leading-[0.95] drop-shadow-2xl text-7xl md:text-8xl lg:text-[9rem] font-serif"
+            className="text-white tracking-tighter leading-[0.85] drop-shadow-2xl text-7xl md:text-9xl lg:text-[11rem] font-serif uppercase"
           >
-            THE GOLD <br/>
-            STANDARD.<br/>
-            <span className="text-accent italic font-normal text-5xl md:text-7xl lg:text-[6rem] tracking-normal block mt-4">Of Bangalore.</span>
+            Heritage <br/>
+            Mobility.<br/>
+            <span className="text-gold italic font-normal text-4xl md:text-6xl lg:text-[5rem] tracking-tight block mt-8 lowercase first-letter:uppercase font-serif">Redefined for the elite.</span>
           </motion.h1>
 
           <motion.div variants={itemVariants} className="w-24 h-[2px] bg-accent my-10" />
@@ -91,13 +91,13 @@ const Hero = () => {
 
           {/* Action Area */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-12">
-            <button className="btn-accent group flex items-center gap-6 !px-12 !py-6 text-[10px] tracking-[0.4em] uppercase shadow-glow hover:shadow-[0_30px_60px_rgba(0,212,165,0.5)] !rounded-sm">
-              BOOK A RIDE
+            <button className="btn-accent group flex items-center gap-6 !px-12 !py-6 text-[10px] tracking-[0.4em] uppercase shadow-[0_20px_50px_rgba(0,212,165,0.3)] hover:shadow-[0_30px_70px_rgba(0,212,165,0.5)] !rounded-sm transition-all duration-500">
+              SECURE YOUR JOURNEY
               <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
             </button>
             
-            <button className="text-white/80 hover:text-white px-4 py-2 text-[10px] tracking-[0.4em] uppercase font-bold transition-all border-b border-white/20 hover:border-accent">
-              DISCOVER THE FLEET
+            <button className="text-white/60 hover:text-gold px-4 py-2 text-[10px] tracking-[0.5em] uppercase font-black transition-all border-b border-white/10 hover:border-gold">
+              VIEW THE SHOWROOM
             </button>
           </motion.div>
           

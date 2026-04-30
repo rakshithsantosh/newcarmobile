@@ -141,6 +141,30 @@ p {
   box-shadow: 0 20px 40px -10px rgba(212, 175, 119, 0.6);
 }
 
+.brand-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  position: relative;
+  display: inline-block;
+}
+
+.brand-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.brand-text:hover::after {
+  width: 100%;
+}
+
 /* Glassmorphism Utilities */
 .glass-panel {
   background: rgba(255, 255, 255, 0.03);
