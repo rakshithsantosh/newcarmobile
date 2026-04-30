@@ -56,13 +56,12 @@ export function FeaturedCars({ cars }: { cars: Car[] }) {
                     {car.name}
                   </h3>
                   <p className="text-sm font-medium text-white/50 mb-6 group-hover:-translate-y-1 transition-transform duration-300 delay-75">
-                    {car.type}
+                    {car.tier} Class
                   </p>
 
                   <div className="flex items-center justify-between opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
                     <div>
-                      <span className="text-xl font-black text-white">{car.price}</span>
-                      <span className="text-xs text-white/50">/day</span>
+                      <span className="text-xl font-black text-white">{car.priceEstimate}</span>
                     </div>
                     <a
                       href={`https://wa.me/919876543210?text=Booking%20enquiry%20for%20${encodeURIComponent(car.name)}`}

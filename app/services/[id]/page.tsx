@@ -3,6 +3,7 @@
 import React, { use } from "react";
 import { SERVICES } from "@/lib/data";
 import { ArrowLeft, ShieldCheck, Clock, MapPin, Briefcase, Zap } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
@@ -36,8 +37,8 @@ const ServiceDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
             </motion.div>
             
             <div className="relative">
-               <div className="aspect-[4/3] rounded-sm overflow-hidden border border-white/10 shadow-2xl">
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover grayscale brightness-50" />
+               <div className="aspect-[4/3] rounded-sm overflow-hidden border border-white/10 shadow-2xl relative">
+                  <Image src={service.image} alt={service.title} fill className="object-cover grayscale brightness-50" />
                </div>
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
                   <Zap size={64} className="text-gold animate-pulse mb-4" />

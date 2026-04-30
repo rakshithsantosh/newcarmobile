@@ -6,9 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Clock, Award, Users, ShieldCheck } from "lucide-react";
 
 const images = [
-  "https://newcarmobile.in/wp-content/uploads/2024/04/2017-Mercedes-Benz-GLC-Class-2016-Mercedes-Benz-GLC.png",
-  "https://newcarmobile.in/wp-content/uploads/2024/04/Toyota-Fortuner-SUV-Toyota-Fortuner-Toyota-Hilux-Car-Toyota-Corolla-tuning-vehicle-transport-metal.png",
-  "https://newcarmobile.in/wp-content/uploads/2024/12/9600_15m_sleeper_FR_01a_hires-nbg-e1736088203435.avif"
+  "/images/fleet/mercedes-glc.png",
+  "/images/fleet/toyota-fortuner.png",
+  "/images/fleet/volvo-bus.avif"
 ];
 
 const Hero = () => {
