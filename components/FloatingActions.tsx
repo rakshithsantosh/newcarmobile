@@ -42,19 +42,19 @@ const FloatingActions = () => {
       >
         {/* Primary WhatsApp */}
         <div className="relative group">
-          <div className="absolute inset-[-12px] rounded-full bg-gold/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
+          <div className="absolute inset-[-12px] rounded-full bg-accent/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
           <div className="absolute inset-0 rounded-full pulse-ring pointer-events-none" />
           <a 
             href="https://wa.me/919845031627" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="relative w-16 h-16 bg-gold text-white flex items-center justify-center rounded-2xl shadow-glow group/btn z-10 transition-all duration-500 hover:scale-110 hover:-rotate-3"
+            className="relative w-16 h-16 bg-accent text-navy flex items-center justify-center rounded-2xl shadow-glow group/btn z-10 transition-all duration-500 hover:scale-110 hover:-rotate-3"
           >
             <MessageCircle size={32} className="transition-transform group-hover/btn:scale-110" />
             
             {/* Tooltip */}
             <div className="absolute right-full mr-6 top-1/2 -translate-y-1/2 bg-navy/95 backdrop-blur-xl text-white text-[11px] font-black py-3 px-6 rounded-xl uppercase tracking-widest whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 shadow-2xl border border-white/10 translate-x-4 group-hover:translate-x-0">
-              Direct Concierge
+              Concierge Service
             </div>
           </a>
         </div>

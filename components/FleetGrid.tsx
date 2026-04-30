@@ -21,24 +21,24 @@ const FleetGrid = ({ limit }: { limit?: number }) => {
           className="card-premium h-full flex flex-col group"
         >
           {/* Image */}
-          <div className="relative aspect-16-9 overflow-hidden bg-gray-light">
+          <div className="relative aspect-video overflow-hidden bg-background">
              <img 
                src={vehicle.image || "/images/fleet/mercedes-s.jpg"} 
                alt={vehicle.name}
-               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
              />
-             <div className="absolute inset-0 bg-navy/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-             <div className="absolute top-4 left-4 bg-navy/90 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">
+             <div className="absolute inset-0 bg-navy/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+             <div className="absolute top-6 left-6 glass-panel px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-accent rounded-lg z-10">
                {vehicle.tier} Class
              </div>
           </div>
 
           {/* Content */}
-          <div className="p-6 flex flex-col flex-1">
-             <div className="mb-4">
-                <h3 className="text-navy text-xl font-bold mb-1 group-hover:text-gold transition-colors">{vehicle.name}</h3>
-                <p className="text-gold text-[10px] font-black uppercase tracking-widest italic mb-3">{vehicle.category}</p>
-                <p className="text-muted text-xs leading-relaxed line-clamp-2">{vehicle.description}</p>
+          <div className="p-8 flex flex-col flex-1">
+             <div className="mb-6">
+                <h3 className="text-navy text-2xl font-black mb-2 group-hover:text-accent transition-colors tracking-tight">{vehicle.name}</h3>
+                <p className="text-accent text-[11px] font-bold uppercase tracking-[0.3em] italic mb-4">{vehicle.category}</p>
+                <p className="text-muted text-sm leading-relaxed line-clamp-2">{vehicle.description}</p>
              </div>
 
              <div className="grid grid-cols-2 gap-4 py-4 border-y border-gray-lighter mb-6">
@@ -52,18 +52,18 @@ const FleetGrid = ({ limit }: { limit?: number }) => {
                 </div>
              </div>
 
-             <div className="mt-auto flex items-center justify-between">
-                <div>
-                  <p className="text-[9px] font-black text-muted uppercase">Starting at</p>
-                  <p className="font-bold text-navy group-hover:text-gold transition-colors">{vehicle.priceEstimate}</p>
-                </div>
-                <Link 
-                  href={`/fleet/${vehicle.id}`}
-                  className="w-10 h-10 bg-gray-light rounded-full flex items-center justify-center text-navy group-hover:bg-gold group-hover:text-white transition-all group-hover:shadow-glow"
-                >
-                  <ChevronRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
-                </Link>
-             </div>
+              <div className="mt-auto flex items-center justify-between border-t border-gray-medium pt-8">
+                 <div>
+                   <p className="text-[10px] font-black text-muted uppercase tracking-widest mb-1">Elite Rate</p>
+                   <p className="font-bold text-xl text-navy group-hover:text-accent transition-colors">{vehicle.priceEstimate}</p>
+                 </div>
+                 <Link 
+                   href={`/fleet/${vehicle.id}`}
+                   className="w-14 h-14 bg-background rounded-2xl flex items-center justify-center text-navy group-hover:bg-accent group-hover:rotate-12 transition-all duration-500 hover:shadow-glow border border-gray-medium group-hover:border-accent"
+                 >
+                   <ChevronRight size={24} />
+                 </Link>
+              </div>
           </div>
         </motion.div>
       ))}

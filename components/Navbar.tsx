@@ -21,73 +21,41 @@ const Navbar = () => {
 
       {/* Main Bar - Floating Rounded Glossy Pill */}
       <nav 
-        className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-[100] transition-all duration-700 rounded-full border border-white/20 shadow-glass ${
+        className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-[1400px] z-[100] transition-all duration-700 rounded-2xl border border-white/20 shadow-glass ${
           scrolled 
-            ? "top-4 bg-white/80 backdrop-blur-2xl py-2.5" 
-            : "top-8 bg-white/40 backdrop-blur-lg py-4"
+            ? "top-6 bg-white/80 backdrop-blur-2xl py-3 px-10" 
+            : "top-8 bg-navy/10 backdrop-blur-md py-6 px-8"
         }`}
       >
         <div className="ncm-container flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-navy rounded-full flex items-center justify-center font-bold text-white shadow-lg group-hover:bg-gold group-hover:shadow-glow transition-all duration-500">
-              NCM
+          <Link href="/" className="flex items-center gap-4 group">
+            <div className="w-14 h-14 bg-navy rounded-xl flex items-center justify-center font-bold text-white shadow-2xl group-hover:bg-accent group-hover:rotate-6 transition-all duration-500 border border-white/10">
+              <span className="text-2xl tracking-tighter font-serif italic">NC</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-navy font-black text-lg leading-none tracking-tight group-hover:text-navy/80 transition-colors">NEW CAR MOBILE</span>
-              <span className="text-[10px] text-muted font-bold tracking-[0.2em] uppercase mt-0.5 group-hover:text-gold transition-colors">Premium Chauffeur</span>
+              <span className="text-navy font-black text-2xl leading-none tracking-tight group-hover:text-accent transition-colors font-serif italic">New Car Mobile</span>
+              <span className="text-[10px] text-muted font-black tracking-[0.4em] uppercase mt-1">Heritage Mobility</span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-10">
-            <Link href="/" className="text-sm font-bold text-navy hover:text-gold transition-colors">Home</Link>
-            <Link href="/about" className="text-sm font-bold text-navy hover:text-gold transition-colors">About Us</Link>
-            
-            <div className="group relative py-2">
-              <button className="flex items-center gap-1.5 text-sm font-bold text-navy group-hover:text-gold transition-colors">
-                Services <ChevronDown size={14} />
-              </button>
-              <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white shadow-2xl border-t-2 border-gold py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                {SERVICES.map(s => (
-                  <Link 
-                    key={s.id} 
-                    href={`/services/${s.id}`} 
-                    className="block px-6 py-3 text-xs font-bold text-navy/70 hover:bg-gray-light hover:text-gold"
-                  >
-                    {s.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="group relative py-2">
-              <button className="flex items-center gap-1.5 text-sm font-bold text-navy group-hover:text-gold transition-colors">
-                Our Fleet <ChevronDown size={14} />
-              </button>
-              <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white shadow-2xl border-t-2 border-gold py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link href="/fleet" className="block px-6 py-3 text-xs font-bold text-navy/70 hover:bg-gray-light hover:text-gold border-b border-gray-lighter">
-                  All Vehicles
-                </Link>
-                {FLEET_CATEGORIES.map(c => (
-                  <Link 
-                    key={c.id} 
-                    href={`/fleet#${c.id}`} 
-                    className="block px-6 py-3 text-xs font-bold text-navy/70 hover:bg-gray-light hover:text-gold"
-                  >
-                    {c.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <Link href="/contact" className="text-sm font-bold text-navy hover:text-gold transition-colors">Contact</Link>
+             <Link href="/fleet" className="text-navy/70 hover:text-accent font-black text-[11px] uppercase tracking-[0.3em] transition-all">
+                The Fleet
+             </Link>
+             <Link href="/about" className="text-navy/70 hover:text-accent font-black text-[11px] uppercase tracking-[0.3em] transition-all">
+                Our Story
+             </Link>
+             <button className="btn-accent !px-10 !py-4 !text-[11px] !rounded-xl uppercase tracking-[0.2em]">
+                Secure Booking
+             </button>
           </div>
 
           {/* Action */}
           <div className="flex items-center gap-4">
-            <button className="hidden sm:inline-flex btn-gold !py-2.5 !px-6 !text-xs">
-              Book Now
+            <button className="hidden sm:inline-flex btn-gold !py-3 !px-8 !text-[10px] uppercase tracking-[0.3em] !rounded-xl">
+              Concierge
             </button>
             <button 
               className="lg:hidden text-navy p-1"

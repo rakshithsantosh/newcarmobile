@@ -23,19 +23,19 @@ const ServiceGrid = () => {
             alt={s.title}
             className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent z-10" />
           
-          <div className="absolute bottom-0 left-0 right-0 p-10 z-20">
-             <span className="text-gold text-[10px] font-black uppercase tracking-[0.3em] mb-4 block italic">Professional</span>
-             <h3 className="text-white text-3xl font-bold mb-4 uppercase">{s.title}</h3>
-             <p className="text-white/70 text-sm mb-8 line-clamp-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute bottom-0 left-0 right-0 p-12 z-20">
+             <span className="text-accent text-[11px] font-black uppercase tracking-[0.4em] mb-4 block italic">Exclusive Solution</span>
+             <h3 className="text-white text-3xl font-medium mb-6 uppercase tracking-tight font-serif italic">{s.title}</h3>
+             <p className="text-white/60 text-base mb-10 line-clamp-3 leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
                {s.description}
              </p>
              <Link 
                href={`/services/${s.id}`}
-               className="btn-gold !py-3 !px-8 !text-[11px] uppercase tracking-widest gap-3"
+               className="btn-accent !py-4 !px-10 !text-[11px] uppercase tracking-[0.3em] gap-3 !rounded-xl"
              >
-               Explore Service <ArrowRight size={14} />
+               View Details <ArrowRight size={16} />
              </Link>
           </div>
         </motion.div>

@@ -8,18 +8,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#050505",
-        graphite: "#0a0a0a",
-        line: "rgba(255,255,255,0.1)",
-        gold: "#00C853", // Using gold variable for our emerald accent as per instructions
-        cream: "#f6f2eb",
-        muted: "#9b9488",
-        navy: "#0A3D62"
+        navy: "#001F3F",
+        accent: "#00D4A5",
+        gold: "#D4AF77",
+        background: "#F8F7F4",
+        "text-dark": "#0F172A",
+        "text-light": "#F8F7F4",
+        muted: "#64748B"
       },
       boxShadow: {
-        glow: "0 18px 60px rgba(0, 200, 83, 0.24)", // Emerald glow
-        lift: "0 20px 50px rgba(0, 0, 0, 0.5)",
-        glass: "0 8px 32px 0 rgba(31, 38, 135, 0.15)" // Stronger glass shadow
+        glow: "0 0 30px rgba(0, 212, 165, 0.3)",
+        "glow-gold": "0 0 30px rgba(212, 175, 119, 0.3)",
+        lift: "0 30px 60px -12px rgba(0, 31, 63, 0.12)",
+        glass: "0 8px 32px 0 rgba(0, 31, 63, 0.08)"
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',

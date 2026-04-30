@@ -35,29 +35,30 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[100svh] w-full bg-navy overflow-hidden flex items-center pt-32 pb-48">
+    <section className="relative min-h-screen w-full bg-navy overflow-hidden flex items-center pt-32 pb-48">
       
-      {/* Background Images Crossfade only */}
+      {/* Background Images Crossfade with Parallax Zoom */}
       <AnimatePresence mode="popLayout">
         <motion.div
            key={current}
-           initial={{ opacity: 0, scale: 1.05 }}
-           animate={{ opacity: 1, scale: 1 }}
-           exit={{ opacity: 0 }}
-           transition={{ duration: 1.5, ease: "easeInOut" }}
+           initial={{ opacity: 0, scale: 1.1, x: 20 }}
+           animate={{ opacity: 1, scale: 1.05, x: 0 }}
+           exit={{ opacity: 0, scale: 1, x: -20 }}
+           transition={{ duration: 2.5, ease: [0.19, 1, 0.22, 1] }}
            className="absolute inset-0 z-0"
         >
           <img 
             src={images[current]} 
             alt="Luxury Chauffeur"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-60"
           />
         </motion.div>
       </AnimatePresence>
 
-      {/* Dark Cinematic Gradient Overlay */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/90 via-black/50 to-black/10" />
-      <div className="absolute inset-0 z-10 bg-black/30" />
+      {/* Advanced Cinematic Gradient Overlay */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy via-navy/80 to-transparent" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-navy/30 via-transparent to-navy/40" />
+      <div className="absolute inset-0 z-10 bg-navy/20" />
 
       {/* Content Container (Left-aligned, Vertically Centered) */}
       <div className="ncm-container relative z-20 h-full flex flex-col justify-center">
@@ -71,15 +72,14 @@ const Hero = () => {
           {/* Headline - Playfair Display (Serif) */}
           <motion.h1 
             variants={itemVariants}
-            className="text-white tracking-tight leading-[1.1] drop-shadow-2xl text-5xl md:text-7xl lg:text-8xl"
-            style={{ fontFamily: "'Playfair Display', serif", fontWeight: 600 }}
+            className="text-white tracking-tight leading-[1.05] drop-shadow-2xl text-6xl md:text-8xl lg:text-[7rem]"
           >
             Arrive On Time.<br/>
             In Style.<br/>
-            <span className="text-gold italic font-normal">Every Time.</span>
+            <span className="text-accent italic font-normal">Every Time.</span>
           </motion.h1>
 
-          <motion.div variants={itemVariants} className="w-16 h-[2px] bg-gold my-8" />
+          <motion.div variants={itemVariants} className="w-24 h-[2px] bg-accent my-10" />
 
           {/* Subheading - Inter (Sans-Serif) */}
           <motion.p variants={itemVariants} className="text-white/80 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-xl font-sans drop-shadow-md">
@@ -88,56 +88,48 @@ const Hero = () => {
 
           {/* Action Area */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-4">
-            <button className="btn-gold group flex items-center gap-3 !px-8 !py-4 text-sm tracking-widest uppercase shadow-[0_0_40px_rgba(0,200,83,0.3)] hover:shadow-[0_0_60px_rgba(0,200,83,0.5)]">
-              Reserve Your Chauffeur
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            <button className="btn-accent group flex items-center gap-4 !px-10 !py-5 text-sm tracking-[0.2em] uppercase shadow-glow hover:shadow-[0_20px_50px_rgba(0,212,165,0.4)]">
+              Reserve Now
+              <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
             </button>
             
-            <button className="glass-panel text-white hover:bg-white hover:text-navy px-8 py-4 text-sm tracking-widest uppercase font-bold transition-all rounded-full border border-white/30">
-              View Fleet
+            <button className="glass-panel text-white hover:bg-white hover:text-navy px-10 py-5 text-sm tracking-[0.2em] uppercase font-bold transition-all rounded-xl border border-white/20 hover:shadow-2xl">
+              The Fleet
             </button>
           </motion.div>
           
           {/* Microcopy under CTAs */}
-          <motion.div variants={itemVariants} className="flex items-center gap-2 mb-16 text-white/50">
-            <Clock size={14} className="text-gold" />
-            <p className="text-[10px] font-black tracking-[0.2em] uppercase mt-0.5">
-              Available 24/7 &bull; Instant Confirmation
+          <motion.div variants={itemVariants} className="flex items-center gap-3 mb-16 text-white/60">
+            <Clock size={16} className="text-accent" />
+            <p className="text-[11px] font-black tracking-[0.3em] uppercase mt-0.5">
+              Bangalore's Finest &bull; Reliable &bull; Professional
             </p>
           </motion.div>
 
           {/* Trust Signals Horizontal Row */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-x-8 gap-y-6 pt-8 border-t border-white/10 glass-panel mt-12 p-6 rounded-2xl">
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-x-12 gap-y-6 pt-10 border-t border-white/10 mt-16">
             
-            <div className="flex items-center gap-3">
-              <Award size={24} strokeWidth={1.5} className="text-gold" />
+            <div className="flex items-center gap-4 group/stat">
+              <Award size={28} strokeWidth={1} className="text-accent group-hover/stat:scale-110 transition-transform" />
               <div className="flex flex-col">
-                <span className="text-white/70 text-[10px] uppercase font-bold tracking-widest">Serving Since</span>
-                <span className="text-white text-sm font-semibold tracking-wide">1994</span>
+                <span className="text-white/40 text-[10px] uppercase font-bold tracking-[0.2em]">Excellence Since</span>
+                <span className="text-white text-lg font-medium tracking-tight">1994</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <Users size={24} strokeWidth={1.5} className="text-gold" />
+            <div className="flex items-center gap-4 group/stat">
+              <Users size={28} strokeWidth={1} className="text-accent group-hover/stat:scale-110 transition-transform" />
               <div className="flex flex-col">
-                <span className="text-white/70 text-[10px] uppercase font-bold tracking-widest">Trusted by</span>
-                <span className="text-white text-sm font-semibold tracking-wide">5000+ Clients</span>
+                <span className="text-white/40 text-[10px] uppercase font-bold tracking-[0.2em]">Trusted by</span>
+                <span className="text-white text-lg font-medium tracking-tight">5,000+ Partners</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <UserCheck size={24} strokeWidth={1.5} className="text-gold" />
+            <div className="flex items-center gap-4 group/stat">
+              <ShieldCheck size={28} strokeWidth={1} className="text-accent group-hover/stat:scale-110 transition-transform" />
               <div className="flex flex-col">
-                <span className="text-white/70 text-[10px] uppercase font-bold tracking-widest">Professional</span>
-                <span className="text-white text-sm font-semibold tracking-wide">Chauffeurs</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <ShieldCheck size={24} strokeWidth={1.5} className="text-gold" />
-              <div className="flex flex-col">
-                <span className="text-white/70 text-[10px] uppercase font-bold tracking-widest">On-time</span>
-                <span className="text-white text-sm font-semibold tracking-wide">Guarantee</span>
+                <span className="text-white/40 text-[10px] uppercase font-bold tracking-[0.2em]">Professional</span>
+                <span className="text-white text-lg font-medium tracking-tight">Vetted Staff</span>
               </div>
             </div>
 
@@ -146,8 +138,8 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Seamless blend to the white section below - positioned lower to stay off text */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white via-white/40 to-transparent z-20 pointer-events-none" />
+      {/* Seamless blend to the background section below */}
+      <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-background via-background/60 to-transparent z-20 pointer-events-none" />
     </section>
   );
 };

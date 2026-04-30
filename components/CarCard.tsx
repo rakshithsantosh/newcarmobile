@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 export type Car = {
   name: string;
@@ -15,12 +16,11 @@ export type Car = {
 export function CarCard({ car, index }: { car: Car; index: number }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55, delay: index * 0.08 }}
-      whileHover={{ y: -4 }}
-      className="group min-w-[82vw] overflow-hidden rounded-lg border border-neutral-200 bg-white text-ink shadow-lift sm:min-w-0"
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, delay: index * 0.1 }}
+      className="card-premium group min-w-[85vw] sm:min-w-0 overflow-hidden"
     >
       <div className="relative aspect-[1.45] bg-neutral-100">
         <Image
@@ -31,33 +31,33 @@ export function CarCard({ car, index }: { car: Car; index: number }) {
           className="object-cover transition duration-500 group-hover:scale-105"
         />
         {car.badge && (
-          <span className="absolute left-4 top-4 rounded bg-ink px-3 py-1.5 text-xs font-black uppercase tracking-[0.12em] text-gold">
+          <span className="absolute left-6 top-6 glass-panel px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-accent rounded-lg z-10">
             {car.badge}
           </span>
         )}
       </div>
       <div className="space-y-5 p-5">
         <div>
-          <p className="text-sm font-semibold text-neutral-500">{car.type}</p>
-          <h3 className="mt-1 text-2xl font-black tracking-tight">{car.name}</h3>
+          <p className="text-[11px] font-bold text-muted uppercase tracking-widest">{car.type}</p>
+          <h3 className="mt-2 text-2xl font-black tracking-tight group-hover:text-navy transition-colors">{car.name}</h3>
         </div>
-        <div className="flex flex-wrap gap-2 text-xs font-semibold text-neutral-600">
+        <div className="flex flex-wrap gap-2 text-[10px] font-bold text-muted uppercase tracking-wider">
           {car.specs.map((spec) => (
-            <span key={spec} className="rounded bg-neutral-100 px-3 py-2">
+            <span key={spec} className="rounded-lg bg-background px-4 py-2 border border-gray-medium group-hover:border-accent/30 transition-colors">
               {spec}
             </span>
           ))}
         </div>
-        <div className="grid gap-4 border-t border-neutral-200 pt-5">
-          <p>
-            <span className="text-2xl font-black">{car.price}</span>
-            <span className="text-sm text-neutral-500"> / day</span>
+        <div className="flex items-center justify-between border-t border-gray-medium pt-6">
+          <p className="flex flex-col">
+            <span className="text-2xl font-black text-navy">{car.price}</span>
+            <span className="text-[10px] text-muted uppercase font-bold tracking-widest">Base Rate</span>
           </p>
           <a
             href="#contact"
-            className="focus-ring rounded bg-ink px-4 py-3 text-center text-sm font-black text-white transition hover:bg-neutral-800 active:scale-[0.98]"
+            className="w-12 h-12 bg-navy text-white flex items-center justify-center rounded-xl transition-all duration-500 group-hover:bg-accent group-hover:rotate-12 group-hover:shadow-glow"
           >
-            Check availability
+            <ArrowRight size={20} />
           </a>
         </div>
       </div>
