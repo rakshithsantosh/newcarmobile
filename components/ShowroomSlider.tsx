@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { FLEET } from "@/lib/data";
 import { useBooking } from "./BookingProvider";
 import { ArrowUpRight } from "lucide-react";
@@ -38,10 +39,11 @@ const ShowroomSlider = () => {
               className="group relative flex-shrink-0 w-[400px] md:w-[600px] h-[500px] glass overflow-hidden border-white/5"
             >
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent z-10" />
-              <img 
+              <Image 
                 src={vehicle.image} 
                 alt={vehicle.name}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               
               <div className="absolute inset-0 z-20 p-12 flex flex-col justify-end">

@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Clock, Award, Users, UserCheck, ShieldCheck } from "lucide-react";
+import { ArrowRight, Clock, Award, Users, ShieldCheck } from "lucide-react";
 
 const images = [
   "https://newcarmobile.in/wp-content/uploads/2024/04/2017-Mercedes-Benz-GLC-Class-2016-Mercedes-Benz-GLC.png",
@@ -47,10 +48,12 @@ const Hero = () => {
            transition={{ duration: 2.5, ease: [0.19, 1, 0.22, 1] }}
            className="absolute inset-0 z-0"
         >
-          <img 
+          <Image 
             src={images[current]} 
             alt="Luxury Chauffeur"
-            className="w-full h-full object-cover opacity-60"
+            fill
+            priority
+            className="object-cover opacity-60"
           />
         </motion.div>
       </AnimatePresence>
@@ -102,7 +105,7 @@ const Hero = () => {
           <motion.div variants={itemVariants} className="flex items-center gap-3 mb-16 text-white/60">
             <Clock size={16} className="text-accent" />
             <p className="text-[11px] font-black tracking-[0.3em] uppercase mt-0.5">
-              Bangalore's Finest &bull; Reliable &bull; Professional
+              Bangalore&apos;s Finest &bull; Reliable &bull; Professional
             </p>
           </motion.div>
 

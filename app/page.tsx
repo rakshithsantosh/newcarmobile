@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Hero from "@/components/Hero";
 import FleetGrid from "@/components/FleetGrid";
 import ProcessSection from "@/components/ProcessSection";
 import StatsCounter from "@/components/StatsCounter";
 import ServiceGrid from "@/components/ServiceGrid";
 import Testimonials from "@/components/Testimonials";
-import { CheckCircle2, Smartphone, Download, ShieldCheck, Clock, Users } from "lucide-react";
+import { Smartphone, Download, ShieldCheck, Clock, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -23,7 +24,7 @@ const HomePage = () => {
             <div className="max-w-3xl">
               <p className="text-accent font-black uppercase tracking-[0.4em] text-xs mb-6 italic">Exquisite Selection</p>
               <h2 className="text-navy uppercase tracking-tight">The Masterclass Fleet</h2>
-              <p className="text-muted mt-8 max-w-xl text-lg leading-relaxed">From hand-picked executive sedans to custom luxury coaches, our fleet represents the pinnacle of Bangalore's premium mobility.</p>
+              <p className="text-muted mt-8 max-w-xl text-lg leading-relaxed">From hand-picked executive sedans to custom luxury coaches, our fleet represents the pinnacle of Bangalore&apos;s premium mobility.</p>
             </div>
             <Link href="/fleet" className="btn-accent !rounded-xl !px-10">
               Explore All
@@ -50,7 +51,12 @@ const HomePage = () => {
             >
                <div className="aspect-[4/5] overflow-hidden rounded-[2rem] shadow-lift group relative">
                   <div className="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition-colors duration-1000 z-10 pointer-events-none" />
-                  <img src="/images/services/employee.jpg" alt="Why Choose NCM" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out" />
+                  <Image 
+                    src="/images/services/employee.jpg" 
+                    alt="Why Choose NCM" 
+                    fill
+                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out" 
+                  />
                </div>
                <motion.div 
                  initial={{ opacity: 0, scale: 0.8 }}
@@ -171,13 +177,18 @@ const HomePage = () => {
                >
                   <div className="relative w-full max-w-md">
                      <div className="absolute inset-x-0 bottom-0 top-1/4 bg-accent/20 blur-[120px] rounded-full" />
-                     <motion.img 
+                     <motion.div
                        animate={{ y: [0, -20, 0], rotate: [0, 1, 0] }}
                        transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-                       src="/images/hero-1.png" 
-                       alt="App Preview" 
-                       className="relative z-10 w-full rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] border border-white/10" 
-                     />
+                       className="relative z-10 w-full aspect-[4/5] rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] border border-white/10 overflow-hidden"
+                     >
+                       <Image 
+                         src="/images/hero-1.png" 
+                         alt="App Preview" 
+                         fill
+                         className="object-cover" 
+                       />
+                     </motion.div>
                   </div>
                </motion.div>
             </div>

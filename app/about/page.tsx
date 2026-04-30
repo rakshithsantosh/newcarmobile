@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Shield, Target, History, Globe, Users, Trophy } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -56,7 +57,12 @@ const AboutPage = () => {
 
               <div className="relative">
                  <div className="aspect-square bg-gray-light rounded-sm overflow-hidden shadow-2xl relative">
-                    <img src="/images/hero-1.png" alt="Our Legacy" className="w-full h-full object-cover grayscale brightness-75" />
+                    <Image 
+                      src="/images/hero-1.png" 
+                      alt="Our Legacy" 
+                      fill
+                      className="object-cover grayscale brightness-75" 
+                    />
                     <div className="absolute inset-0 bg-navy/20" />
                  </div>
                  <div className="absolute -top-10 -right-10 bg-gold p-12 hidden xl:block shadow-2xl skew-y-3">

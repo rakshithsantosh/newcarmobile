@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { SITE_CONFIG, SERVICES, FLEET_CATEGORIES } from "@/lib/data";
+import { Menu, X } from "lucide-react";
+import { SITE_CONFIG, SERVICES } from "@/lib/data";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

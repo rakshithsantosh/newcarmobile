@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { TESTIMONIALS } from "@/lib/data";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const CLIENTS = ["INFOSYS", "WIPRO", "ACCENTURE", "GOOGLE", "PHILIPS"];
 
@@ -72,8 +73,13 @@ const Testimonials = () => {
                   </p>
                   
                   <div className="mt-12 flex items-center gap-6">
-                    <div className="w-20 h-20 rounded-full overflow-hidden border-[3px] border-gold p-1 bg-white shadow-xl">
-                      <img src={TESTIMONIALS[current].avatar} alt={TESTIMONIALS[current].name} className="w-full h-full object-cover rounded-full" />
+                    <div className="relative w-20 h-20 rounded-full overflow-hidden border-[3px] border-gold p-1 bg-white shadow-xl">
+                      <Image 
+                        src={TESTIMONIALS[current].avatar} 
+                        alt={TESTIMONIALS[current].name} 
+                        fill
+                        className="object-cover rounded-full" 
+                      />
                     </div>
                     <div>
                       <h4 className="text-navy font-black uppercase text-lg tracking-tight mb-1">{TESTIMONIALS[current].name}</h4>

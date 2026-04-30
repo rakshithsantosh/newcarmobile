@@ -2,6 +2,7 @@
 
 import React, { use } from "react";
 import { FLEET } from "@/lib/data";
+import Image from "next/image";
 import { ArrowLeft, Users, Briefcase, ShieldCheck, Gauge, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -52,8 +53,8 @@ const VehicleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
                animate={{ opacity: 1, scale: 1 }}
                className="relative"
             >
-               <div className="aspect-16-9 bg-white/5 rounded-sm overflow-hidden border border-white/10 shadow-2xl">
-                  <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-cover" />
+               <div className="aspect-16-9 bg-white/5 rounded-sm overflow-hidden border border-white/10 shadow-2xl relative">
+                  <Image src={vehicle.image} alt={vehicle.name} fill className="object-cover" />
                </div>
                <div className="absolute -bottom-6 -left-6 bg-gold p-6 shadow-2xl hidden md:block">
                   <p className="text-white text-[10px] font-black uppercase mb-1">Elite Standard</p>
@@ -135,8 +136,8 @@ const VehicleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                {FLEET.filter(v => v.id !== id).slice(0, 3).map(v => (
                  <Link key={v.id} href={`/fleet/${v.id}`} className="card-premium h-full group bg-white p-6 flex flex-col">
-                    <div className="aspect-16-9 overflow-hidden mb-6">
-                       <img src={v.image} alt={v.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="aspect-16-9 overflow-hidden mb-6 relative">
+                       <Image src={v.image} alt={v.name} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                     </div>
                     <h4 className="text-navy font-bold uppercase mb-2 group-hover:text-gold transition-colors">{v.name}</h4>
                     <p className="text-gold text-[10px] font-black uppercase tracking-widest italic mt-auto">{v.tier} Class</p>

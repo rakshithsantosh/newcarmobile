@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { SERVICES } from "@/lib/data";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -18,10 +19,11 @@ const ServiceGrid = () => {
           transition={{ delay: i * 0.1 }}
           className="group relative h-[450px] overflow-hidden bg-navy"
         >
-          <img 
+          <Image 
             src={s.image} 
             alt={s.title}
-            className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
+            fill
+            className="object-cover opacity-60 group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent z-10" />
           

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, MapPin, Calendar, Users } from "lucide-react";
+import { ArrowRight, MapPin, Calendar } from "lucide-react";
 import { useBooking } from "./BookingProvider";
 
 const QuickQuoteBar = () => {

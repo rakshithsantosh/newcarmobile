@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { FLEET } from "@/lib/data";
 import { Users, Briefcase, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -22,10 +23,11 @@ const FleetGrid = ({ limit }: { limit?: number }) => {
         >
           {/* Image */}
           <div className="relative aspect-video overflow-hidden bg-background">
-             <img 
+             <Image 
                src={vehicle.image || "/images/fleet/mercedes-s.jpg"} 
                alt={vehicle.name}
-               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+               fill
+               className="object-cover transition-transform duration-1000 group-hover:scale-110"
              />
              <div className="absolute inset-0 bg-navy/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
              <div className="absolute top-6 left-6 glass-panel px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-accent rounded-lg z-10">

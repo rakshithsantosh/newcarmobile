@@ -2,7 +2,7 @@
 
 import React, { use } from "react";
 import { SERVICES } from "@/lib/data";
-import { ArrowLeft, CheckCircle2, ShieldCheck, Clock, MapPin, Briefcase, Zap } from "lucide-react";
+import { ArrowLeft, ShieldCheck, Clock, MapPin, Briefcase, Zap } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, MapPin, Calendar, Users, Car, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
+import Image from "next/image";
 import { FLEET } from "@/lib/data";
 
 interface Props {
@@ -73,7 +74,6 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
             <p className="text-gold uppercase tracking-[0.2em] font-black text-xs mb-8">Booking Wizard</p>
             <div className="space-y-6">
               {steps.map(step => {
-                const Icon = step.icon;
                 const isActive = currentStep === step.id;
                 const isPast = currentStep > step.id;
                 return (
@@ -89,7 +89,9 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
             {selectedVehicle && (
                 <div className="mt-12 p-4 border border-gold/10 bg-gold/5">
                     <p className="text-[10px] text-gold uppercase tracking-widest font-black mb-2 text-center">Selected Fleet</p>
-                    <img src={selectedVehicle.image} alt="" className="w-full h-24 object-cover mb-3" />
+                    <div className="relative w-full h-24 mb-3">
+                        <Image src={selectedVehicle.image} alt="" fill className="object-cover" />
+                    </div>
                     <p className="text-xs font-bold text-center">{selectedVehicle.name}</p>
                 </div>
             )}
@@ -191,7 +193,9 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
                             onClick={() => setFormData({...formData, vehicleId: v.id})}
                             className={`group cursor-pointer p-4 border transition-all flex items-center gap-6 ${formData.vehicleId === v.id ? 'bg-gold/10 border-gold shadow-glow' : 'bg-white/5 border-white/5 hover:border-gold/30'}`}
                           >
-                            <img src={v.image} alt="" className="w-32 h-20 object-cover border border-white/10" />
+                            <div className="relative w-32 h-20 border border-white/10 overflow-hidden">
+                               <Image src={v.image} alt="" fill className="object-cover" />
+                            </div>
                             <div className="flex-1">
                                <p className="text-[10px] font-black text-gold uppercase mb-1">{v.tier}</p>
                                <h4 className="text-xl font-black">{v.name}</h4>
