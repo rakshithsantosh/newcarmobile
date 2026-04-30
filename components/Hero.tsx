@@ -59,9 +59,9 @@ const Hero = () => {
       </AnimatePresence>
 
       {/* Advanced Cinematic Gradient Overlay */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy via-navy/80 to-transparent" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-navy/30 via-transparent to-navy/40" />
-      <div className="absolute inset-0 z-10 bg-navy/20" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-navy via-navy/95 to-transparent" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-navy/60 via-transparent to-navy/80" />
+      <div className="absolute inset-0 z-10 bg-navy/40" />
 
       {/* Content Container (Left-aligned, Vertically Centered) */}
       <div className="ncm-container relative z-20 h-full flex flex-col justify-center">
@@ -75,29 +75,29 @@ const Hero = () => {
           {/* Headline - Playfair Display (Serif) */}
           <motion.h1 
             variants={itemVariants}
-            className="text-white tracking-tight leading-[1.05] drop-shadow-2xl text-6xl md:text-8xl lg:text-[7rem]"
+            className="text-white tracking-tight leading-[0.95] drop-shadow-2xl text-7xl md:text-8xl lg:text-[9rem] font-serif"
           >
-            Arrive On Time.<br/>
-            In Style.<br/>
-            <span className="text-accent italic font-normal">Every Time.</span>
+            THE GOLD <br/>
+            STANDARD.<br/>
+            <span className="text-accent italic font-normal text-5xl md:text-7xl lg:text-[6rem] tracking-normal block mt-4">Of Bangalore.</span>
           </motion.h1>
 
           <motion.div variants={itemVariants} className="w-24 h-[2px] bg-accent my-10" />
 
           {/* Subheading - Inter (Sans-Serif) */}
-          <motion.p variants={itemVariants} className="text-white/80 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-xl font-sans drop-shadow-md">
-            Premium chauffeur experiences engineered for execution. Seamless airport transfers, dedicated corporate travel, and elite event transportation across Bangalore.
+          <motion.p variants={itemVariants} className="text-white/60 text-lg md:text-2xl font-light leading-relaxed mb-12 max-w-xl font-sans drop-shadow-md tracking-wide">
+            30 years of precision-engineered chauffeur experiences. Seamless executive travel, airport transfers, and elite fleet management for the discerning professional.
           </motion.p>
 
           {/* Action Area */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-4">
-            <button className="btn-accent group flex items-center gap-4 !px-10 !py-5 text-sm tracking-[0.2em] uppercase shadow-glow hover:shadow-[0_20px_50px_rgba(0,212,165,0.4)]">
-              Reserve Now
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center gap-8 mb-12">
+            <button className="btn-accent group flex items-center gap-6 !px-12 !py-6 text-[10px] tracking-[0.4em] uppercase shadow-glow hover:shadow-[0_30px_60px_rgba(0,212,165,0.5)] !rounded-sm">
+              BOOK A RIDE
               <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
             </button>
             
-            <button className="glass-panel text-white hover:bg-white hover:text-navy px-10 py-5 text-sm tracking-[0.2em] uppercase font-bold transition-all rounded-xl border border-white/20 hover:shadow-2xl">
-              The Fleet
+            <button className="text-white/80 hover:text-white px-4 py-2 text-[10px] tracking-[0.4em] uppercase font-bold transition-all border-b border-white/20 hover:border-accent">
+              DISCOVER THE FLEET
             </button>
           </motion.div>
           

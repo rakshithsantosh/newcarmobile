@@ -21,44 +21,43 @@ const Navbar = () => {
 
       {/* Main Bar - Floating Rounded Glossy Pill */}
       <nav 
-        className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-[1400px] z-[100] transition-all duration-700 rounded-2xl border border-white/20 shadow-glass ${
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 border-b ${
           scrolled 
-            ? "top-6 bg-white/80 backdrop-blur-2xl py-3 px-10" 
-            : "top-8 bg-navy/10 backdrop-blur-md py-6 px-8"
+            ? "bg-navy/90 backdrop-blur-xl py-4 border-white/5 shadow-elite" 
+            : "bg-transparent py-8 border-transparent"
         }`}
       >
         <div className="ncm-container flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-4 group">
-            <div className="w-14 h-14 bg-navy rounded-xl flex items-center justify-center font-bold text-white shadow-2xl group-hover:bg-accent group-hover:rotate-6 transition-all duration-500 border border-white/10">
-              <span className="text-2xl tracking-tighter font-serif italic">NC</span>
-            </div>
+          <Link href="/" className="group">
             <div className="flex flex-col">
-              <span className="text-navy font-black text-2xl leading-none tracking-tight group-hover:text-accent transition-colors font-serif italic">New Car Mobile</span>
-              <span className="text-[10px] text-muted font-black tracking-[0.4em] uppercase mt-1">Heritage Mobility</span>
+              <span className="text-white font-serif italic text-3xl leading-none tracking-tight group-hover:text-accent transition-colors gold-accent-line">New Car Mobile</span>
+              <span className="text-[9px] text-white/40 font-black tracking-[0.6em] uppercase mt-2">Executive Chauffeur Excellence</span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-10">
-             <Link href="/fleet" className="text-navy/70 hover:text-accent font-black text-[11px] uppercase tracking-[0.3em] transition-all">
+          <div className="hidden lg:flex items-center gap-12">
+             <Link href="/fleet" className="text-white/60 hover:text-white font-black text-[11px] uppercase tracking-[0.3em] transition-all relative group">
                 The Fleet
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent transition-all group-hover:w-full" />
              </Link>
-             <Link href="/about" className="text-navy/70 hover:text-accent font-black text-[11px] uppercase tracking-[0.3em] transition-all">
+             <Link href="/about" className="text-white/60 hover:text-white font-black text-[11px] uppercase tracking-[0.3em] transition-all relative group">
                 Our Story
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent transition-all group-hover:w-full" />
              </Link>
-             <button className="btn-accent !px-10 !py-4 !text-[11px] !rounded-xl uppercase tracking-[0.2em]">
-                Secure Booking
+             <button className="btn-accent !px-12 !py-4 !text-[10px] !rounded-sm uppercase tracking-[0.2em] shadow-none hover:shadow-glow transition-all">
+                Book A Chauffeur
              </button>
           </div>
 
           {/* Action */}
-          <div className="flex items-center gap-4">
-            <button className="hidden sm:inline-flex btn-gold !py-3 !px-8 !text-[10px] uppercase tracking-[0.3em] !rounded-xl">
+          <div className="flex items-center gap-6">
+            <button className="hidden sm:inline-flex text-white/40 hover:text-gold font-bold text-[10px] uppercase tracking-[0.3em] transition-colors">
               Concierge
             </button>
             <button 
-              className="lg:hidden text-navy p-1"
+              className="lg:hidden text-white p-1"
               onClick={() => setIsOpen(true)}
             >
               <Menu size={28} />

@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "images.unsplash.com"
+      },
+      {
+        protocol: "https",
+        hostname: "newcarmobile.in"
+      },
+      {
+        protocol: "https",
+        hostname: "i.pravatar.cc"
       }
     ]
   }

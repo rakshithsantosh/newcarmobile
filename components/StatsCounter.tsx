@@ -52,25 +52,20 @@ const StatsCounter = () => {
       </motion.div>
 
       <div className="ncm-container relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-0">
-          {SITE_CONFIG.stats.map((stat, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24">
+          {SITE_CONFIG.stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.8 }}
-              className="text-center group md:border-r last:border-r-0 border-white/10 px-8"
+              transition={{ delay: index * 0.1, duration: 0.8 }}
+              className="text-center group"
             >
-              <h3 className="text-6xl md:text-7xl lg:text-8xl font-medium text-white mb-4 tracking-tighter drop-shadow-2xl group-hover:text-accent transition-colors duration-500 font-serif">
+              <h3 className="text-white text-5xl md:text-6xl font-serif italic mb-4 tracking-tighter group-hover:text-accent transition-colors duration-500">
                 <AnimatedNumber value={stat.value} />
               </h3>
-              <div className="flex flex-col items-center">
-                <div className="w-12 h-[1px] bg-accent mb-6 rounded-full group-hover:w-20 transition-all duration-700" />
-                <p className="text-white/40 text-[11px] md:text-xs font-black uppercase tracking-[0.4em]">
-                  {stat.label}
-                </p>
-              </div>
+              <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em]">{stat.label}</p>
             </motion.div>
           ))}
         </div>

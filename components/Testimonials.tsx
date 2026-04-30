@@ -27,9 +27,9 @@ const Testimonials = () => {
       <div className="ncm-container">
         
         {/* Header */}
-        <div className="text-center mb-20">
-          <p className="text-accent font-black uppercase tracking-[0.4em] text-xs mb-6 italic">Voices of Excellence</p>
-          <h2 className="text-navy uppercase tracking-tight">Trusted Partnerships</h2>
+        <div className="text-center mb-32">
+          <p className="text-accent font-black uppercase tracking-[0.5em] text-[10px] mb-8 italic">The Concierge Standard</p>
+          <h2 className="text-navy uppercase tracking-tight font-serif text-5xl md:text-7xl">Voices Of <br/> Distinction</h2>
         </div>
 
         {/* Bespoke Carousel Layout */}
@@ -91,28 +91,28 @@ const Testimonials = () => {
             </div>
 
              {/* Custom Navigation & Progress Bar */}
-             <div className="mt-12 flex items-center justify-between border-t border-gray-lighter pt-12">
-                <div className="flex gap-6">
-                  <button onClick={prev} className="w-16 h-16 rounded-xl bg-gray-light flex items-center justify-center text-navy hover:bg-navy hover:text-white hover:shadow-2xl transition-all hover:scale-110">
-                     <ChevronLeft size={28} className="hover:-translate-x-2 transition-transform" />
+             <div className="mt-20 flex items-center justify-between border-t border-navy/5 pt-12">
+                <div className="flex gap-4">
+                  <button onClick={prev} className="w-14 h-14 rounded-full border border-navy/10 flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-all">
+                     <ChevronLeft size={20} />
                   </button>
-                  <button onClick={next} className="w-16 h-16 rounded-xl bg-gray-light flex items-center justify-center text-navy hover:bg-navy hover:text-white hover:shadow-2xl transition-all hover:scale-110">
-                     <ChevronRight size={28} className="hover:translate-x-2 transition-transform" />
+                  <button onClick={next} className="w-14 h-14 rounded-full border border-navy/10 flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-all">
+                     <ChevronRight size={20} />
                   </button>
                 </div>
                 
-                <div className="flex-1 max-w-sm ml-12 h-[1px] bg-gray-medium rounded-full overflow-hidden">
+                <div className="flex-1 max-w-xs ml-12 h-[2px] bg-navy/5 rounded-full overflow-hidden hidden md:block">
                   <motion.div 
                     key={current + (isPaused ? "-paused" : "")}
                     initial={{ width: isPaused ? undefined : "0%" }}
                     animate={{ width: isPaused ? undefined : "100%" }}
                     transition={{ duration: DURATION / 1000, ease: "linear" }}
-                    className="h-full bg-accent shadow-[0_0_20px_rgba(0,212,165,0.8)]"
+                    className="h-full bg-accent"
                   />
                 </div>
                
-               <p className="ml-6 text-navy/50 font-black tracking-widest text-xs hidden sm:block">
-                 0{current + 1} / 0{TESTIMONIALS.length}
+               <p className="ml-12 text-navy/30 font-black tracking-[0.4em] text-[10px] uppercase">
+                 Tier 0{current + 1} / 0{TESTIMONIALS.length}
                </p>
             </div>
 

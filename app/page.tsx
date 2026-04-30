@@ -20,14 +20,14 @@ const HomePage = () => {
       {/* Fleet Teaser */}
       <section className="section-py bg-background">
         <div className="ncm-container">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
             <div className="max-w-3xl">
-              <p className="text-accent font-black uppercase tracking-[0.4em] text-xs mb-6 italic">Exquisite Selection</p>
-              <h2 className="text-navy uppercase tracking-tight">The Masterclass Fleet</h2>
-              <p className="text-muted mt-8 max-w-xl text-lg leading-relaxed">From hand-picked executive sedans to custom luxury coaches, our fleet represents the pinnacle of Bangalore&apos;s premium mobility.</p>
+              <p className="text-accent font-black uppercase tracking-[0.5em] text-[10px] mb-8 italic">The Curated Collection</p>
+              <h2 className="text-navy uppercase tracking-tight font-serif text-5xl md:text-7xl">The Masterclass <br/> Fleet</h2>
+              <p className="text-navy/40 mt-10 max-w-xl text-xl leading-relaxed font-light tracking-wide italic">Hand-picked executive flagships and bespoke coaches representing the pinnacle of Bangalore&apos;s executive mobility.</p>
             </div>
-            <Link href="/fleet" className="btn-accent !rounded-xl !px-10">
-              Explore All
+            <Link href="/fleet" className="btn-accent !rounded-sm !px-12 !py-6 !text-[10px] uppercase tracking-[0.3em]">
+              Explore Full Showroom
             </Link>
           </div>
           <FleetGrid limit={4} />
@@ -108,9 +108,9 @@ const HomePage = () => {
       {/* Services Overview */}
       <section className="section-py bg-background">
         <div className="ncm-container">
-          <div className="text-center mb-20">
-            <p className="text-accent font-black uppercase tracking-[0.4em] text-xs mb-6 italic">Core Expertise</p>
-            <h2 className="text-navy uppercase tracking-tight">Mobility Ecosystem</h2>
+          <div className="text-center mb-32">
+            <p className="text-accent font-black uppercase tracking-[0.5em] text-[10px] mb-8 italic">Core Specializations</p>
+            <h2 className="text-navy uppercase tracking-tight font-serif text-5xl md:text-7xl">A Unified <br/> Mobility Ecosystem</h2>
           </div>
           <ServiceGrid />
         </div>
