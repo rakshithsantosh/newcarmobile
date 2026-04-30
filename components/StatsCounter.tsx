@@ -52,25 +52,25 @@ const StatsCounter = () => {
       </motion.div>
 
       <div className="ncm-container relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-16 md:gap-8 border-t border-b border-white/10 py-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8 bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 p-12 md:p-16 shadow-2xl">
           {SITE_CONFIG.stats.map((stat, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: i * 0.15, duration: 0.8, ease: [0.165, 0.84, 0.44, 1] }}
-              className="text-center group border-r last:border-r-0 border-white/10"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.8 }}
+              className="text-center group"
             >
-              <div className="mb-6 flex justify-center">
-                 <div className="w-8 h-[2px] bg-gold group-hover:w-16 transition-all duration-500 ease-out" />
-              </div>
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-2 tracking-tighter w-full block drop-shadow-2xl">
+              <h3 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 tracking-tighter drop-shadow-2xl group-hover:text-gold transition-colors duration-500">
                 <AnimatedNumber value={stat.value} />
               </h3>
-              <p className="text-gold text-[10px] md:text-xs font-black uppercase tracking-[0.3em] font-sans">
-                {stat.label}
-              </p>
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-1 bg-gold mb-4 rounded-full group-hover:w-16 transition-all duration-500" />
+                <p className="text-white/60 text-[10px] md:text-xs font-black uppercase tracking-[0.3em]">
+                  {stat.label}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

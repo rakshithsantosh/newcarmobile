@@ -69,3 +69,386 @@
  ○ Compiling /_error ...
  ✓ Compiled /_error in 3.2s (1737 modules)
  GET / 500 in 8133ms
+ ○ Compiling /_not-found ...
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled /_not-found in 1151ms (1742 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\Rakshith\OneDrive\Desktop\freelancing\newcarmobile\.next\server\app\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Rakshith\\OneDrive\\Desktop\\freelancing\\newcarmobile\\.next\\server\\app\\page.js',
+  page: '/'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\Rakshith\OneDrive\Desktop\freelancing\newcarmobile\.next\server\pages\_document.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Rakshith\\OneDrive\\Desktop\\freelancing\\newcarmobile\\.next\\server\\pages\\_document.js'
+}
+ GET / 500 in 4542ms
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\Rakshith\OneDrive\Desktop\freelancing\newcarmobile\.next\server\app\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Rakshith\\OneDrive\\Desktop\\freelancing\\newcarmobile\\.next\\server\\app\\page.js',
+  page: '/'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\Rakshith\OneDrive\Desktop\freelancing\newcarmobile\.next\server\pages\_document.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Rakshith\\OneDrive\\Desktop\\freelancing\\newcarmobile\\.next\\server\\pages\\_document.js'
+}
+ GET / 500 in 118ms
+ GET / 404 in 19ms
+ GET / 404 in 23ms
+ GET / 404 in 19ms
+ GET / 404 in 20ms
+ GET / 404 in 20ms
+ GET / 404 in 21ms
+ GET / 404 in 19ms
+ GET / 404 in 21ms
+ GET / 404 in 18ms
+ GET / 404 in 17ms
+ GET / 404 in 20ms
+ GET / 404 in 20ms
+ GET / 404 in 20ms
+ GET / 404 in 18ms
+ GET / 404 in 19ms
+ GET / 404 in 20ms
+ GET / 404 in 17ms
+ GET / 404 in 21ms
+ GET / 404 in 17ms
+ GET / 404 in 22ms
+ GET / 404 in 17ms
+ GET / 404 in 17ms
+ GET / 404 in 19ms
+ GET / 404 in 17ms
+ GET / 404 in 16ms
+ GET / 404 in 19ms
+ GET / 404 in 17ms
+ GET / 404 in 21ms
+ GET / 404 in 17ms
+ GET / 404 in 18ms
+ GET / 404 in 19ms
+ GET / 404 in 26ms
+ GET / 404 in 17ms
+ GET / 404 in 18ms
+ GET / 404 in 16ms
+ GET / 404 in 18ms
+ GET / 404 in 20ms
+ GET / 404 in 18ms
+ GET / 404 in 19ms
+ GET / 404 in 16ms
+ GET / 404 in 17ms
+ GET / 404 in 20ms
+ GET / 404 in 17ms
+ GET / 404 in 18ms
+ GET / 404 in 18ms
+ GET / 404 in 19ms
+ GET / 404 in 18ms
+ GET / 404 in 20ms
+ GET / 404 in 21ms
+ GET / 404 in 20ms
+ GET / 404 in 18ms
+ GET / 404 in 20ms
+ GET / 404 in 16ms
+ GET / 404 in 20ms
+ GET / 404 in 20ms
+ GET / 404 in 18ms
+ GET / 404 in 23ms
+ GET / 404 in 18ms
+ GET / 404 in 18ms
+ GET / 404 in 18ms
+ GET / 404 in 16ms
+ GET / 404 in 25ms
+ GET / 404 in 24ms
+ GET / 404 in 18ms
+ GET / 404 in 20ms
+ GET / 404 in 19ms
+ GET / 404 in 17ms
+ GET / 404 in 16ms
+ GET / 404 in 18ms
+ GET / 404 in 17ms
+ GET / 404 in 31ms
+ GET / 404 in 18ms
+ GET / 404 in 15ms
+ GET / 404 in 17ms
+ GET / 404 in 15ms
+ GET / 404 in 16ms
+ GET / 404 in 16ms
+ GET / 404 in 16ms
+ GET / 404 in 17ms
+ GET / 404 in 18ms
+ GET / 404 in 17ms
+ GET / 404 in 16ms
+ GET / 404 in 19ms
+ GET / 404 in 20ms
+ GET / 404 in 16ms
+ GET / 404 in 17ms
+ GET / 404 in 17ms
+ GET / 404 in 17ms
+ GET / 404 in 17ms
+ GET / 404 in 18ms
+ GET / 404 in 16ms
+ GET / 404 in 25ms
+ GET / 404 in 17ms
+ GET / 404 in 18ms
+ GET / 404 in 17ms
+ GET / 404 in 18ms
+ GET / 404 in 18ms
+ GET / 404 in 17ms
+ GET / 404 in 17ms
+ GET / 404 in 17ms
+ GET / 404 in 27ms
+ GET / 404 in 21ms
+ GET / 404 in 19ms
+ GET / 404 in 20ms
+ GET / 404 in 20ms
+ GET / 404 in 18ms
+ GET / 404 in 16ms
+ GET / 404 in 18ms
+ GET / 404 in 19ms
+ GET / 404 in 18ms
+ GET / 404 in 24ms
+ GET / 404 in 22ms
+ GET / 404 in 16ms
+ GET / 404 in 18ms
+ GET / 404 in 18ms
+ GET / 404 in 24ms
+ GET / 404 in 16ms
+ GET / 404 in 17ms
+ GET / 404 in 20ms
+ GET / 404 in 19ms
+ GET / 404 in 26ms
+ GET / 404 in 19ms
+ GET / 404 in 18ms
+ GET / 404 in 16ms
+ GET / 404 in 20ms
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\Rakshith\OneDrive\Desktop\freelancing\newcarmobile\.next\server\app-paths-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Rakshith\\OneDrive\\Desktop\\freelancing\\newcarmobile\\.next\\server\\app-paths-manifest.json',
+  page: '/'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\Rakshith\OneDrive\Desktop\freelancing\newcarmobile\.next\server\pages-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Rakshith\\OneDrive\\Desktop\\freelancing\\newcarmobile\\.next\\server\\pages-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Users\Rakshith\OneDrive\Desktop\freelancing\newcarmobile\.next\server\app-paths-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Rakshith\\OneDrive\\Desktop\\freelancing\\newcarmobile\\.next\\server\\app-paths-manifest.json',
+  page: '/'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\Rakshith\OneDrive\Desktop\freelancing\newcarmobile\.next\server\pages-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Rakshith\\OneDrive\\Desktop\\freelancing\\newcarmobile\\.next\\server\\pages-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Users\Rakshith\OneDrive\Desktop\freelancing\newcarmobile\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Rakshith\\OneDrive\\Desktop\\freelancing\\newcarmobile\\.next\\routes-manifest.json'
+}
+ GET / 500 in 165ms
+ GET / 500 in 63ms
+ GET / 404 in 19ms
+ GET / 404 in 27ms
+ GET / 404 in 29ms
+ GET / 404 in 20ms
+ GET / 404 in 19ms
+ GET / 404 in 18ms
+ GET / 404 in 20ms
+ GET / 404 in 19ms
+ GET / 404 in 18ms
+ GET / 404 in 19ms
+ GET / 404 in 16ms
+ GET / 404 in 31ms
+ GET / 404 in 20ms
+ GET / 404 in 17ms
+ GET / 404 in 20ms
+ GET / 404 in 18ms
+ GET / 404 in 15ms
+ GET / 404 in 19ms
+ GET / 404 in 21ms
+ GET / 404 in 16ms
+ GET / 404 in 18ms
+ GET / 404 in 17ms
+ GET / 404 in 19ms
+ GET / 404 in 18ms
+ GET / 404 in 17ms
+ GET / 404 in 17ms
+ GET / 404 in 16ms
+ GET / 404 in 22ms
+ GET / 404 in 18ms
+ GET / 404 in 18ms
+ GET / 404 in 17ms
+ GET / 404 in 25ms
+ GET / 404 in 20ms
+ GET / 404 in 22ms
+ GET / 404 in 20ms
+ GET / 404 in 17ms
+ GET / 404 in 17ms
+ GET / 404 in 27ms
+ GET / 404 in 24ms
+ GET / 404 in 17ms
+ GET / 404 in 18ms
+ GET / 404 in 18ms
+ GET / 404 in 19ms
+ GET / 404 in 17ms
+ GET / 404 in 22ms
+ GET / 404 in 18ms
+ GET / 404 in 23ms
+ GET / 404 in 18ms
+ GET / 404 in 20ms
+ GET / 404 in 16ms
+ GET / 404 in 17ms
+ GET / 404 in 19ms
+ GET / 404 in 17ms
+ GET / 404 in 16ms
+ GET / 404 in 17ms
+ GET / 404 in 18ms
+ GET / 404 in 21ms
+ GET / 404 in 18ms
+ GET / 404 in 15ms
+ GET / 404 in 17ms
+ GET / 404 in 27ms
+ GET / 404 in 17ms
+ GET / 404 in 15ms
+ GET / 404 in 18ms
+ GET / 404 in 15ms
+ GET / 404 in 20ms
+ GET / 404 in 19ms
+ GET / 404 in 19ms
+ GET / 404 in 18ms
+ GET / 404 in 18ms
+ GET / 404 in 17ms
+ GET / 404 in 18ms
+ GET / 404 in 19ms
+ GET / 404 in 17ms
+ GET / 404 in 19ms
+ GET / 404 in 23ms
+ GET / 404 in 17ms
+ GET / 404 in 17ms
+ GET / 404 in 16ms
+ GET / 404 in 16ms
+ GET / 404 in 18ms
+ GET / 404 in 19ms
+ GET / 404 in 17ms
+ GET / 404 in 16ms
+ GET / 404 in 19ms
+ GET / 404 in 17ms
+ GET / 404 in 15ms
+ GET / 404 in 19ms
+ GET / 404 in 21ms
+ GET / 404 in 17ms
+ GET / 404 in 22ms
+ GET / 404 in 22ms
+ GET / 404 in 19ms
+ GET / 404 in 20ms
+ GET / 404 in 31ms
+ GET / 404 in 19ms
+ GET / 404 in 19ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 873ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 603ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 577ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 584ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 623ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 580ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 560ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 606ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 583ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 705ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 582ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 565ms
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.]
+ ⨯ [Error [InvariantError]: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.] {
+  page: '/'
+}
+ GET / 500 in 589ms
+Image with src "/hero-bg.png" is using quality "100" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+ GET / 200 in 427ms
+ GET / 200 in 136ms
+ GET / 200 in 216ms
+ GET / 200 in 235ms
+ ✓ Compiled in 1991ms (1757 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled in 1529ms (1762 modules)
+Image with src "/hero-bg.png" is using quality "100" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+ GET / 200 in 2549ms
+ GET / 200 in 2475ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled in 1193ms (1762 modules)
+Image with src "/hero-bg.png" is using quality "100" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+ GET / 200 in 1248ms
+ GET / 200 in 1347ms
+ ✓ Compiled in 1169ms (1762 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 200 in 278ms
+Image with src "/hero-bg.png" is using quality "100" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+ GET / 200 in 706ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 200 in 514ms
+ GET / 200 in 344ms
+ GET / 200 in 42ms

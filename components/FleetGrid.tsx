@@ -27,7 +27,8 @@ const FleetGrid = ({ limit }: { limit?: number }) => {
                alt={vehicle.name}
                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
              />
-             <div className="absolute top-4 left-4 bg-navy text-white text-[9px] font-black uppercase tracking-widest px-3 py-1">
+             <div className="absolute inset-0 bg-navy/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+             <div className="absolute top-4 left-4 bg-navy/90 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">
                {vehicle.tier} Class
              </div>
           </div>
@@ -54,13 +55,13 @@ const FleetGrid = ({ limit }: { limit?: number }) => {
              <div className="mt-auto flex items-center justify-between">
                 <div>
                   <p className="text-[9px] font-black text-muted uppercase">Starting at</p>
-                  <p className="font-bold text-navy">{vehicle.priceEstimate}</p>
+                  <p className="font-bold text-navy group-hover:text-gold transition-colors">{vehicle.priceEstimate}</p>
                 </div>
                 <Link 
                   href={`/fleet/${vehicle.id}`}
-                  className="w-10 h-10 bg-gray-light rounded-full flex items-center justify-center text-navy hover:bg-gold hover:text-white transition-all"
+                  className="w-10 h-10 bg-gray-light rounded-full flex items-center justify-center text-navy group-hover:bg-gold group-hover:text-white transition-all group-hover:shadow-glow"
                 >
-                  <ChevronRight size={18} />
+                  <ChevronRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
                 </Link>
              </div>
           </div>

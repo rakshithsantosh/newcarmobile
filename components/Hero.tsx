@@ -21,6 +21,19 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+  };
+
   return (
     <section className="relative min-h-[100svh] w-full bg-navy overflow-hidden flex items-center pt-32 pb-48">
       
@@ -28,8 +41,8 @@ const Hero = () => {
       <AnimatePresence mode="popLayout">
         <motion.div
            key={current}
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
+           initial={{ opacity: 0, scale: 1.05 }}
+           animate={{ opacity: 1, scale: 1 }}
            exit={{ opacity: 0 }}
            transition={{ duration: 1.5, ease: "easeInOut" }}
            className="absolute inset-0 z-0"
@@ -50,50 +63,51 @@ const Hero = () => {
       <div className="ncm-container relative z-20 h-full flex flex-col justify-center">
         
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
           className="max-w-2xl transform translate-y-8"
         >
           {/* Headline - Playfair Display (Serif) */}
-          <h1 
-            className="text-white tracking-tight leading-[1.1] drop-shadow-2xl"
+          <motion.h1 
+            variants={itemVariants}
+            className="text-white tracking-tight leading-[1.1] drop-shadow-2xl text-5xl md:text-7xl lg:text-8xl"
             style={{ fontFamily: "'Playfair Display', serif", fontWeight: 600 }}
           >
             Arrive On Time.<br/>
             In Style.<br/>
             <span className="text-gold italic font-normal">Every Time.</span>
-          </h1>
+          </motion.h1>
 
-          <div className="w-16 h-[2px] bg-gold my-8" />
+          <motion.div variants={itemVariants} className="w-16 h-[2px] bg-gold my-8" />
 
           {/* Subheading - Inter (Sans-Serif) */}
-          <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-xl font-sans drop-shadow-md">
+          <motion.p variants={itemVariants} className="text-white/80 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-xl font-sans drop-shadow-md">
             Premium chauffeur experiences engineered for execution. Seamless airport transfers, dedicated corporate travel, and elite event transportation across Bangalore.
-          </p>
+          </motion.p>
 
           {/* Action Area */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-4">
-            <button className="btn-gold group flex items-center gap-3 !px-8 !py-4 text-sm tracking-widest uppercase shadow-[0_0_40px_rgba(212,175,119,0.3)] hover:shadow-[0_0_60px_rgba(212,175,119,0.5)]">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-4">
+            <button className="btn-gold group flex items-center gap-3 !px-8 !py-4 text-sm tracking-widest uppercase shadow-[0_0_40px_rgba(0,200,83,0.3)] hover:shadow-[0_0_60px_rgba(0,200,83,0.5)]">
               Reserve Your Chauffeur
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </button>
             
-            <button className="btn-outline !border-white/50 !text-white hover:!bg-white hover:!border-white hover:!text-navy !px-8 !py-4 text-sm tracking-widest uppercase">
+            <button className="glass-panel text-white hover:bg-white hover:text-navy px-8 py-4 text-sm tracking-widest uppercase font-bold transition-all rounded-full border border-white/30">
               View Fleet
             </button>
-          </div>
+          </motion.div>
           
           {/* Microcopy under CTAs */}
-          <div className="flex items-center gap-2 mb-16 text-white/50">
+          <motion.div variants={itemVariants} className="flex items-center gap-2 mb-16 text-white/50">
             <Clock size={14} className="text-gold" />
             <p className="text-[10px] font-black tracking-[0.2em] uppercase mt-0.5">
               Available 24/7 &bull; Instant Confirmation
             </p>
-          </div>
+          </motion.div>
 
           {/* Trust Signals Horizontal Row */}
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-6 pt-8 border-t border-white/10">
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-x-8 gap-y-6 pt-8 border-t border-white/10 glass-panel mt-12 p-6 rounded-2xl">
             
             <div className="flex items-center gap-3">
               <Award size={24} strokeWidth={1.5} className="text-gold" />
@@ -127,7 +141,7 @@ const Hero = () => {
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
         </motion.div>
       </div>

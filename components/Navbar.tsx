@@ -21,21 +21,21 @@ const Navbar = () => {
 
       {/* Main Bar - Floating Rounded Glossy Pill */}
       <nav 
-        className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-[100] transition-all duration-700 rounded-full border border-white/40 shadow-[0_20px_50px_rgba(10,37,64,0.15)] ${
+        className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-[100] transition-all duration-700 rounded-full border border-white/20 shadow-glass ${
           scrolled 
-            ? "top-4 bg-white/70 backdrop-blur-3xl py-2.5" 
-            : "top-8 bg-white/30 backdrop-blur-xl py-4"
+            ? "top-4 bg-white/80 backdrop-blur-2xl py-2.5" 
+            : "top-8 bg-white/40 backdrop-blur-lg py-4"
         }`}
       >
         <div className="ncm-container flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-navy rounded-full flex items-center justify-center font-bold text-white shadow-lg">
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 bg-navy rounded-full flex items-center justify-center font-bold text-white shadow-lg group-hover:bg-gold group-hover:shadow-glow transition-all duration-500">
               NCM
             </div>
             <div className="flex flex-col">
-              <span className="text-navy font-extrabold text-lg leading-none tracking-tight">NEW CAR MOBILE</span>
-              <span className="text-[10px] text-muted font-semibold tracking-[0.2em] uppercase mt-0.5">Premium Chauffeur</span>
+              <span className="text-navy font-black text-lg leading-none tracking-tight group-hover:text-navy/80 transition-colors">NEW CAR MOBILE</span>
+              <span className="text-[10px] text-muted font-bold tracking-[0.2em] uppercase mt-0.5 group-hover:text-gold transition-colors">Premium Chauffeur</span>
             </div>
           </Link>
 

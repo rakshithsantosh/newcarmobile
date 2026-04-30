@@ -17,30 +17,29 @@ const ProcessSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-          {/* Connector Line - Desktop */}
-          <div className="hidden md:block absolute top-[60px] left-[15%] right-[15%] h-[2px] bg-gray-medium z-0" />
-
           {HOW_IT_WORKS.map((step, i) => {
             const Icon = icons[i] || icons[0];
             return (
               <motion.div 
                 key={step.step}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-                className="relative z-10 flex flex-col items-center text-center px-4"
+                transition={{ delay: i * 0.2, duration: 0.8 }}
+                className="group relative"
               >
-                <div className="w-24 h-24 rounded-full bg-white border-4 border-gray-medium flex items-center justify-center text-gold mb-8 group hover:border-gold transition-colors duration-500 shadow-xl">
-                  <Icon size={32} className="group-hover:scale-110 transition-transform" />
-                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-navy text-white text-xs font-bold flex items-center justify-center">
-                    {step.step}
+                <div className="bg-white rounded-3xl p-10 shadow-glass border border-gray-medium group-hover:border-gold transition-all duration-500 h-full flex flex-col items-center text-center group-hover:-translate-y-2 group-hover:shadow-glow">
+                  <div className="w-20 h-20 rounded-2xl bg-gray-light flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500 relative">
+                    <Icon size={36} className="group-hover:scale-110 transition-transform" />
+                    <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-navy text-white text-sm font-black flex items-center justify-center border-4 border-gray-light group-hover:border-gold transition-colors duration-500">
+                      {step.step}
+                    </div>
                   </div>
+                  <h3 className="text-navy text-2xl font-black mb-4 uppercase tracking-tight">{step.title}</h3>
+                  <p className="text-muted text-sm leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
-                <h3 className="text-navy text-xl font-bold mb-4 uppercase">{step.title}</h3>
-                <p className="text-muted text-sm leading-relaxed max-w-[240px]">
-                  {step.description}
-                </p>
               </motion.div>
             );
           })}

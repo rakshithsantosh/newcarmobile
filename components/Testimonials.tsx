@@ -33,16 +33,19 @@ const Testimonials = () => {
 
         {/* Bespoke Carousel Layout */}
         <div 
-          className="flex flex-col lg:flex-row gap-12 bg-white shadow-[0_30px_60px_rgba(10,37,64,0.05)] border border-gray-medium rounded-xl overflow-hidden"
+          className="flex flex-col lg:flex-row bg-white shadow-lift border border-gray-medium rounded-3xl overflow-hidden group/carousel relative"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
           {/* Side Anchored Logos */}
-          <div className="w-full lg:w-1/3 bg-navy p-10 flex flex-col justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5" />
-            <div className="relative z-10 flex flex-col items-center lg:items-start gap-12 py-10 opacity-40">
+          <div className="w-full lg:w-1/3 bg-navy p-12 flex flex-col justify-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5 mix-blend-overlay" />
+            
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/30 pointer-events-none" />
+
+            <div className="relative z-10 flex flex-col items-center lg:items-start gap-12 py-10">
               {CLIENTS.map((client, i) => (
-                <div key={i} className="text-xl md:text-2xl font-black text-white/50 tracking-widest hover:text-white hover:scale-105 transition-all duration-500 cursor-pointer">
+                <div key={i} className="text-xl md:text-2xl font-black text-white/30 tracking-[0.25em] hover:text-gold hover:scale-105 hover:-translate-y-1 transition-all duration-500 cursor-pointer drop-shadow-sm">
                   {client}
                 </div>
               ))}
@@ -82,26 +85,26 @@ const Testimonials = () => {
               </AnimatePresence>
             </div>
 
-            {/* Custom Navigation & Progress Bar */}
-            <div className="mt-8 flex items-center justify-between border-t border-gray-medium pt-8">
-               <div className="flex gap-4">
-                 <button onClick={prev} className="w-12 h-12 rounded-full border border-gray-medium flex items-center justify-center text-navy hover:bg-gold hover:text-white hover:border-gold transition-all hover:scale-105 shadow-sm">
-                    <ChevronLeft size={20} />
-                 </button>
-                 <button onClick={next} className="w-12 h-12 rounded-full border border-gray-medium flex items-center justify-center text-navy hover:bg-gold hover:text-white hover:border-gold transition-all hover:scale-105 shadow-sm">
-                    <ChevronRight size={20} />
-                 </button>
-               </div>
-               
-               <div className="flex-1 max-w-sm ml-8 h-1 bg-gray-medium rounded-full overflow-hidden">
-                 <motion.div 
-                   key={current + (isPaused ? "-paused" : "")}
-                   initial={{ width: isPaused ? undefined : "0%" }}
-                   animate={{ width: isPaused ? undefined : "100%" }}
-                   transition={{ duration: DURATION / 1000, ease: "linear" }}
-                   className="h-full bg-gold rounded-full"
-                 />
-               </div>
+             {/* Custom Navigation & Progress Bar */}
+             <div className="mt-8 flex items-center justify-between border-t border-gray-lighter pt-8">
+                <div className="flex gap-4">
+                  <button onClick={prev} className="w-14 h-14 rounded-full bg-gray-light flex items-center justify-center text-navy hover:bg-gold hover:text-white hover:shadow-glow transition-all hover:scale-105">
+                     <ChevronLeft size={24} className="hover:-translate-x-1 transition-transform" />
+                  </button>
+                  <button onClick={next} className="w-14 h-14 rounded-full bg-gray-light flex items-center justify-center text-navy hover:bg-gold hover:text-white hover:shadow-glow transition-all hover:scale-105">
+                     <ChevronRight size={24} className="hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+                
+                <div className="flex-1 max-w-sm ml-8 h-1.5 bg-gray-medium rounded-full overflow-hidden">
+                  <motion.div 
+                    key={current + (isPaused ? "-paused" : "")}
+                    initial={{ width: isPaused ? undefined : "0%" }}
+                    animate={{ width: isPaused ? undefined : "100%" }}
+                    transition={{ duration: DURATION / 1000, ease: "linear" }}
+                    className="h-full bg-gold rounded-full shadow-[0_0_10px_rgba(0,200,83,0.8)]"
+                  />
+                </div>
                
                <p className="ml-6 text-navy/50 font-black tracking-widest text-xs hidden sm:block">
                  0{current + 1} / 0{TESTIMONIALS.length}

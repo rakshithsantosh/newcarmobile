@@ -36,18 +36,33 @@ const HomePage = () => {
       <ProcessSection />
 
       {/* Why Choose Us */}
-      <section className="section-py bg-white">
-        <div className="ncm-container">
+      <section className="section-py bg-gray-light relative overflow-hidden">
+        {/* Subtle background gradient blob */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="ncm-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div className="relative">
-               <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
-                  <img src="/images/services/employee.jpg" alt="Why Choose NCM" className="w-full h-full object-cover grayscale brightness-50" />
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+               <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(10,37,64,0.15)] group relative">
+                  <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none" />
+                  <img src="/images/services/employee.jpg" alt="Why Choose NCM" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
                </div>
-               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-navy p-10 hidden md:flex flex-col justify-center border-t-8 border-gold">
-                  <span className="text-gold text-5xl font-black mb-4">30+</span>
+               <motion.div 
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ duration: 0.6, delay: 0.4 }}
+                 className="absolute -bottom-10 -right-10 w-64 h-64 bg-navy/95 backdrop-blur-xl p-10 hidden md:flex flex-col justify-center border-t-8 border-gold shadow-glow rounded-xl z-20"
+               >
+                  <span className="text-gold text-5xl font-black mb-4 drop-shadow-md">30+</span>
                   <p className="text-white text-xs font-black uppercase tracking-widest leading-relaxed">Years of Unmatched Operational Excellence</p>
-               </div>
-            </div>
+               </motion.div>
+            </motion.div>
 
             <div>
               <p className="text-gold font-black uppercase tracking-[0.3em] text-xs mb-4 italic">Core Values</p>
@@ -61,17 +76,17 @@ const HomePage = () => {
                 ].map((item, i) => (
                   <motion.div 
                     key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex gap-6"
+                    transition={{ delay: i * 0.15 }}
+                    className="flex gap-6 group hover:bg-white p-6 rounded-2xl transition-all duration-300 hover:shadow-glass -mx-6"
                   >
-                    <div className="w-14 h-14 shrink-0 bg-gray-light border border-gray-medium flex items-center justify-center text-gold">
+                    <div className="w-14 h-14 shrink-0 bg-white group-hover:bg-gold border border-gray-medium group-hover:border-gold flex items-center justify-center text-gold group-hover:text-white rounded-xl shadow-sm transition-all duration-300">
                       <item.icon size={28} />
                     </div>
                     <div>
-                      <h4 className="text-navy font-bold text-lg mb-2 uppercase">{item.title}</h4>
+                      <h4 className="text-navy font-bold text-lg mb-2 uppercase group-hover:text-gold transition-colors">{item.title}</h4>
                       <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   </motion.div>
@@ -114,38 +129,57 @@ const HomePage = () => {
       </section>
 
       {/* App Promo */}
-      <section className="section-py bg-navy relative overflow-hidden">
-         {/* Decorative circle */}
-         <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full" />
+      <section className="section-py bg-gradient-to-br from-navy via-[#0A2E4B] to-[#04192B] relative overflow-hidden">
+         {/* Decorative glowing orbs */}
+         <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full pointer-events-none" />
+         <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[120px] pointer-events-none" />
          
          <div className="ncm-container relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-               <div className="order-2 lg:order-1">
+               <motion.div 
+                 initial={{ opacity: 0, x: -30 }}
+                 whileInView={{ opacity: 1, x: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ duration: 0.8 }}
+                 className="order-2 lg:order-1"
+               >
                   <div className="flex items-center gap-3 mb-8">
-                     <div className="w-10 h-10 bg-gold rounded-full flex items-center justify-center text-white">
+                     <div className="w-10 h-10 bg-gold/20 backdrop-blur-md rounded-full flex items-center justify-center text-gold border border-gold/30">
                         <Smartphone size={20} />
                      </div>
                      <span className="text-gold font-black uppercase tracking-widest text-xs">Drive Modern</span>
                   </div>
-                  <h2 className="text-white uppercase mb-8">Manage Your Travel <br/> On The Go</h2>
-                  <p className="text-white/70 mb-10 max-w-lg">Download the NCM mobile app to book rides, track your chauffeur in real-time, and manage corporate invoices directly from your smartphone.</p>
+                  <h2 className="text-white uppercase mb-8 leading-tight drop-shadow-md">Manage Your Travel <br/> On The Go</h2>
+                  <p className="text-white/70 mb-10 max-w-lg leading-relaxed">Download the NCM mobile app to book rides, track your chauffeur in real-time, and manage corporate invoices directly from your smartphone.</p>
                   
                   <div className="flex flex-wrap gap-6 items-center">
-                     <button className="flex items-center gap-4 bg-white text-navy px-8 py-4 rounded-md font-bold hover:bg-gold hover:text-white transition-all shadow-xl">
-                        <Download size={20} /> App Store
+                     <button className="flex items-center gap-4 bg-white text-navy px-8 py-4 rounded-full font-bold hover:bg-gold hover:text-white transition-all shadow-xl group">
+                        <Download size={20} className="group-hover:translate-y-0.5 transition-transform" /> App Store
                      </button>
-                     <button className="flex items-center gap-4 bg-white/10 text-white px-8 py-4 rounded-md font-bold hover:bg-white hover:text-navy transition-all border border-white/20">
-                        <Download size={20} /> Google Play
+                     <button className="glass-panel flex items-center gap-4 text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-navy transition-all border border-white/30 group">
+                        <Download size={20} className="group-hover:translate-y-0.5 transition-transform" /> Google Play
                      </button>
                   </div>
-               </div>
+               </motion.div>
                
-               <div className="order-1 lg:order-2 flex justify-center">
+               <motion.div 
+                 initial={{ opacity: 0, y: 50 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ duration: 0.8, delay: 0.2 }}
+                 className="order-1 lg:order-2 flex justify-center relative"
+               >
                   <div className="relative w-full max-w-sm">
-                     <div className="absolute inset-x-0 bottom-0 top-1/4 bg-gold/20 blur-3xl rounded-full" />
-                     <img src="/images/hero-1.png" alt="App Preview" className="relative z-10 w-full rounded-3xl shadow-[0_0_80px_rgba(0,0,0,0.5)] border-4 border-white/10" />
+                     <div className="absolute inset-x-0 bottom-0 top-1/4 bg-gold/30 blur-3xl rounded-full" />
+                     <motion.img 
+                       animate={{ y: [0, -15, 0] }}
+                       transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                       src="/images/hero-1.png" 
+                       alt="App Preview" 
+                       className="relative z-10 w-full rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.6)] border-4 border-white/10" 
+                     />
                   </div>
-               </div>
+               </motion.div>
             </div>
          </div>
       </section>
