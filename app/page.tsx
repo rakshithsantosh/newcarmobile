@@ -8,7 +8,7 @@ import ProcessSection from "@/components/ProcessSection";
 import StatsCounter from "@/components/StatsCounter";
 import ServiceGrid from "@/components/ServiceGrid";
 import Testimonials from "@/components/Testimonials";
-import { Smartphone, Download, ShieldCheck, Clock, Users } from "lucide-react";
+import { Smartphone, Download, ShieldCheck, Clock, Users, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -18,7 +18,7 @@ const HomePage = () => {
       <Hero />
       
       {/* Fleet Teaser - The Collection */}
-      <section className="section-py bg-background relative overflow-hidden">
+      <section id="showroom" className="section-py bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] pointer-events-none" />
         <div className="ncm-container relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
@@ -138,7 +138,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* App Promo */}
+      {/* Corporate Alliances Section */}
       <section className="section-py bg-navy relative overflow-hidden">
          <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] border border-white/5 rounded-full pointer-events-none" />
          <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-accent/5 rounded-full blur-[200px] pointer-events-none" />
@@ -154,21 +154,20 @@ const HomePage = () => {
                >
                   <div className="flex items-center gap-4 mb-12">
                      <div className="w-14 h-14 bg-accent/20 backdrop-blur-xl rounded-2xl flex items-center justify-center text-accent border border-accent/30">
-                        <Smartphone size={28} strokeWidth={1.5} />
+                        <Users size={28} strokeWidth={1.5} />
                      </div>
-                     <span className="text-accent font-black uppercase tracking-[0.4em] text-[11px]">Next-Gen Digital Suite</span>
+                     <span className="text-accent font-black uppercase tracking-[0.4em] text-[11px]">Bespoke Corporate Solutions</span>
                   </div>
-                  <h2 className="text-white uppercase mb-12 leading-[0.9] tracking-tighter font-serif text-6xl md:text-8xl">Travel <br/>Reimagined</h2>
-                  <p className="text-white/50 mb-16 max-w-xl text-xl leading-relaxed font-light tracking-wide italic">Experience absolute control. Our proprietary mobile platform allows seamless booking, real-time tracking, and automated corporate compliance.</p>
+                  <h2 className="text-white uppercase mb-12 leading-[0.9] tracking-tighter font-serif text-5xl md:text-7xl max-w-2xl">Elite <br/>Partnerships</h2>
+                  <p className="text-white/50 mb-16 max-w-xl text-xl leading-relaxed font-light tracking-wide italic">Elevate your enterprise mobility with NCM&apos;s tailored corporate accounts. From dedicated fleet allocation to automated billing and executive protocol, we orchestrate travel that mirrors your company&apos;s prestige.</p>
                   
                   <div className="flex flex-wrap gap-10 items-center">
-                     <button className="flex items-center gap-6 bg-white text-navy px-12 py-6 rounded-sm font-black hover:bg-accent transition-all shadow-elite group">
-                        <Download size={22} className="group-hover:translate-y-1 transition-transform" /> 
-                        <span className="tracking-[0.3em] text-[10px] uppercase">App Store</span>
-                     </button>
-                     <button className="glass-panel flex items-center gap-6 text-white px-12 py-6 rounded-sm font-black hover:bg-white hover:text-navy transition-all border border-white/10 group">
-                        <Download size={22} className="group-hover:translate-y-1 transition-transform" />
-                        <span className="tracking-[0.3em] text-[10px] uppercase">Google Play</span>
+                     <button 
+                       onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })}
+                       className="flex items-center gap-6 bg-white text-navy px-12 py-6 rounded-sm font-black hover:bg-accent hover:text-white transition-all shadow-elite group"
+                     >
+                        <span className="tracking-[0.3em] text-[10px] uppercase">Initiate Alliance</span>
+                        <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" /> 
                      </button>
                   </div>
                </motion.div>
@@ -189,7 +188,7 @@ const HomePage = () => {
                      >
                        <Image 
                          src="/images/hero-1.png" 
-                         alt="Digital Ecosystem Preview" 
+                         alt="Premium Corporate Experience" 
                          fill
                          className="object-cover" 
                        />
