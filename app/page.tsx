@@ -8,7 +8,7 @@ import ProcessSection from "@/components/ProcessSection";
 import StatsCounter from "@/components/StatsCounter";
 import ServiceGrid from "@/components/ServiceGrid";
 import Testimonials from "@/components/Testimonials";
-import { Smartphone, Download, ShieldCheck, Clock, Users, ArrowRight } from "lucide-react";
+import { ShieldCheck, Clock, Users, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 

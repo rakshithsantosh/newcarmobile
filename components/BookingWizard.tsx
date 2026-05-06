@@ -152,7 +152,7 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
                               type={field.type || "text"}
                               className="w-full bg-gray-50 border border-gray-100 p-4 pl-12 rounded-xl focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/5 outline-none transition-all text-navy font-semibold placeholder:text-gray-300" 
                               placeholder={field.placeholder}
-                              value={(formData as any)[field.key]}
+                              value={formData[field.key as keyof typeof formData]}
                               onChange={e => setFormData({...formData, [field.key]: e.target.value})}
                             />
                           </div>
