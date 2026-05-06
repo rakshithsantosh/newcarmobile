@@ -105,9 +105,13 @@ const AboutPage = () => {
          <div className="ncm-container">
             <h2 className="text-white uppercase mb-8">Partner with Bangalore&apos;s Best</h2>
             <p className="text-white/60 mb-12 max-w-lg mx-auto">Discover why hundreds of corporate giants and thousands of private travelers choose NCM every day.</p>
-            <div className="flex flex-wrap justify-center gap-6">
-               <Link href="/contact" className="btn-gold">Get A Custom Proposal</Link>
-               <Link href="/fleet" className="btn-outline !border-white !text-white hover:!bg-white hover:!text-navy">Explore Our Fleet</Link>
+            <div className="flex flex-wrap justify-center gap-8">
+               <Link href="/contact" className="bg-white text-navy px-12 py-6 rounded-sm font-black uppercase tracking-[0.3em] text-[10px] hover:bg-gold hover:text-white transition-all shadow-xl">
+                 Get A Custom Proposal
+               </Link>
+               <Link href="/fleet" className="border border-white/20 text-white px-12 py-6 rounded-sm font-black uppercase tracking-[0.3em] text-[10px] hover:bg-white hover:text-navy transition-all">
+                 Explore Our Fleet
+               </Link>
             </div>
          </div>
       </section>
