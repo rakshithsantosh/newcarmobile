@@ -7,6 +7,7 @@ import FleetGrid from "@/components/FleetGrid";
 import ProcessSection from "@/components/ProcessSection";
 import StatsCounter from "@/components/StatsCounter";
 import ServiceGrid from "@/components/ServiceGrid";
+import ClientMarquee from "@/components/ClientMarquee";
 import Testimonials from "@/components/Testimonials";
 import { ShieldCheck, Clock, Users, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -124,19 +125,7 @@ const HomePage = () => {
 
       <Testimonials />
 
-      {/* Clients Logos */}
-      <section className="py-32 bg-white border-y border-navy/5 overflow-hidden">
-        <div className="ncm-container">
-          <p className="text-center text-navy/30 text-[10px] font-black uppercase tracking-[0.6em] mb-20 italic">Pillars of Our Global Legacy</p>
-          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-32 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
-             <div className="text-3xl font-black text-navy tracking-tighter font-serif italic">INFOSYS</div>
-             <div className="text-3xl font-black text-navy tracking-tighter font-serif italic">WIPRO</div>
-             <div className="text-3xl font-black text-navy tracking-tighter font-serif italic">ACCENTURE</div>
-             <div className="text-3xl font-black text-navy tracking-tighter font-serif italic">GOOGLE</div>
-             <div className="text-3xl font-black text-navy tracking-tighter font-serif italic">PHILIPS</div>
-          </div>
-        </div>
-      </section>
+      <ClientMarquee />
 
       {/* Corporate Alliances Section */}
       <section className="section-py bg-navy relative overflow-hidden">
