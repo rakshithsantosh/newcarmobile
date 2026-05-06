@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
-import { SITE_CONFIG, SERVICES } from "@/lib/data";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { SITE_CONFIG } from "@/lib/data";
 import BookingWizard from "./BookingWizard";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,118 +15,124 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { name: "The Fleet", href: "/fleet" },
+    { name: "Our Story", href: "/about" },
+    { name: "Contact", href: "/contact" },
+  ];
+
   return (
     <>
-      {/* Main Bar */}
       <nav 
-        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ${
           scrolled 
-            ? "bg-white/95 backdrop-blur-xl py-4 border-b border-navy/5 shadow-sm text-navy" 
-            : "bg-white/10 backdrop-blur-sm py-6 border-b border-white/5 text-navy"
+            ? "surface-glass py-4 border-b border-navy/5 shadow-sm" 
+            : "bg-transparent py-8"
         }`}
       >
         <div className="ncm-container flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="group relative w-48 h-12 md:w-52 md:h-14">
-            <Image
-              src="/images/logo.png"
-              alt="New Car Mobile Logo"
-              fill
-              priority
-              className="object-contain invert brightness-0 opacity-90 group-hover:opacity-100 transition-opacity"
-            />
+          {/* Logo Section */}
+          <Link href="/" className="group flex items-center gap-4 relative z-[110]">
+            <div className="relative w-40 h-10 md:w-48 md:h-12 transition-transform duration-500 group-hover:scale-105">
+              <Image
+                src="/images/logo.png"
+                alt="New Car Mobile"
+                fill
+                priority
+                className={`object-contain transition-all duration-700 ${scrolled ? 'invert' : 'invert brightness-0'}`}
+              />
+            </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-12">
-             <Link href="/fleet" className="hover:text-accent font-bold text-[11px] uppercase tracking-[0.3em] transition-all relative group text-navy">
-                The Fleet
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent transition-all group-hover:w-full" />
-             </Link>
-             <Link href="/about" className="hover:text-accent font-bold text-[11px] uppercase tracking-[0.3em] transition-all relative group text-navy">
-                Our Story
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent transition-all group-hover:w-full" />
-             </Link>
-             <button 
-                onClick={() => setIsBookingOpen(true)}
-                className="bg-navy text-white !px-10 !py-3.5 !text-[10px] rounded-lg uppercase tracking-[0.2em] font-bold hover:bg-accent transition-all shadow-lg shadow-navy/20"
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-10">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name} 
+                href={link.href}
+                className="group relative text-[11px] font-black uppercase tracking-[0.4em] text-navy hover:text-accent transition-colors"
               >
-                Book A Chauffeur
-             </button>
-          </div>
-
-          {/* Action */}
-          <div className="flex items-center gap-6">
+                {link.name}
+                <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-accent transition-all duration-500 group-hover:w-full" />
+              </Link>
+            ))}
+            
             <button 
-              className="lg:hidden p-1 text-navy"
-              onClick={() => setIsOpen(true)}
+              onClick={() => setIsBookingOpen(true)}
+              className="btn-primary group"
             >
-              <Menu size={28} />
+              <span>Book A Chauffeur</span>
+              <ArrowRight size={14} className="ml-3 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
+
+          {/* Mobile Toggle */}
+          <button 
+            className="lg:hidden p-2 text-navy relative z-[110]"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
       </nav>
 
       {/* Booking Wizard Modal */}
       <BookingWizard isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
 
-      {/* Mobile Slide-in Menu */}
-      <div 
-        className={`fixed inset-0 z-[100] bg-navy/50 backdrop-blur-sm transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        onClick={() => setIsOpen(false)}
-      />
-      <div 
-        className={`fixed top-0 right-0 bottom-0 w-[280px] bg-white z-[110] transition-transform duration-500 ease-out shadow-2xl p-6 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex justify-between items-center mb-10">
-          <div className="relative w-32 h-10">
-            <Image
-              src="/images/logo.png"
-              alt="NCM Logo"
-              fill
-              className="object-contain invert brightness-0"
-            />
-          </div>
-          <button onClick={() => setIsOpen(false)} className="text-navy"><X size={24} /></button>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          <Link href="/" onClick={() => setIsOpen(false)} className="text-lg font-bold text-navy border-b border-gray-light pb-2">Home</Link>
-          <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-bold text-navy border-b border-gray-light pb-2">About Us</Link>
-          
-          <div className="space-y-3">
-            <p className="text-[10px] font-black uppercase tracking-widest text-accent">Services</p>
-            {SERVICES.map(s => (
-              <Link key={s.id} href={`/services/${s.id}`} onClick={() => setIsOpen(false)} className="block font-medium text-navy/70">{s.title}</Link>
-            ))}
-          </div>
-
-          <div className="space-y-3">
-            <p className="text-[10px] font-black uppercase tracking-widest text-accent">Our Fleet</p>
-            <Link href="/fleet" onClick={() => setIsOpen(false)} className="block font-medium text-navy/70">View Showroom</Link>
-          </div>
-          
-          <Link href="/contact" onClick={() => setIsOpen(false)} className="text-lg font-bold text-navy border-b border-gray-light pb-2">Contact</Link>
-        </div>
-
-        <div className="mt-12 pt-8 border-t border-gray-light text-center">
-            <button 
-              onClick={() => { setIsOpen(false); setIsBookingOpen(true); }}
-              className="bg-accent text-white w-full py-4 rounded-lg font-bold shadow-lg shadow-accent/20"
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[90] bg-white pt-32 p-8 lg:hidden flex flex-col"
+          >
+            <div className="flex flex-col gap-10">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <Link 
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-4xl font-serif italic text-navy hover:text-accent transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+              
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="pt-10 border-t border-gray-100 mt-auto mb-10"
             >
-              Request A Quote
-            </button>
-            <p className="mt-6 text-xs text-muted font-medium">Quick Assistance: <br/> {SITE_CONFIG.phones[0].number}</p>
-        </div>
-      </div>
+              <button 
+                onClick={() => { setIsOpen(false); setIsBookingOpen(true); }}
+                className="btn-accent w-full py-6 text-sm"
+              >
+                Initiate Booking
+              </button>
+              <div className="mt-10 flex flex-col items-center text-center">
+                <p className="caption mb-4">Concierge Desk</p>
+                <p className="text-navy font-bold">{SITE_CONFIG.phones[0].number}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

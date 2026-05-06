@@ -2,90 +2,108 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { SITE_CONFIG, SERVICES, FLEET_CATEGORIES } from "@/lib/data";
-import { Globe, Mail, Smartphone, Shield, Download, MapPin, Phone } from "lucide-react";
+import { Mail, Smartphone, MapPin, Phone, Download, ArrowRight, Globe, Share2, Users } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-navy text-white pt-24 pb-12 overflow-hidden">
+    <footer className="bg-navy text-white pt-32 pb-12 overflow-hidden border-t border-white/5">
       <div className="ncm-container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-          {/* Brand & Address */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 mb-24">
+          
+          {/* Column 1: Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 bg-white rounded-md flex items-center justify-center font-bold text-navy text-xl">
-                N
-              </div>
-              <span className="text-white font-extrabold text-xl tracking-tight">NEW CAR MOBILE</span>
+            <Link href="/" className="inline-block relative w-40 h-10 mb-8 opacity-80 hover:opacity-100 transition-opacity">
+               <Image src="/images/logo.png" alt="NCM" fill className="object-contain invert brightness-0" />
             </Link>
-            <p className="text-white/60 text-sm mb-8 leading-relaxed max-w-xs">
-              Bangalore&apos;s premier fleet management partner providing high-end mobility solutions for businesses and individuals since 1994.
+            <p className="text-white/50 text-sm leading-relaxed mb-10 max-w-xs">
+              Engineering Bangalore&apos;s executive mobility landscape since 1994. A legacy built on punctuality, safety, and elite professional protocol.
             </p>
             <div className="flex gap-4">
-               {[Globe, Mail, Smartphone, Shield].map((Icon, i) => (
-                 <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold transition-all">
-                   <Icon size={18} />
+               {[Globe, Share2, Users].map((Icon, i) => (
+                 <a key={i} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent hover:border-accent hover:text-navy transition-all duration-500">
+                    <Icon size={16} />
                  </a>
                ))}
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 2: Services */}
           <div>
-            <h4 className="text-gold font-black uppercase text-xs tracking-[0.2em] mb-10 italic">Quick Links</h4>
-            <ul className="space-y-4 text-white/70 text-sm font-bold uppercase tracking-widest">
-              <li><Link href="/about" className="hover:text-gold transition-colors">About Us</Link></li>
-              <li><Link href="/services" className="hover:text-gold transition-colors">Safety Protocols</Link></li>
-              <li><Link href="/fleet" className="hover:text-gold transition-colors">Our Showroom</Link></li>
-              <li><Link href="/contact" className="hover:text-gold transition-colors">Get A Quote</Link></li>
-              <li><Link href="/terms" className="hover:text-gold transition-colors">Privacy Policy</Link></li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-gold font-black uppercase text-xs tracking-[0.2em] mb-10 italic">Our Services</h4>
-            <ul className="space-y-4 text-white/70 text-sm font-medium">
+            <p className="caption text-accent mb-10">Solutions</p>
+            <ul className="space-y-4">
               {SERVICES.map(s => (
-                <li key={s.id}><Link href={`/services/${s.id}`} className="hover:text-gold transition-colors">{s.title}</Link></li>
-              ))}
-              {FLEET_CATEGORIES.map(c => (
-                <li key={c.id}><Link href={`/fleet#${c.id}`} className="hover:text-gold transition-colors">{c.title}</Link></li>
+                <li key={s.id}>
+                  <Link href={`/services/${s.id}`} className="text-white/60 hover:text-white text-sm transition-colors flex items-center group">
+                    <span className="w-0 group-hover:w-4 h-[1px] bg-accent transition-all duration-300 mr-0 group-hover:mr-3" />
+                    {s.title}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Column 3: Fleet */}
           <div>
-            <h4 className="text-gold font-black uppercase text-xs tracking-[0.2em] mb-10 italic">Contact NCM</h4>
+            <p className="caption text-accent mb-10">The Fleet</p>
+            <ul className="space-y-4">
+              {FLEET_CATEGORIES.map(c => (
+                <li key={c.id}>
+                  <Link href={`/fleet#${c.id}`} className="text-white/60 hover:text-white text-sm transition-colors flex items-center group">
+                    <span className="w-0 group-hover:w-4 h-[1px] bg-accent transition-all duration-300 mr-0 group-hover:mr-3" />
+                    {c.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Experience */}
+          <div>
+            <p className="caption text-accent mb-10">Company</p>
+            <ul className="space-y-4">
+              <li><Link href="/about" className="text-white/60 hover:text-white text-sm transition-colors">Our Story</Link></li>
+              <li><Link href="/safety" className="text-white/60 hover:text-white text-sm transition-colors">Safety Protocol</Link></li>
+              <li><Link href="/corporate" className="text-white/60 hover:text-white text-sm transition-colors">Corporate Alliances</Link></li>
+              <li><Link href="/careers" className="text-white/60 hover:text-white text-sm transition-colors">Join the Fleet</Link></li>
+              <li><Link href="/contact" className="text-white/60 hover:text-white text-sm transition-colors">Contact Concierge</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 5: Global Desk */}
+          <div>
+            <p className="caption text-accent mb-10">Global Desk</p>
             <div className="space-y-6">
               <div className="flex gap-4">
-                 <MapPin size={24} className="text-gold shrink-0" />
-                 <p className="text-white/70 text-sm leading-relaxed">{SITE_CONFIG.address}</p>
+                 <MapPin size={18} className="text-accent shrink-0 mt-1" />
+                 <p className="text-white/50 text-sm leading-relaxed">{SITE_CONFIG.address}</p>
               </div>
               <div className="flex gap-4">
-                 <Phone size={18} className="text-gold shrink-0" />
-                 <p className="text-white/70 text-sm font-bold tracking-widest">{SITE_CONFIG.phones[0].number}</p>
+                 <Phone size={18} className="text-accent shrink-0" />
+                 <p className="text-white font-bold text-sm">{SITE_CONFIG.phones[0].number}</p>
               </div>
               <div className="flex gap-4">
-                 <Mail size={18} className="text-gold shrink-0" />
-                 <p className="text-white/70 text-sm font-bold">{SITE_CONFIG.email}</p>
+                 <Mail size={18} className="text-accent shrink-0" />
+                 <p className="text-white/50 text-sm truncate">{SITE_CONFIG.email}</p>
               </div>
-              <button className="flex items-center gap-2 bg-white/5 border border-white/10 px-6 py-3 text-xs font-black uppercase tracking-widest hover:bg-white hover:text-navy transition-all w-full justify-center">
-                 <Download size={14} /> Download Brochure
+              <button className="btn-secondary !w-full !py-4 group">
+                 <Download size={14} className="mr-3" />
+                 <span>Brochure</span>
               </button>
             </div>
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
-           <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">
-             © {new Date().getFullYear()} New Car Mobile. All rights reserved. Designed for Excellence.
+        {/* Bottom Bar */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+           <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.2em]">
+             © {new Date().getFullYear()} New Car Mobile. Refined Mobility.
            </p>
-           <div className="flex gap-8 text-[10px] font-bold text-white/40 uppercase tracking-widest">
-              <span>Sitemap</span>
-              <span>Terms of Service</span>
-              <span>Cookies</span>
+           <div className="flex gap-10">
+              {["Privacy", "Terms", "Cookies", "Sitemap"].map(link => (
+                <Link key={link} href="#" className="text-white/30 hover:text-accent text-[10px] font-black uppercase tracking-[0.2em] transition-colors">{link}</Link>
+              ))}
            </div>
         </div>
       </div>
