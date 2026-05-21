@@ -33,3 +33,7 @@ yarn-error.log*
 build.log
 dev-error.log
 dev-server.log
+
+# agents
+.agents/
+skills-lock.json

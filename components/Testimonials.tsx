@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { TESTIMONIALS } from "@/lib/data";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+
 
 const Testimonials = () => {
   const [current, setCurrent] = useState(0);

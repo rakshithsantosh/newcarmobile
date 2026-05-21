@@ -7,63 +7,73 @@ import { FLEET } from "@/lib/data";
 import { Users, Briefcase, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-const FleetGrid = ({ limit }: { limit?: number }) => {
-  const displayFleet = limit ? FLEET.slice(0, limit) : FLEET;
+interface FleetGridProps {
+  limit?: number;
+  category?: string;
+}
+
+const FleetGrid = ({ limit, category }: FleetGridProps) => {
+  let displayFleet = FLEET;
+  if (category) {
+    displayFleet = displayFleet.filter(vehicle => vehicle.category === category);
+  }
+  if (limit) {
+    displayFleet = displayFleet.slice(0, limit);
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
       {displayFleet.map((vehicle, index) => (
         <motion.div
           key={vehicle.id}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          className="card-premium h-full flex flex-col group"
+          transition={{ duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-white border border-gray-100/60 rounded-[2px] shadow-none hover:shadow-elite h-full flex flex-col group transition-all duration-700"
         >
           {/* Image */}
-          <div className="relative aspect-video overflow-hidden bg-background">
+          <div className="relative aspect-[16/10] overflow-hidden bg-white border-b border-gray-100/30 flex items-center justify-center p-6">
              <Image 
                src={vehicle.image || "/images/fleet/mercedes-s.jpg"} 
                alt={vehicle.name}
                fill
-               className="object-cover transition-transform duration-1000 group-hover:scale-110"
+               className="object-contain p-6 transition-transform duration-[1.5s] ease-out group-hover:scale-105"
              />
-             <div className="absolute inset-0 bg-navy/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-             <div className="absolute top-6 left-6 glass-panel px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-accent rounded-lg z-10">
-               {vehicle.tier} Class
+             <div className="absolute top-6 left-6 surface-glass px-3 py-1.5 text-[8px] font-bold uppercase tracking-[0.2em] text-navy border border-accent/15 rounded-[2px] z-10 shadow-sm">
+               {vehicle.tier} Tier
              </div>
           </div>
 
           {/* Content */}
           <div className="p-8 flex flex-col flex-1">
              <div className="mb-6">
-                <h3 className="text-navy text-2xl font-black mb-2 group-hover:text-accent transition-colors tracking-tight">{vehicle.name}</h3>
-                <p className="text-accent text-[11px] font-bold uppercase tracking-[0.3em] italic mb-4">{vehicle.category}</p>
-                <p className="text-muted text-sm leading-relaxed line-clamp-2">{vehicle.description}</p>
+                <h3 className="text-navy text-lg font-serif italic mb-1.5 group-hover:text-accent transition-colors tracking-tight leading-tight">{vehicle.name}</h3>
+                <p className="text-accent text-[9px] font-bold uppercase tracking-[0.25em] italic mb-3">{vehicle.category} Collection</p>
+                <p className="text-text-secondary text-sm font-light leading-relaxed line-clamp-2">{vehicle.description}</p>
              </div>
 
-             <div className="grid grid-cols-2 gap-4 py-4 border-y border-gray-lighter mb-6">
-                <div className="flex items-center gap-2">
-                   <Users size={14} className="text-muted" />
-                   <span className="text-xs font-semibold text-navy/70">{vehicle.specs.pax} PAX</span>
+             <div className="grid grid-cols-2 gap-4 py-4 border-y border-gray-100/60 mb-6">
+                <div className="flex items-center gap-2.5">
+                   <Users size={12} strokeWidth={1.5} className="text-navy/40" />
+                   <span className="text-[10px] font-medium uppercase tracking-[0.1em] text-text-secondary">{vehicle.specs.pax} PAX</span>
                 </div>
-                <div className="flex items-center gap-2">
-                   <Briefcase size={14} className="text-muted" />
-                   <span className="text-xs font-semibold text-navy/70">{vehicle.specs.luggage || 2} Luggage</span>
+                <div className="flex items-center gap-2.5">
+                   <Briefcase size={12} strokeWidth={1.5} className="text-navy/40" />
+                   <span className="text-[10px] font-medium uppercase tracking-[0.1em] text-text-secondary">{vehicle.specs.luggage || 2} Bags</span>
                 </div>
              </div>
 
-              <div className="mt-auto flex items-center justify-between border-t border-gray-medium pt-8">
+              <div className="mt-auto flex items-center justify-between border-t border-gray-100/30 pt-6">
                  <div>
-                   <p className="text-[10px] font-black text-muted uppercase tracking-widest mb-1">Elite Rate</p>
-                   <p className="font-bold text-xl text-navy group-hover:text-accent transition-colors">{vehicle.priceEstimate}</p>
+                   <p className="text-[9px] font-bold text-text-muted uppercase tracking-widest mb-0.5">Rate Estimate</p>
+                   <p className="font-bold text-lg text-navy group-hover:text-accent transition-colors">{vehicle.priceEstimate}</p>
                  </div>
                  <Link 
                    href={`/fleet/${vehicle.id}`}
-                   className="w-14 h-14 bg-background rounded-2xl flex items-center justify-center text-navy group-hover:bg-accent group-hover:rotate-12 transition-all duration-500 hover:shadow-glow border border-gray-medium group-hover:border-accent"
+                   className="w-12 h-12 rounded-[2px] bg-background border border-navy/5 flex items-center justify-center text-navy group-hover:bg-navy group-hover:text-white transition-all duration-500"
                  >
-                   <ChevronRight size={24} />
+                   <ChevronRight size={18} />
                  </Link>
               </div>
           </div>

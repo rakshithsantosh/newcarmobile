@@ -18,8 +18,9 @@ const ServiceDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
     <main className="w-full">
       {/* Header */}
       <section className="bg-navy pt-40 pb-24 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gold/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
         <div className="ncm-container relative z-10">
-          <Link href="/" className="inline-flex items-center gap-2 text-gold text-xs font-bold uppercase tracking-widest hover:translate-x-[-4px] transition-transform mb-12">
+          <Link href="/services" className="inline-flex items-center gap-2 text-gold text-xs font-bold uppercase tracking-widest hover:translate-x-[-4px] transition-transform mb-12">
             <ArrowLeft size={16} /> Back to Overview
           </Link>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -28,20 +29,25 @@ const ServiceDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
               animate={{ opacity: 1, y: 0 }}
             >
               <p className="text-gold font-black uppercase tracking-[0.4em] text-xs mb-6 italic">The Service Standard</p>
-              <h1 className="text-white uppercase mb-8">{service.title}</h1>
-              <h4 className="text-white/60 text-xl font-medium mb-8 italic">&quot;{service.tagline}&quot;</h4>
-              <p className="text-white/70 max-w-lg leading-relaxed mb-12 font-medium">
+              <h1 className="text-white uppercase mb-8 leading-[0.9] tracking-tighter">{service.title}</h1>
+              <h4 className="text-white/60 text-xl font-light mb-8 italic">&quot;{service.tagline}&quot;</h4>
+              <p className="text-white/70 max-w-lg leading-relaxed mb-12 font-light">
                 {service.description} We combine three decades of operational knowledge with the latest fleet technology to deliver zero-stress transportation solutions in Bangalore.
               </p>
-              <button className="btn-gold !px-10">Request Corporate Proposal</button>
+              <button 
+                onClick={() => document.getElementById('alliance-cta')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-accent !px-10 active:scale-[0.97] transition-transform cursor-pointer"
+              >
+                Request Corporate Proposal
+              </button>
             </motion.div>
             
             <div className="relative">
-               <div className="aspect-[4/3] rounded-sm overflow-hidden border border-white/10 shadow-2xl relative">
+               <div className="aspect-[4/3] rounded-[2px] overflow-hidden border border-white/10 shadow-elite relative">
                   <Image src={service.image} alt={service.title} fill className="object-cover grayscale brightness-50" />
                </div>
-               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                  <Zap size={64} className="text-gold animate-pulse mb-4" />
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none">
+                  <Zap size={64} className="text-accent animate-pulse mb-4" />
                   <span className="text-white text-[10px] font-black uppercase tracking-[0.5em] text-center">Operational Excellence</span>
                </div>
             </div>
@@ -53,8 +59,8 @@ const ServiceDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
       <section className="section-py bg-white">
         <div className="ncm-container">
            <div className="mb-20">
-              <h2 className="text-navy uppercase mb-6">Service Benefits</h2>
-              <div className="w-20 h-1 bg-gold rounded-full" />
+              <p className="text-gold font-black uppercase tracking-[0.4em] text-[10px] mb-4 italic">Guarantees</p>
+              <h2 className="text-navy uppercase tracking-tighter font-serif text-5xl md:text-6xl">Service Benefits</h2>
            </div>
 
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -64,12 +70,12 @@ const ServiceDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
                 { icon: MapPin, t: "GPS Perimeter", d: "Geofencing and route optimization for maximum efficiency." },
                 { icon: Briefcase, t: "Billing Accuracy", d: "Detailed travel logs and transparent distance reporting." }
               ].map((b, i) => (
-                <div key={i} className="p-10 bg-gray-light border border-gray-medium group hover:border-gold transition-colors duration-500">
-                   <div className="w-12 h-12 bg-white flex items-center justify-center text-gold mb-8 shadow-md">
-                      <b.icon size={24} />
+                <div key={i} className="p-10 bg-white border border-navy/5 rounded-[2px] group hover:border-accent hover:shadow-elite transition-all duration-700">
+                   <div className="w-12 h-12 bg-background border border-navy/5 rounded-[2px] flex items-center justify-center text-accent mb-8 transition-colors group-hover:bg-accent group-hover:text-navy duration-500">
+                      <b.icon size={20} strokeWidth={1.5} />
                    </div>
-                   <h4 className="text-navy font-bold uppercase text-sm mb-4">{b.t}</h4>
-                   <p className="text-muted text-xs leading-relaxed">{b.d}</p>
+                   <h4 className="text-navy font-serif italic text-lg mb-4 tracking-tight group-hover:text-accent transition-colors">{b.t}</h4>
+                   <p className="text-text-secondary text-xs font-light leading-relaxed">{b.d}</p>
                 </div>
               ))}
            </div>
@@ -77,11 +83,11 @@ const ServiceDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
       </section>
 
       {/* Execution Plan */}
-      <section className="section-py bg-gray-light">
+      <section className="section-py bg-background border-t border-navy/5">
          <div className="ncm-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                <div className="space-y-12">
-                  <h2 className="text-navy uppercase">Operational Workflow</h2>
+                  <h2 className="text-navy uppercase tracking-tighter font-serif text-4xl md:text-5xl leading-none">Operational <br/> Workflow</h2>
                   
                   <div className="space-y-10">
                      {[
@@ -90,26 +96,28 @@ const ServiceDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
                        { t: "On-Ground Management", d: "Integration with our 24/7 command center for live dispatching and monitoring." },
                        { t: "Performance Reporting", d: "Monthly audits of on-time metrics, fuel efficiency, and user satisfaction." }
                      ].map((step, i) => (
-                       <div key={i} className="flex gap-6">
-                          <span className="text-gold font-serif italic text-4xl leading-none">0{i+1}</span>
+                       <div key={i} className="flex gap-6 group">
+                          <span className="text-accent font-serif italic text-4xl leading-none">0{i+1}</span>
                           <div>
-                             <h4 className="text-navy font-black uppercase text-sm mb-2">{step.t}</h4>
-                             <p className="text-muted text-xs leading-relaxed">{step.d}</p>
+                             <h4 className="text-navy font-serif italic text-lg mb-2 tracking-tight group-hover:text-accent transition-colors">{step.t}</h4>
+                             <p className="text-text-secondary text-sm font-light leading-relaxed">{step.d}</p>
                           </div>
                        </div>
                      ))}
                   </div>
                </div>
 
-               <div className="bg-navy p-16 text-center shadow-2xl relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
+               <div id="alliance-cta" className="bg-navy p-16 text-center shadow-elite rounded-[2px] relative overflow-hidden border border-white/5">
+                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] pointer-events-none" />
                   <div className="relative z-10">
-                     <h3 className="text-white text-3xl font-black mb-8">Ready to Optimize Your Fleet?</h3>
-                     <p className="text-white/60 mb-12 text-sm leading-relaxed mx-auto max-w-sm">
+                     <h3 className="text-white text-3xl font-serif italic tracking-tight mb-8">Ready to Optimize Your Fleet?</h3>
+                     <p className="text-white/50 mb-12 text-sm font-light leading-relaxed mx-auto max-w-sm">
                         Connect with our corporate mobility specialists for a customized transport audit of your Bangalore operations.
                      </p>
-                     <button className="btn-gold w-full py-5 text-sm uppercase">Get Your Proposal</button>
-                     <p className="mt-8 text-[10px] font-black uppercase text-white/30 tracking-widest">Average response time: 2 hours</p>
+                     <Link href="/contact" className="btn-accent w-full py-5 text-xs font-bold tracking-[0.2em] uppercase active:scale-[0.98] transition-transform inline-flex items-center justify-center text-center">
+                        Get Your Proposal
+                     </Link>
+                     <p className="mt-8 text-[9px] font-bold uppercase text-white/30 tracking-widest">Average response time: 2 hours</p>
                   </div>
                </div>
             </div>

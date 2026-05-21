@@ -56,7 +56,7 @@ const HomePage = () => {
                     src="/images/services/corporate.jpg" 
                     alt="Legacy of Excellence" 
                     fill
-                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out" 
+                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.05] transition-all duration-[2s] ease-out" 
                   />
                </div>
                <motion.div 
@@ -64,15 +64,15 @@ const HomePage = () => {
                  whileInView={{ opacity: 1, scale: 1 }}
                  viewport={{ once: true }}
                  transition={{ duration: 1, delay: 0.5 }}
-                 className="absolute -bottom-16 -right-16 w-80 h-80 bg-navy p-16 hidden md:flex flex-col justify-center shadow-elite rounded-sm z-20 border border-white/5"
+                 className="absolute -bottom-16 -right-16 w-80 h-80 bg-navy p-16 hidden md:flex flex-col justify-center shadow-elite rounded-[2px] z-20 border border-white/5"
                >
-                  <span className="text-gold text-7xl font-serif italic leading-none mb-6">30+</span>
-                  <p className="text-white/40 text-[11px] font-black uppercase tracking-[0.4em] leading-relaxed">Years of Engineering <br/> Mobility Excellence</p>
+                  <span className="text-accent text-7xl font-serif italic leading-none mb-6">30+</span>
+                  <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.4em] leading-relaxed">Years of Engineering <br/> Mobility Excellence</p>
                </motion.div>
             </motion.div>
 
             <div>
-              <p className="text-gold font-black uppercase tracking-[0.5em] text-[10px] mb-8 italic">The Philosophy</p>
+              <p className="text-accent font-bold uppercase tracking-[0.5em] text-[10px] mb-8 italic">The Philosophy</p>
               <h2 className="text-navy uppercase mb-16 tracking-tighter font-serif text-5xl md:text-7xl leading-none">Legacy of Trust <br/> Since 1994</h2>
               
               <div className="space-y-12">
@@ -89,12 +89,12 @@ const HomePage = () => {
                     transition={{ delay: i * 0.2 }}
                     className="flex gap-10 group"
                   >
-                    <div className="w-20 h-20 shrink-0 bg-background rounded-sm flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-navy transition-all duration-700 shadow-none border border-navy/5 group-hover:border-gold">
-                      <item.icon size={36} strokeWidth={1} />
+                    <div className="w-16 h-16 shrink-0 bg-background rounded-[2px] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-navy transition-all duration-700 shadow-none border border-navy/5 group-hover:border-accent">
+                      <item.icon size={26} strokeWidth={1} />
                     </div>
                     <div className="flex flex-col justify-center border-b border-navy/5 pb-10 w-full">
-                      <h4 className="text-navy font-serif italic text-2xl mb-3 tracking-tight group-hover:text-gold transition-colors">{item.title}</h4>
-                      <p className="text-navy/50 text-base leading-relaxed font-light">{item.desc}</p>
+                      <h4 className="text-navy font-serif italic text-2xl mb-3 tracking-tight group-hover:text-accent transition-colors">{item.title}</h4>
+                      <p className="text-text-secondary text-sm font-light leading-relaxed">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -142,7 +142,7 @@ const HomePage = () => {
                  className="order-2 lg:order-1"
                >
                   <div className="flex items-center gap-4 mb-12">
-                     <div className="w-14 h-14 bg-accent/20 backdrop-blur-xl rounded-2xl flex items-center justify-center text-accent border border-accent/30">
+                     <div className="w-14 h-14 bg-accent/20 backdrop-blur-xl rounded-[2px] flex items-center justify-center text-accent border border-accent/30">
                         <Users size={28} strokeWidth={1.5} />
                      </div>
                      <span className="text-accent font-black uppercase tracking-[0.4em] text-[11px]">Bespoke Corporate Solutions</span>

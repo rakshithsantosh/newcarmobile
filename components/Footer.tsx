@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { SITE_CONFIG, SERVICES, FLEET_CATEGORIES } from "@/lib/data";
-import { Mail, Smartphone, MapPin, Phone, Download, ArrowRight, Globe, Share2, Users } from "lucide-react";
+import { Mail, MapPin, Phone, Download, Globe, Share2, Users } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -87,9 +87,9 @@ const Footer = () => {
                  <Mail size={18} className="text-accent shrink-0" />
                  <p className="text-white/50 text-sm truncate">{SITE_CONFIG.email}</p>
               </div>
-              <button className="btn-secondary !w-full !py-4 group">
-                 <Download size={14} className="mr-3" />
-                 <span>Brochure</span>
+              <button className="border border-white/10 hover:bg-white hover:text-navy text-white text-[11px] font-bold uppercase tracking-[0.2em] rounded-[2px] py-5 w-full flex items-center justify-center transition-all duration-500 group">
+                 <Download size={14} className="mr-3 group-hover:-translate-y-0.5 transition-transform" />
+                 <span>Download Brochure</span>
               </button>
             </div>
           </div>

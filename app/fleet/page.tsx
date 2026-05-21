@@ -26,48 +26,49 @@ const FleetPage = () => {
       </section>
 
       {/* Filter Intro / Quick Links */}
-      <section className="py-8 bg-gray-light border-b border-gray-medium">
+      <section className="py-8 bg-white border-b border-gray-100">
         <div className="ncm-container">
-           <div className="flex flex-wrap items-center justify-center gap-8 text-[10px] font-black uppercase tracking-widest text-navy">
-              <span className="text-gold italic">Quick Filter:</span>
-              <a href="#corporate" className="hover:text-gold transition-colors">Corporate Cabs</a>
-              <a href="#tourist" className="hover:text-gold transition-colors">Tourist Transport</a>
-              <a href="#premium" className="hover:text-gold transition-colors">Premium Fleet</a>
+           <div className="flex flex-wrap items-center justify-center gap-10 text-[9px] font-bold uppercase tracking-[0.25em] text-navy">
+              <span className="text-gold italic font-serif tracking-[0.1em]">Protocol Filters:</span>
+              <a href="#corporate" className="hover:text-accent transition-colors">Corporate Cabs</a>
+              <a href="#tourist" className="hover:text-accent transition-colors">Tourist Transport</a>
+              <a href="#premium" className="hover:text-accent transition-colors">Premium Fleet</a>
            </div>
         </div>
       </section>
 
       {/* Main Grid Section */}
-      <section className="section-py bg-white">
+      <section className="section-py bg-background">
         <div className="ncm-container">
           {FLEET_CATEGORIES.map((cat, i) => (
-            <div key={cat.id} id={cat.id} className={i > 0 ? "mt-24" : ""}>
-               <div className="flex items-center gap-4 mb-12">
-                  <h2 className="text-navy uppercase text-2xl md:text-3xl font-bold">{cat.title}</h2>
-                  <div className="flex-1 h-[1px] bg-gray-medium" />
+            <div key={cat.id} id={cat.id} className={i > 0 ? "mt-32" : ""}>
+               <div className="flex items-center gap-6 mb-16">
+                  <h2 className="text-navy uppercase text-xl lg:text-2xl font-serif italic tracking-tight">{cat.title}</h2>
+                  <div className="flex-1 h-[1px] bg-gray-200/50" />
                </div>
-               <FleetGrid />
+               <FleetGrid category={cat.id} />
             </div>
           ))}
         </div>
       </section>
 
       {/* Policy Section */}
-      <section className="section-py bg-gray-light border-t border-gray-medium">
+      <section className="section-py bg-white border-t border-gray-100">
         <div className="ncm-container">
-           <div className="bg-white p-12 shadow-xl border-t-4 border-gold">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+           <div className="bg-background p-12 lg:p-16 border border-gray-100/60 rounded-[2px] relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-2 h-full bg-accent" />
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 relative z-10">
                  <div>
-                    <h4 className="text-navy font-bold uppercase mb-4">Sanitization Policy</h4>
-                    <p className="text-muted text-sm leading-relaxed">Every vehicle is deep-cleaned after every single trip with hospital-grade disinfectants.</p>
+                    <h4 className="text-navy font-serif italic text-xl mb-4">Sanitization Protocol</h4>
+                    <p className="text-text-secondary font-light text-sm leading-relaxed">Every vehicle undergoes a meticulous deep-cleaning cycle after every single journey with hospital-grade sanitization agents.</p>
                  </div>
                  <div>
-                    <h4 className="text-navy font-bold uppercase mb-4">Chauffeur Standards</h4>
-                    <p className="text-muted text-sm leading-relaxed">Police-verified, uniformed professionals with mandatory alcohol-testing before every shift.</p>
+                    <h4 className="text-navy font-serif italic text-xl mb-4">Professional Chauffeur standards</h4>
+                    <p className="text-text-secondary font-light text-sm leading-relaxed">Rigorous background checking, professional suit protocol, and certified elite customer coordination training.</p>
                  </div>
                  <div>
-                    <h4 className="text-navy font-bold uppercase mb-4">Punctuality Promise</h4>
-                    <p className="text-muted text-sm leading-relaxed">Chauffeur arrives 15 minutes prior to scheduled pickup for a zero-stress experience.</p>
+                    <h4 className="text-navy font-serif italic text-xl mb-4">Punctuality DNA</h4>
+                    <p className="text-text-secondary font-light text-sm leading-relaxed">A strict standard of arriving 15 minutes prior to scheduled flight or transit, ensuring complete peace of mind.</p>
                  </div>
               </div>
            </div>

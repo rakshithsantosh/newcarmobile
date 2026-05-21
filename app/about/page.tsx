@@ -30,8 +30,8 @@ const AboutPage = () => {
         <div className="ncm-container">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
               <div>
-                 <h2 className="text-navy uppercase mb-10">Driven by <br/> Excellence.</h2>
-                 <p className="text-muted text-lg mb-12">
+                 <h2 className="text-navy uppercase mb-10 tracking-tighter font-serif text-5xl md:text-7xl leading-none">Driven by <br/> Excellence</h2>
+                 <p className="text-text-secondary text-lg font-light leading-relaxed mb-12">
                    At NCM, we don&apos;t just provide cars; we provide peace of mind. Our entire operational philosophy is built on three unbreakable pillars: Safety, Punctuality, and Professionalism.
                  </p>
                  
@@ -42,13 +42,13 @@ const AboutPage = () => {
                       { icon: History, t: "Deep Roots", d: "30 years of navigating Bangalore's complex geography." },
                       { icon: Trophy, t: "Elite Standards", d: "Consistently rated #1 for corporate transport benchmarks." }
                     ].map((item, i) => (
-                      <div key={i} className="flex gap-4">
-                         <div className="w-10 h-10 shrink-0 bg-gray-light flex items-center justify-center text-gold">
-                            <item.icon size={20} />
+                      <div key={i} className="flex gap-6 group">
+                         <div className="w-12 h-12 shrink-0 bg-background border border-navy/5 rounded-[2px] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-navy transition-all duration-500">
+                            <item.icon size={20} strokeWidth={1.5} />
                          </div>
                          <div>
-                            <h4 className="text-navy font-bold uppercase text-xs mb-2">{item.t}</h4>
-                            <p className="text-muted text-[10px] leading-relaxed uppercase">{item.d}</p>
+                            <h4 className="text-navy font-serif italic text-lg mb-2 tracking-tight group-hover:text-accent transition-colors">{item.t}</h4>
+                            <p className="text-text-secondary text-[11px] leading-relaxed font-light">{item.d}</p>
                          </div>
                       </div>
                     ))}
@@ -56,18 +56,18 @@ const AboutPage = () => {
               </div>
 
               <div className="relative">
-                 <div className="aspect-square bg-gray-light rounded-sm overflow-hidden shadow-2xl relative">
+                 <div className="aspect-square bg-background rounded-[2px] overflow-hidden shadow-elite relative border border-navy/5">
                     <Image 
                       src="/images/hero-1.png" 
                       alt="Our Legacy" 
                       fill
-                      className="object-cover grayscale brightness-75" 
+                      className="object-cover grayscale brightness-75 hover:scale-105 transition-transform duration-[2s] ease-out" 
                     />
                     <div className="absolute inset-0 bg-navy/20" />
                  </div>
-                 <div className="absolute -top-10 -right-10 bg-gold p-12 hidden xl:block shadow-2xl skew-y-3">
-                    <p className="text-white text-7xl font-sans font-black italic mb-2 tracking-tighter">30+</p>
-                    <p className="text-white text-[10px] font-black uppercase tracking-widest text-center mt-4">Years Of Trust</p>
+                 <div className="absolute -top-10 -right-10 bg-accent text-navy p-12 hidden xl:block shadow-elite rounded-[2px] skew-y-3 border border-white/10">
+                    <p className="text-navy text-7xl font-serif italic mb-2 tracking-tighter leading-none text-center">30+</p>
+                    <p className="text-navy/60 text-[10px] font-bold uppercase tracking-[0.4em] text-center mt-4">Years Of Trust</p>
                  </div>
               </div>
            </div>
@@ -75,11 +75,10 @@ const AboutPage = () => {
       </section>
 
       {/* Leadership / Culture Grid */}
-      <section className="section-py bg-gray-light border-y border-gray-medium">
+      <section className="section-py bg-background border-y border-navy/5">
          <div className="ncm-container">
             <div className="text-center mb-20">
-               <h2 className="text-navy uppercase">Our Core Strengths</h2>
-               <div className="w-20 h-1 bg-gold mx-auto mt-6" />
+               <h2 className="text-navy uppercase tracking-tighter font-serif text-5xl md:text-7xl leading-none text-center">Our Core <br/> Strengths</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -88,12 +87,12 @@ const AboutPage = () => {
                  { title: "24/7 Command Center", icon: Globe, desc: "Our HQ in Bangalore manages live dispatches, tracking, and recovery 365 days a year." },
                  { title: "Chauffeur Academy", icon: Users, desc: "Internal training program for etiquette, safety, and defensive driving maneuvers." }
                ].map((card, i) => (
-                 <div key={i} className="bg-white p-12 text-center group border-t-4 border-white hover:border-gold transition-all duration-500 shadow-sm">
-                    <div className="w-20 h-20 bg-gray-light mx-auto mb-10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
-                       <card.icon size={36} />
+                 <div key={i} className="bg-white p-12 text-center group border border-navy/5 rounded-[2px] hover:border-accent hover:shadow-elite transition-all duration-700">
+                    <div className="w-16 h-16 bg-background rounded-[2px] border border-navy/5 mx-auto mb-8 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-navy transition-all duration-700">
+                       <card.icon size={26} strokeWidth={1.5} />
                     </div>
-                    <h3 className="text-lg text-navy font-bold mb-4 uppercase">{card.title}</h3>
-                    <p className="text-muted text-sm leading-relaxed">{card.desc}</p>
+                    <h3 className="text-navy font-serif italic text-xl mb-4 group-hover:text-accent transition-colors tracking-tight">{card.title}</h3>
+                    <p className="text-text-secondary text-sm font-light leading-relaxed">{card.desc}</p>
                  </div>
                ))}
             </div>

@@ -40,71 +40,71 @@ const ContactPage = () => {
               <div className="lg:col-span-5">
                  <div className="space-y-12">
                     <div>
-                       <h3 className="text-navy uppercase text-2xl font-bold mb-8">Our Headquarters</h3>
+                       <h3 className="text-navy uppercase text-3xl font-serif italic tracking-tight mb-8">Our Headquarters</h3>
                        <div className="space-y-8">
-                          <div className="flex gap-6">
-                             <div className="w-12 h-12 shrink-0 bg-gray-light flex items-center justify-center text-gold">
-                                <MapPin size={24} />
+                          <div className="flex gap-6 group">
+                             <div className="w-12 h-12 shrink-0 bg-background border border-navy/5 rounded-[2px] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-navy transition-all duration-500">
+                                <MapPin size={20} strokeWidth={1.5} />
                              </div>
                              <div>
-                                <h4 className="text-navy font-bold uppercase text-xs mb-2">Office Address</h4>
-                                <p className="text-muted text-sm leading-relaxed">{SITE_CONFIG.address}</p>
+                                <h4 className="text-navy/40 font-bold uppercase text-[9px] tracking-wider mb-2">Office Address</h4>
+                                <p className="text-navy font-light leading-relaxed text-sm">{SITE_CONFIG.address}</p>
                              </div>
                           </div>
 
-                          <div className="flex gap-6">
-                             <div className="w-12 h-12 shrink-0 bg-gray-light flex items-center justify-center text-gold">
-                                <Phone size={24} />
+                          <div className="flex gap-6 group">
+                             <div className="w-12 h-12 shrink-0 bg-background border border-navy/5 rounded-[2px] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-navy transition-all duration-500">
+                                <Phone size={20} strokeWidth={1.5} />
                              </div>
                              <div>
-                                <h4 className="text-navy font-bold uppercase text-xs mb-2">Direct Enquiries</h4>
+                                <h4 className="text-navy/40 font-bold uppercase text-[9px] tracking-wider mb-2">Direct Enquiries</h4>
                                 <div className="space-y-1">
-                                   <p className="text-navy font-bold text-lg">{SITE_CONFIG.phones[0].number}</p>
-                                   <p className="text-muted text-xs tracking-widest">{SITE_CONFIG.phones[1].number} (Fax/Alt)</p>
+                                   <p className="text-navy font-serif italic text-lg tracking-tight">{SITE_CONFIG.phones[0].number}</p>
+                                   <p className="text-text-muted text-[10px] tracking-widest uppercase">{SITE_CONFIG.phones[1].number} (Fax/Alt)</p>
                                 </div>
                              </div>
                           </div>
 
-                          <div className="flex gap-6">
-                             <div className="w-12 h-12 shrink-0 bg-gray-light flex items-center justify-center text-gold">
-                                <Mail size={24} />
+                          <div className="flex gap-6 group">
+                             <div className="w-12 h-12 shrink-0 bg-background border border-navy/5 rounded-[2px] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-navy transition-all duration-500">
+                                <Mail size={20} strokeWidth={1.5} />
                              </div>
                              <div>
-                                <h4 className="text-navy font-bold uppercase text-xs mb-2">Email Channels</h4>
-                                <p className="text-navy font-bold">{SITE_CONFIG.email}</p>
+                                <h4 className="text-navy/40 font-bold uppercase text-[9px] tracking-wider mb-2">Email Channels</h4>
+                                <p className="text-navy font-serif italic text-lg tracking-tight group-hover:text-accent transition-colors">{SITE_CONFIG.email}</p>
                              </div>
                           </div>
                        </div>
                     </div>
 
-                    <div className="p-8 bg-navy text-white relative overflow-hidden">
+                    <div className="p-8 bg-navy text-white relative overflow-hidden rounded-[2px] border border-white/5 shadow-elite">
                        <div className="absolute top-0 right-0 p-4 opacity-10">
                           <Clock size={100} />
                        </div>
-                       <h4 className="text-gold font-black uppercase text-xs mb-4 italic leading-none">Operational Hours</h4>
-                       <p className="text-xl font-bold mb-2">24 / 7 / 365</p>
-                       <p className="text-white/50 text-xs leading-relaxed max-w-[200px]">Always available for your emergency travel and fleet requirements.</p>
+                       <h4 className="text-accent font-bold uppercase tracking-[0.4em] text-[10px] mb-4 italic leading-none">Operational Hours</h4>
+                       <p className="text-2xl font-serif italic mb-2">24 / 7 / 365</p>
+                       <p className="text-white/50 text-[11px] font-light leading-relaxed max-w-[200px]">Always available for your emergency travel and fleet requirements.</p>
                     </div>
                  </div>
               </div>
 
               {/* Contact Form */}
               <div className="lg:col-span-7">
-                 <div className="bg-gray-light p-10 md:p-14 shadow-xl border-t-4 border-gold">
+                 <div className="bg-white p-10 md:p-14 border border-navy/5 shadow-elite rounded-[2px]">
                     {submitted ? (
                       <motion.div 
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         className="h-full flex flex-col items-center justify-center text-center py-12"
                       >
-                         <div className="w-20 h-20 bg-gold text-white rounded-full flex items-center justify-center mb-8 shadow-2xl">
-                            <Send size={32} />
+                         <div className="w-20 h-20 bg-accent text-navy rounded-[2px] border border-white/10 flex items-center justify-center mb-8 shadow-elite">
+                            <Send size={32} strokeWidth={1.5} />
                          </div>
-                         <h3 className="text-navy text-3xl font-bold uppercase mb-4">Message Received</h3>
-                         <p className="text-muted leading-relaxed">Our concierge team will review your enquiry and get back to you within 60 minutes.</p>
+                         <h3 className="text-navy text-3xl font-serif italic tracking-tight mb-4">Message Received</h3>
+                         <p className="text-text-secondary text-sm font-light leading-relaxed">Our concierge team will review your enquiry and get back to you within 60 minutes.</p>
                          <button 
                            onClick={() => setSubmitted(false)}
-                           className="mt-10 text-gold font-black uppercase tracking-widest text-xs border-b border-gold pb-1"
+                           className="mt-10 text-accent font-bold uppercase tracking-[0.3em] text-[10px] border-b border-accent pb-1 hover:text-navy transition-colors"
                          >
                            Send Another Inquiry
                          </button>
@@ -113,38 +113,40 @@ const ContactPage = () => {
                       <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                            <div className="space-y-2">
-                              <label className="text-[10px] font-black uppercase tracking-widest text-navy/60">Full Name</label>
-                              <input required type="text" className="w-full bg-white border border-gray-medium p-4 text-xs font-bold focus:border-gold outline-none transition-colors" placeholder="John Doe" />
+                              <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-navy/40">Full Name</label>
+                              <input required type="text" className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300" placeholder="John Doe" />
                            </div>
                            <div className="space-y-2">
-                              <label className="text-[10px] font-black uppercase tracking-widest text-navy/60">Email Address</label>
-                              <input required type="email" className="w-full bg-white border border-gray-medium p-4 text-xs font-bold focus:border-gold outline-none transition-colors" placeholder="john@company.com" />
+                              <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-navy/40">Email Address</label>
+                              <input required type="email" className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300" placeholder="john@company.com" />
                            </div>
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                            <div className="space-y-2">
-                              <label className="text-[10px] font-black uppercase tracking-widest text-navy/60">Phone Number</label>
-                              <input required type="tel" className="w-full bg-white border border-gray-medium p-4 text-xs font-bold focus:border-gold outline-none transition-colors" placeholder="+91 000 000 0000" />
+                              <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-navy/40">Phone Number</label>
+                              <input required type="tel" className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300" placeholder="+91 000 000 0000" />
                            </div>
                            <div className="space-y-2">
-                              <label className="text-[10px] font-black uppercase tracking-widest text-navy/60">Service Type</label>
-                              <select className="w-full bg-white border border-gray-medium p-4 text-xs font-bold focus:border-gold outline-none transition-colors appearance-none">
-                                 <option>Corporate Cabs</option>
-                                 <option>Employee Transportation</option>
-                                 <option>Premium Rentals</option>
-                                 <option>Tourist Transport</option>
-                              </select>
+                              <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-navy/40">Service Type</label>
+                              <div className="relative">
+                                 <select className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300 appearance-none">
+                                    <option>Corporate Cabs</option>
+                                    <option>Employee Transportation</option>
+                                    <option>Premium Rentals</option>
+                                    <option>Tourist Transport</option>
+                                 </select>
+                              </div>
                            </div>
                         </div>
 
                         <div className="space-y-2">
-                           <label className="text-[10px] font-black uppercase tracking-widest text-navy/60">Your Inquiry</label>
-                           <textarea required rows={5} className="w-full bg-white border border-gray-medium p-4 text-xs font-bold focus:border-gold outline-none transition-colors resize-none" placeholder="Describe your travel or fleet requirements..."></textarea>
+                           <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-navy/40">Your Inquiry</label>
+                           <textarea required rows={5} className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300 resize-none" placeholder="Describe your travel or fleet requirements..."></textarea>
                         </div>
 
-                        <button type="submit" className="btn-gold w-full flex items-center justify-center gap-3">
-                           Submit Inquiry <Send size={16} />
+                        <button type="submit" className="btn-accent w-full flex items-center justify-center gap-3 cursor-pointer active:scale-[0.98] transition-transform">
+                           Submit Inquiry <Send size={14} strokeWidth={1.5} />
                         </button>
                       </form>
                     )}
@@ -155,22 +157,23 @@ const ContactPage = () => {
       </section>
 
       {/* Map Section */}
-      <section className="h-[500px] w-full bg-gray-medium relative">
+      <section className="h-[500px] w-full bg-background border-t border-navy/5 relative overflow-hidden">
          <div className="absolute inset-0 flex items-center justify-center text-navy/20 flex-col gap-4">
-            <MapPin size={64} />
-            <span className="text-xs font-black uppercase tracking-[0.5em]">Bangalore Center Operations MAP</span>
+            <MapPin size={64} strokeWidth={1} />
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em]">Bangalore Center Operations MAP</span>
          </div>
          {/* Placeholder for real iframe */}
          <div className="w-full h-full bg-[url('https://api.mapbox.com/styles/v1/mapbox/light-v10/static/77.58,12.94,12,0/1280x500?access_token=pk.eyJ1IjoiYm90IiwiYSI6ImNrYmtvM2J0ZTAxYm0ycW10M2J0ZTAxYm0ifQ.5o5_7_0_0_0')] bg-cover opacity-60 grayscale hover:grayscale-0 transition-all cursor-pointer" />
       </section>
 
       {/* Direct WhatsApp Call */}
-      <section className="py-20 bg-navy text-center">
-         <div className="ncm-container flex flex-col items-center">
-            <MessageSquare size={48} className="text-gold mb-6" />
-            <h2 className="text-white uppercase mb-6">Immediate Assistance?</h2>
-            <p className="text-white/60 mb-10 max-w-sm font-medium">Message our dispatch command center directly on WhatsApp for real-time rates and availability.</p>
-            <a href={`https://wa.me/919845031627`} target="_blank" className="btn-gold !bg-[#25D366] !border-[#25D366] !shadow-[#25D366]/20">
+      <section className="py-20 bg-navy text-center relative overflow-hidden">
+         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] pointer-events-none" />
+         <div className="ncm-container flex flex-col items-center relative z-10">
+            <MessageSquare size={48} strokeWidth={1} className="text-accent mb-6" />
+            <h2 className="text-white uppercase mb-6 tracking-tighter font-serif text-4xl md:text-5xl">Immediate Assistance?</h2>
+            <p className="text-white/40 mb-10 max-w-sm text-sm font-light leading-relaxed">Message our dispatch command center directly on WhatsApp for real-time rates and availability.</p>
+            <a href={`https://wa.me/919845031627`} target="_blank" className="btn-accent !bg-[#25D366] !border-[#25D366] !shadow-[#25D366]/20 !text-white active:scale-[0.98] cursor-pointer inline-flex items-center justify-center">
                Click to WhatsApp
             </a>
          </div>

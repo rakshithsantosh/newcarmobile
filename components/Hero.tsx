@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import QuickQuoteBar from "./QuickQuoteBar";
-import { ArrowRight } from "lucide-react";
+
 
 const carSlides = [
   {
@@ -35,10 +35,10 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full bg-white overflow-hidden flex items-center pt-24">
+    <section className="relative min-h-[100dvh] w-full bg-background overflow-hidden flex items-center pt-32 pb-16 lg:pb-0">
       {/* Editorial Background Element */}
-      <div className="absolute right-0 top-0 w-full lg:w-1/2 h-full z-0 opacity-10 lg:opacity-100">
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-white/80 to-white z-10" />
+      <div className="absolute right-0 top-0 w-full lg:w-1/2 h-full z-0 opacity-15 lg:opacity-100">
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-background/85 to-background z-10" />
         <Image
           src="/images/cityscape-bg.png"
           alt="Luxury Cityscape"
@@ -49,7 +49,7 @@ const Hero = () => {
       </div>
 
       <div className="ncm-container relative z-20 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           
           {/* Content Left */}
           <div className="w-full lg:w-1/2 flex flex-col items-start">
@@ -59,12 +59,12 @@ const Hero = () => {
               transition={{ duration: 0.8 }}
             >
               <p className="caption mb-6">Established 1994</p>
-              <h1 className="mb-8 max-w-2xl">
+              <h1 className="mb-8 max-w-2xl font-serif text-navy tracking-tight leading-[0.95]">
                 The Art of <br/>
                 <span className="text-accent italic font-serif">Executive</span> Mobility.
               </h1>
-              <p className="body text-text-secondary mb-12 max-w-lg">
-                Experience Bangalore&apos;s premier chauffeur-driven fleet. Where every kilometer is engineered for absolute comfort and corporate precision.
+              <p className="body text-text-secondary mb-12 max-w-lg font-light leading-relaxed">
+                Experience Bangalore&apos;s premier chauffeur-driven fleet. Where every kilometer is engineered for absolute comfort, security, and corporate precision.
               </p>
               
               {/* Integrated Search */}
