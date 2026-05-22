@@ -10,7 +10,7 @@ function clean(value: unknown) {
 }
 
 function isAdmin(request: Request) {
-  return request.headers.get("x-admin-password") === "admin123";
+  return request.headers.get("x-admin-password") === "ncmadmin123";
 }
 
 export async function POST(request: Request) {

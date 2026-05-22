@@ -15,3 +15,17 @@ model ContactMessage {
   message   String
   createdAt DateTime @default(now())
 }
+
+model QuoteRequest {
+  id        String   @id @default(cuid())
+  pickup    String
+  dropoff   String
+  date      String
+  pax       Int
+  vehicleId String
+  name      String
+  email     String
+  phone     String
+  status    String   @default("PENDING")
+  createdAt DateTime @default(now())
+}

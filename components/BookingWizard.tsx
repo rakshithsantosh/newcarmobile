@@ -40,9 +40,23 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
 
   const handleFinish = async () => {
     setIsSubmitting(true);
-    await new Promise(r => setTimeout(r, 2000));
-    setIsSubmitting(false);
-    setCompleted(true);
+    try {
+      const res = await fetch("/api/quotes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        setCompleted(true);
+      } else {
+        alert("There was an issue submitting your request. Please try again.");
+      }
+    } catch (e) {
+      console.error(e);
+      alert("There was an error communicating with the server.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const selectedVehicle = FLEET.find(v => v.id === formData.vehicleId);
