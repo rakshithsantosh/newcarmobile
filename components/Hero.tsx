@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import QuickQuoteBar from "./QuickQuoteBar";
 
 
 const carSlides = [
@@ -67,22 +66,15 @@ const Hero = () => {
                 Experience Bangalore&apos;s premier chauffeur-driven fleet. Where every kilometer is engineered for absolute comfort, security, and corporate precision.
               </p>
               
-              {/* Integrated Search */}
-              <div className="w-full max-w-xl mb-12">
-                <QuickQuoteBar />
-              </div>
-
-              <div className="flex items-center gap-8 mt-4">
-                 <div className="flex -space-x-4">
-                    {[1,2,3].map(i => (
-                      <div key={i} className="w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-gray-100">
-                         <Image src={`/images/testimonials/avatar-${i}.jpg`} alt="Client" width={48} height={48} className="object-cover" />
-                      </div>
-                    ))}
-                 </div>
+              <div className="flex flex-col gap-5 mt-4">
                  <div className="text-sm">
-                    <p className="font-bold text-navy">3.6M+ Successful Trips</p>
+                    <p className="font-bold text-navy text-lg">3.6M+ Successful Trips</p>
                     <p className="text-text-muted">Trusted by Global Tech Leaders</p>
+                 </div>
+                 <div className="flex items-center gap-8 opacity-60">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-6 object-contain" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture_2017_logo.svg" alt="Accenture" className="h-5 object-contain" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-7 object-contain" />
                  </div>
               </div>
             </motion.div>
