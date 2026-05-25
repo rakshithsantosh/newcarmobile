@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { FLEET } from "@/lib/data";
 
 interface Quote {
   id: string;
@@ -146,7 +147,9 @@ export default function AdminQuotesPage() {
                         <p className="text-xs text-gray-400">to {q.dropoff}</p>
                         <p className="text-xs text-gray-400">{q.date}</p>
                       </td>
-                      <td className="p-4 font-semibold">{q.vehicleId}</td>
+                      <td className="p-4 font-semibold">
+                        {FLEET.find((vehicle) => vehicle.id === q.vehicleId)?.name || q.vehicleId}
+                      </td>
                       <td className="p-4">{q.pax}</td>
                       <td className="p-4">
                         <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-bold tracking-wider">

@@ -18,6 +18,10 @@ const steps = [
   { id: 3, title: "Summary & Details", icon: CheckCircle2 }
 ];
 
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -32,34 +36,83 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const [error, setError] = useState("");
 
   if (!isOpen) return null;
 
-  const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, steps.length));
-  const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 1));
+  const selectedVehicle = FLEET.find(v => v.id === formData.vehicleId);
+
+  const validateStep = (step: number) => {
+    if (step === 1 && (!formData.pickup.trim() || !formData.dropoff.trim() || !formData.date)) {
+      return "Please add pickup, destination, and travel date/time.";
+    }
+
+    if (step === 2 && !formData.vehicleId) {
+      return "Please select a vehicle to continue.";
+    }
+
+    if (step === 3) {
+      if (!formData.name.trim()) return "Please enter your full name.";
+      if (!isValidEmail(formData.email.trim())) return "Please enter a valid email address.";
+      if (formData.phone.trim().length < 8) return "Please enter a valid phone number.";
+    }
+
+    return "";
+  };
+
+  const nextStep = () => {
+    const validationError = validateStep(currentStep);
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
+    setError("");
+    setCurrentStep(prev => Math.min(prev + 1, steps.length));
+  };
+
+  const prevStep = () => {
+    setError("");
+    setCurrentStep(prev => Math.max(prev - 1, 1));
+  };
 
   const handleFinish = async () => {
+    const validationError = validateStep(3);
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
     setIsSubmitting(true);
+    setError("");
     try {
       const res = await fetch("/api/quotes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          pickup: formData.pickup.trim(),
+          dropoff: formData.dropoff.trim(),
+          date: formData.date,
+          pax: formData.pax,
+          vehicleId: formData.vehicleId,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim()
+        })
       });
       if (res.ok) {
         setCompleted(true);
       } else {
-        alert("There was an issue submitting your request. Please try again.");
+        const data = await res.json().catch(() => null);
+        setError(data?.error || "There was an issue submitting your request. Please try again.");
       }
     } catch (e) {
       console.error(e);
-      alert("There was an error communicating with the server.");
+      setError("There was an error communicating with the server.");
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  const selectedVehicle = FLEET.find(v => v.id === formData.vehicleId);
 
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
@@ -235,6 +288,7 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
                        <div className="p-5 bg-gray-50 rounded-2xl border border-gray-100">
                           <p className="text-[10px] font-bold text-accent uppercase mb-3 italic">Route Logistics</p>
                           <p className="text-navy font-bold">{formData.pickup || "Manual Pickup"} ➔ {formData.dropoff || "Manual Dropoff"}</p>
+                          <p className="text-xs text-gray-400 font-semibold mt-2">{formData.date || "Date pending"}</p>
                        </div>
                        <div className="p-5 bg-gray-50 rounded-2xl border border-gray-100">
                           <p className="text-[10px] font-bold text-accent uppercase mb-3 italic">Confirmed Fleet</p>
@@ -256,6 +310,7 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
                           <div className="space-y-2">
                             <label className="text-[10px] uppercase font-bold text-accent tracking-widest pl-1">Email Address</label>
                             <input 
+                                type="email"
                                 className="w-full bg-gray-50 border border-gray-100 p-5 rounded-2xl focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/5 outline-none transition-all text-navy font-bold" 
                                 placeholder="Contact email"
                                 value={formData.email}
@@ -265,6 +320,7 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
                           <div className="space-y-2">
                             <label className="text-[10px] uppercase font-bold text-accent tracking-widest pl-1">Phone Number</label>
                             <input 
+                                type="tel"
                                 className="w-full bg-gray-50 border border-gray-100 p-5 rounded-2xl focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/5 outline-none transition-all text-navy font-bold" 
                                 placeholder="+91 Phone number"
                                 value={formData.phone}
@@ -281,7 +337,13 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
 
           {/* Action Footer */}
           {!completed && (
-            <div className="mt-auto pt-10 flex items-center justify-between border-t border-gray-100">
+            <div className="mt-auto pt-10 flex flex-col gap-4 border-t border-gray-100">
+              {error && (
+                <p className="text-sm font-semibold text-red-600">
+                  {error}
+                </p>
+              )}
+              <div className="flex items-center justify-between">
               <button 
                 onClick={prevStep} 
                 disabled={currentStep === 1}
@@ -300,6 +362,7 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
                 {isSubmitting ? 'Syncing...' : currentStep === 3 ? 'Lock Reservation' : 'Advance Sequence'}
                 {!isSubmitting && <ArrowRight size={18} />}
               </button>
+              </div>
             </div>
           )}
         </div>

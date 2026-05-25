@@ -7,6 +7,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/data";
 import BookingWizard from "./BookingWizard";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,14 +38,8 @@ const Navbar = () => {
         <div className="ncm-container flex items-center justify-between">
           {/* Logo Section */}
           <Link href="/" className="group flex items-center gap-4 relative z-[110]">
-            <div className="relative w-40 h-10 md:w-48 md:h-12 transition-transform duration-500 group-hover:scale-105">
-              <Image
-                src="/images/logo.png"
-                alt="New Car Mobile"
-                fill
-                priority
-                className={`object-contain transition-all duration-700 ${scrolled ? 'invert' : 'invert brightness-0'}`}
-              />
+            <div className="relative w-40 md:w-56 transition-transform duration-500 group-hover:scale-105">
+              <Logo className="w-full h-auto text-navy" />
             </div>
           </Link>
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { SITE_CONFIG, SERVICES, FLEET_CATEGORIES } from "@/lib/data";
 import { Mail, MapPin, Phone, Download, Globe, Share2, Users } from "lucide-react";
+import Logo from "./Logo";
 
 const Footer = () => {
   return (
@@ -14,8 +15,8 @@ const Footer = () => {
           
           {/* Column 1: Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block relative w-40 h-10 mb-8 opacity-80 hover:opacity-100 transition-opacity">
-               <Image src="/images/logo.png" alt="NCM" fill className="object-contain invert brightness-0" />
+            <Link href="/" className="inline-block relative w-48 mb-8 opacity-80 hover:opacity-100 transition-opacity">
+               <Logo className="w-full h-auto text-white" />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed mb-10 max-w-xs">
               Engineering Bangalore&apos;s executive mobility landscape since 1994. A legacy built on punctuality, safety, and elite professional protocol.
