@@ -38,9 +38,9 @@ const FleetTeaser = () => {
                     <span><Briefcase size={14} /> {car.specs.luggage} Bags</span>
                   </div>
                   <div style={{ display: 'flex', gap: '10px' }}>
-                     <button onClick={() => openBooking(car.id)} className="btn btn-primary btn-sm" style={{ flexGrow: 1 }}>
+                     {/* <button onClick={() => openBooking(car.id)} className="btn btn-primary btn-sm" style={{ flexGrow: 1 }}>
                         Book <Calendar size={14} />
-                     </button>
+                     </button> */}
                      <Link href={`/fleet/${car.id}`} className={styles.detailsBtn} style={{ width: 'auto' }}>
                         <Info size={16} />
                      </Link>

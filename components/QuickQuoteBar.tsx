@@ -38,7 +38,7 @@ const QuickQuoteBar = () => {
         </div>
 
         {/* Action */}
-        <button 
+        {/* <button 
           onClick={() => openBooking()}
           className="w-full md:w-auto btn-primary group whitespace-nowrap !py-4 !px-8 h-full"
         >
@@ -46,7 +46,7 @@ const QuickQuoteBar = () => {
             Search Fleet
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </span>
-        </button>
+        </button> */}
       </div>
     </div>
   );

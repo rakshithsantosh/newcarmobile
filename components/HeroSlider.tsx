@@ -81,9 +81,9 @@ const HeroSlider = () => {
               transition={{ delay: 0.7 }}
               className={styles.actions}
             >
-              <button onClick={() => openBooking()} className="btn btn-primary btn-lg">
+              {/* <button onClick={() => openBooking()} className="btn btn-primary btn-lg">
                 {slides[current].cta}
-              </button>
+              </button> */}
               <Link href="/fleet" className="btn btn-outline btn-lg">
                 View Fleet
               </Link>

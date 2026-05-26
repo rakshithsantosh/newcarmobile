@@ -56,13 +56,13 @@ const Navbar = () => {
               </Link>
             ))}
             
-            <button 
+            {/* <button 
               onClick={() => setIsBookingOpen(true)}
               className="btn-primary group"
             >
               <span>Book A Chauffeur</span>
               <ArrowRight size={14} className="ml-3 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile Toggle */}
@@ -114,12 +114,12 @@ const Navbar = () => {
               transition={{ delay: 0.4 }}
               className="pt-10 border-t border-gray-100 mt-auto mb-10"
             >
-              <button 
+              {/* <button 
                 onClick={() => { setIsOpen(false); setIsBookingOpen(true); }}
                 className="btn-accent w-full py-6 text-sm"
               >
                 Initiate Booking
-              </button>
+              </button> */}
               <div className="mt-10 flex flex-col items-center text-center">
                 <p className="caption mb-4">Concierge Desk</p>
                 <p className="text-navy font-bold">{SITE_CONFIG.phones[0].number}</p>

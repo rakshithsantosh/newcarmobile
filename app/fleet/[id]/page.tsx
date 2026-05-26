@@ -121,7 +121,7 @@ const VehicleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
                        </div>
                     </div>
 
-                    <button className="btn-gold w-full py-5 text-sm uppercase">Book This Fleet</button>
+                    {/* <button className="btn-gold w-full py-5 text-sm uppercase">Book This Fleet</button> */}
                     <p className="text-center mt-6 text-white/40 text-[9px] font-black uppercase tracking-widest">Pricing subject to actual usage</p>
                  </div>
               </div>

@@ -94,7 +94,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Quote Creation Error:", error);
     return NextResponse.json(
-      { error: "Unable to save quote." },
+      { error: "Unable to save quote.", details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }
