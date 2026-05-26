@@ -182,7 +182,7 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
                 <div className="w-24 h-24 bg-accent/10 rounded-full flex items-center justify-center mb-8">
                   <CheckCircle2 size={48} className="text-accent" />
                 </div>
-                <h2 className="text-4xl font-bold text-navy mb-4">Reservation Locked</h2>
+                <h2 className="text-4xl font-bold text-navy mb-4">Quote Requested</h2>
                 <p className="text-gray-500 max-w-sm leading-relaxed">Our concierge team will review your orchestration and contact you within 15 minutes for final validation.</p>
                 <button onClick={onClose} className="mt-12 bg-navy text-white px-12 py-4 rounded-xl font-bold hover:bg-navy/90 transition-all shadow-xl shadow-navy/20">
                   Return to Landing
@@ -359,7 +359,7 @@ const BookingWizard = ({ isOpen, onClose, selectedVehicleId }: Props) => {
                 disabled={isSubmitting || (currentStep === 2 && !formData.vehicleId)}
                 className="bg-navy text-white px-10 py-4 rounded-xl font-bold uppercase text-xs tracking-[0.2em] hover:bg-navy/90 hover:shadow-2xl hover:shadow-navy/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-3"
               >
-                {isSubmitting ? 'Syncing...' : currentStep === 3 ? 'Lock Reservation' : 'Advance Sequence'}
+                {isSubmitting ? 'Syncing...' : currentStep === 3 ? 'Ask for Quote' : 'Advance Sequence'}
                 {!isSubmitting && <ArrowRight size={18} />}
               </button>
               </div>
