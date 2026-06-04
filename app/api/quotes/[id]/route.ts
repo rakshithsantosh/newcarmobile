@@ -16,14 +16,14 @@ export async function DELETE(
   try {
     const { id } = await params;
 
-    await prisma.contactMessage.delete({
+    await prisma.quoteRequest.delete({
       where: { id }
     });
 
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
-      { error: "Unable to delete message." },
+      { error: "Unable to delete quote." },
       { status: 500 }
     );
   }
