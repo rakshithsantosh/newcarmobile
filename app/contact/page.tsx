@@ -7,11 +7,44 @@ import { motion } from "framer-motion";
 
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    serviceType: "Corporate Cabs",
+    inquiry: ""
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: `Service Type: ${formData.serviceType}\n\n${formData.inquiry}`
+        })
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", phone: "", serviceType: "Corporate Cabs", inquiry: "" });
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -114,23 +147,23 @@ const ContactPage = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                            <div className="space-y-2">
                               <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-navy/40">Full Name</label>
-                              <input required type="text" className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300" placeholder="John Doe" />
+                              <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300" placeholder="John Doe" />
                            </div>
                            <div className="space-y-2">
                               <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-navy/40">Email Address</label>
-                              <input required type="email" className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300" placeholder="john@company.com" />
+                              <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300" placeholder="john@company.com" />
                            </div>
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                            <div className="space-y-2">
                               <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-navy/40">Phone Number</label>
-                              <input required type="tel" className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300" placeholder="+91 000 000 0000" />
+                              <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300" placeholder="+91 000 000 0000" />
                            </div>
                            <div className="space-y-2">
                               <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-navy/40">Service Type</label>
                               <div className="relative">
-                                 <select className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300 appearance-none">
+                                 <select value={formData.serviceType} onChange={e => setFormData({...formData, serviceType: e.target.value})} className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300 appearance-none">
                                     <option>Corporate Cabs</option>
                                     <option>Employee Transportation</option>
                                     <option>Premium Rentals</option>
@@ -142,11 +175,13 @@ const ContactPage = () => {
 
                         <div className="space-y-2">
                            <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-navy/40">Your Inquiry</label>
-                           <textarea required rows={5} className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300 resize-none" placeholder="Describe your travel or fleet requirements..."></textarea>
+                           <textarea required rows={5} value={formData.inquiry} onChange={e => setFormData({...formData, inquiry: e.target.value})} className="w-full bg-background border border-navy/10 p-4 text-xs font-light rounded-[2px] focus:border-accent focus:bg-white outline-none transition-all duration-300 resize-none" placeholder="Describe your travel or fleet requirements..."></textarea>
                         </div>
+                        
+                        {error && <p className="text-xs text-red-500 font-bold">{error}</p>}
 
-                        <button type="submit" className="btn-accent w-full flex items-center justify-center gap-3 cursor-pointer active:scale-[0.98] transition-transform">
-                           Submit Inquiry <Send size={14} strokeWidth={1.5} />
+                        <button disabled={isSubmitting} type="submit" className="btn-accent w-full flex items-center justify-center gap-3 cursor-pointer active:scale-[0.98] transition-transform disabled:opacity-50">
+                           {isSubmitting ? "Submitting..." : "Submit Inquiry"} <Send size={14} strokeWidth={1.5} />
                         </button>
                       </form>
                     )}
