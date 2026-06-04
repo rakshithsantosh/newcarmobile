@@ -113,11 +113,19 @@ const HomePage = () => {
       </section>
 
       {/* Services Overview */}
-      <section className="section-py bg-white relative">
-        <div className="ncm-container">
+      <section className="section-py relative bg-[#f9f9f9] overflow-hidden">
+        {/* Subtle texture overlay */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none" />
+        
+        {/* Ambient background glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-navy/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="ncm-container relative z-10">
           <div className="text-center mb-32">
-            <p className="text-gold font-black uppercase tracking-[0.5em] text-[10px] mb-8 italic">Core Specializations</p>
-            <h2 className="text-navy uppercase tracking-tighter font-serif text-6xl md:text-8xl leading-none">Mobility <br/>Ecosystem</h2>
+            <p className="text-gold font-black uppercase tracking-[0.6em] text-[10px] mb-8 italic">Core Specializations</p>
+            <h2 className="text-navy uppercase tracking-[-0.03em] font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.85]">
+              Mobility <br/>Ecosystem
+            </h2>
           </div>
           <ServiceGrid />
         </div>
