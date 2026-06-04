@@ -6,10 +6,12 @@ import Image from "next/image";
 import { ArrowLeft, Users, Briefcase, ShieldCheck, Gauge, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { useBooking } from "@/components/BookingProvider";
 import { motion } from "framer-motion";
 
 const VehicleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = use(params);
+  const { openBooking } = useBooking();
   const vehicle = FLEET.find(v => v.id === id);
 
   if (!vehicle) notFound();
@@ -121,7 +123,7 @@ const VehicleDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
                        </div>
                     </div>
 
-                    {/* <button className="btn-gold w-full py-5 text-sm uppercase">Book This Fleet</button> */}
+                    <button onClick={() => openBooking(vehicle.id)} className="btn-gold w-full py-5 text-sm uppercase cursor-pointer hover:bg-gold/90 transition-colors">Request Quote</button>
                     <p className="text-center mt-6 text-white/40 text-[9px] font-black uppercase tracking-widest">Pricing subject to actual usage</p>
                  </div>
               </div>

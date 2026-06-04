@@ -73,13 +73,13 @@ export function CarCard({ car, index }: { car: Car; index: number }) {
               <p className="text-[9px] font-bold uppercase tracking-widest text-text-muted mb-0.5">Rate Estimate</p>
               <p className="text-lg font-bold text-navy">{car.priceEstimate}</p>
            </div>
-           {/* <button 
+           <button 
              onClick={() => openBooking(car.id)}
-             className="group/btn flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-navy hover:text-accent transition-colors py-2"
+             className="group/btn flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-navy hover:text-accent transition-colors py-2 cursor-pointer"
            >
-              <span>Request Protocol</span>
+              <span>Request Quote</span>
               <ArrowRight size={13} className="group-hover/btn:translate-x-1.5 transition-transform duration-300" />
-           </button> */}
+           </button>
         </div>
       </div>
     </motion.article>

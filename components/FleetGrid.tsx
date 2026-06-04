@@ -6,6 +6,7 @@ import Image from "next/image";
 import { FLEET } from "@/lib/data";
 import { Users, Briefcase, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useBooking } from "./BookingProvider";
 
 interface FleetGridProps {
   limit?: number;
@@ -13,6 +14,7 @@ interface FleetGridProps {
 }
 
 const FleetGrid = ({ limit, category }: FleetGridProps) => {
+  const { openBooking } = useBooking();
   let displayFleet = FLEET;
   if (category) {
     displayFleet = displayFleet.filter(vehicle => vehicle.category === category);
@@ -67,14 +69,14 @@ const FleetGrid = ({ limit, category }: FleetGridProps) => {
               <div className="mt-auto flex items-center justify-between border-t border-gray-100/30 pt-6">
                  <div>
                    <p className="text-[9px] font-bold text-text-muted uppercase tracking-widest mb-0.5">Rate Estimate</p>
-                   <p className="font-bold text-lg text-navy group-hover:text-accent transition-colors">{vehicle.priceEstimate}</p>
+                   <p className="font-bold text-lg text-navy group-hover:text-accent transition-colors">Request Quote</p>
                  </div>
-                 <Link 
-                   href={`/fleet/${vehicle.id}`}
-                   className="w-12 h-12 rounded-[2px] bg-background border border-navy/5 flex items-center justify-center text-navy group-hover:bg-navy group-hover:text-white transition-all duration-500"
+                 <button 
+                   onClick={() => openBooking(vehicle.id)}
+                   className="w-12 h-12 rounded-[2px] bg-background border border-navy/5 flex items-center justify-center text-navy group-hover:bg-navy group-hover:text-white cursor-pointer transition-all duration-500"
                  >
                    <ChevronRight size={18} />
-                 </Link>
+                 </button>
               </div>
           </div>
         </motion.div>
